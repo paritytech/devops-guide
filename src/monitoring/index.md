@@ -9,7 +9,7 @@ We can generally split monitoring into two different areas:
 ## On-Chain
 
 This type of monitoring will generally check onchain via RPC nodes to check the values / delays / timing of events. You would normally only need two of these instances for all hosts. It is a good idea to run your own RPC servers to service these in case there are issues with the public RPC nodes.
-An example bot that queries onchain information is [polkabot](https://gitlab.com/Polkabot/polkabot).
+Some example applications that queries onchain information are [polkabot](https://gitlab.com/Polkabot/polkabot) and [polkadot-basic-notification](https://github.com/paritytech/polkadot-basic-notification).
 
 ## On-Host
 
