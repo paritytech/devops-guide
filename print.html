@@ -248,20 +248,20 @@
 • On-host monitoring - this is monitoring the individual node, e.g. the current block height, amount of p2p connections, amount of free memory on the host itself.</p>
 <h2 id="on-chain"><a class="header" href="#on-chain">On-Chain</a></h2>
 <p>This type of monitoring will generally check onchain via RPC nodes to check the values / delays / timing of events. You would normally only need two of these instances for all hosts. It is a good idea to run your own RPC servers to service these in case there are issues with the public RPC nodes.
-An example bot that queries onchain information is <a href="https://gitlab.com/Polkabot/polkabot">polkabot</a>.</p>
+Some example applications that queries onchain information are <a href="https://gitlab.com/Polkabot/polkabot">polkabot</a> and <a href="https://github.com/paritytech/polkadot-basic-notification">polkadot-basic-notification</a>.</p>
 <h2 id="on-host"><a class="header" href="#on-host">On-Host</a></h2>
-<p>Oh-host monitoring should run on each node that you run on the network. Polkadot/substrate exposes a bunch of useful metrics on http://host:9615/metrics, with http://host:9615/ being a healthcheck.</p>
+<p>You should monitor each node that you run on the network. Polkadot/Substrate exposes a bunch of useful metrics on http://host:9615/metrics, with http://host:9615/ being a healthcheck. This endpoint will only be exposed on the local network interface by default but you can expose it on all interfaces with the <code>--prometheus-external</code> flag.</p>
 <p>This outputs in a simple key - value format. However you can also include tags within the key. </p>
 <p>Simple Value:</p>
 <pre><code>polkadot_database_cache_bytes 0
 </code></pre>
 <p>Values with tags:</p>
-<pre><code>polkadot_block_height{status=&quot;best&quot;} 136
-polkadot_block_height{status=&quot;finalized&quot;} 133
+<pre><code>susbtrate_block_height{status=&quot;best&quot;} 136
+susbtrate_block_height{status=&quot;finalized&quot;} 133
 </code></pre>
-<p>Another useful tool to expose the hosts statistics (e.g. cpu, memory, bandwidth usage) is using the prometheus <a href="https://github.com/prometheus/node_exporter">node exporter</a>. It is highly recommended you at least monitor the polkadot/substrate process along with the node exporter process.</p>
+<p>As the metrics provided by this endpoints don't include hosts metrics (e.g. cpu, memory, bandwidth usage), it is recommended to complement it with the <a href="https://github.com/prometheus/node_exporter">prometheus node exporter</a> which needs to be installed on the same host.</p>
 <h2 id="telemetry"><a class="header" href="#telemetry">Telemetry</a></h2>
-<p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc…This gives you a useful dashboard to view the state of nodes.</p>
+<p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
 <p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> github repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy kubernetes deployments.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="example-monitoring-stack"><a class="header" href="#example-monitoring-stack">Example Monitoring Stack</a></h1>
 <p>An example of a very common open source monitoring stack.</p>
@@ -274,8 +274,9 @@ polkadot_block_height{status=&quot;finalized&quot;} 133
 - job_name: check blockchain node
   static_configs:
     - targets:
-      - 1.1.1.1:9115
-      - 1.1.1.1:9615
+      - 1.1.1.1:9080 # promtail
+      - 1.1.1.1:9100 # node exporter
+      - 1.1.1.1:9615 # substrate node
 </code></pre>
 <h3 id="rules"><a class="header" href="#rules">Rules</a></h3>
 <p>Now that you are gathering data from the host you can add rules that will trigger alerts. These are defined in the format: </p>
@@ -322,6 +323,100 @@ polkadot_block_height{status=&quot;finalized&quot;} 133
 <h2 id="loki"><a class="header" href="#loki">Loki</a></h2>
 <p><strong>“Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus”</strong></p>
 <p>Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central loki server.</p>
+<p>Example promtail.yaml configuration to collect the logs of a node managed by systemd:</p>
+<pre><code># promtail server config
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+  log_level: info
+positions:
+  filename: /var/lib/promtail/positions.yaml
+
+# loki servers
+clients:
+  - url: http://loki.example.com/loki/api/v1/push
+    backoff_config:
+      min_period: 1m
+      max_period: 1h
+      max_retries: 10000
+
+scrape_configs:
+  - job_name: journald
+    journal:
+      max_age: 1m
+      path: /var/log/journal
+      labels:
+        job: journald
+    pipeline_stages:
+      - match:
+          selector: '{job=&quot;journald&quot;}'
+          stages:
+          - multiline:
+              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+              max_lines: 2500
+          - regex:
+              expression: '(?P&lt;date&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P&lt;level&gt;(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P&lt;worker&gt;([^\s]+))\s+(?P&lt;target&gt;[\w-]+):?:?(?P&lt;subtarget&gt;[\w-]+)?:[\s]?(?P&lt;chaintype&gt;\[[\w-]+\]+)?[\s]?(?P&lt;message&gt;.+)'
+          - labels:
+              level:
+              target:
+              subtarget:
+          - metrics:
+              log_lines_total:
+                type: Counter
+                Description: &quot;Total Number of Chain Logs&quot;
+                prefix: &quot;promtail_chain_&quot;
+                max_idle_duration: 24h
+                config:
+                  match_all: true
+                  action: inc
+      - match:
+          selector: '{job=&quot;journald&quot;, level=&quot;ERROR&quot;}'
+          stages:
+          - multiline:
+              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+              max_lines: 2500
+          - metrics:
+              log_lines_total:
+                type: Counter
+                Description: &quot;Total Number of Chain Error Logs&quot;
+                prefix: &quot;promtail_chain_error_&quot;
+                max_idle_duration: 24h
+                config:
+                  match_all: true
+                  action: inc
+      - match:
+          selector: '{job=&quot;journald&quot;, level=~&quot;.+&quot;} |~ &quot;(?i)(panic)&quot;'
+          stages:
+          - multiline:
+              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+              max_lines: 2500
+          - metrics:
+              log_lines_total:
+                type: Counter
+                Description: &quot;Total Number of Chain Panic Logs&quot;
+                prefix: &quot;promtail_chain_panic_&quot;
+                max_idle_duration: 24h
+                config:
+                  match_all: true
+                  action: inc
+    relabel_configs:
+      - source_labels: ['__journal__systemd_unit']
+        target_label: 'unit'
+      - source_labels: ['unit']
+        regex: '(.*.scope|user.*.service)'
+        action: drop
+      - source_labels: ['__journal__hostname']
+        target_label: 'host'
+      - action: replace
+        source_labels:
+        - __journal__cmdline
+        - __journal__hostname
+        separator: &quot;;&quot;
+        regex: '.*--chain.*;(.*)'
+        target_label: 'node'
+        replacement: $1
+</code></pre>
+<p>The above example also configures the following custom metrics derived from logs <code>promtail_chain_log_lines_total</code>, <code>promtail_chain_error_log_lines_total</code> and  <code>promtail_chain_panic_log_lines_total</code> to be exposed on the promtail metrics endpoint (http://host:9080).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keys-and-accounts"><a class="header" href="#keys-and-accounts">Keys And Accounts</a></h1>
 <p>This page will describe some basic information on keys and accounts. For a more general and detailed explination see <a href="https://wiki.polkadot.network/docs/learn-accounts">learn accounts</a> on the polkadot wiki page.</p>
 <h2 id="encryption-schemes"><a class="header" href="#encryption-schemes">Encryption Schemes</a></h2>

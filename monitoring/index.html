@@ -149,20 +149,20 @@
 • On-host monitoring - this is monitoring the individual node, e.g. the current block height, amount of p2p connections, amount of free memory on the host itself.</p>
 <h2 id="on-chain"><a class="header" href="#on-chain">On-Chain</a></h2>
 <p>This type of monitoring will generally check onchain via RPC nodes to check the values / delays / timing of events. You would normally only need two of these instances for all hosts. It is a good idea to run your own RPC servers to service these in case there are issues with the public RPC nodes.
-An example bot that queries onchain information is <a href="https://gitlab.com/Polkabot/polkabot">polkabot</a>.</p>
+Some example applications that queries onchain information are <a href="https://gitlab.com/Polkabot/polkabot">polkabot</a> and <a href="https://github.com/paritytech/polkadot-basic-notification">polkadot-basic-notification</a>.</p>
 <h2 id="on-host"><a class="header" href="#on-host">On-Host</a></h2>
-<p>Oh-host monitoring should run on each node that you run on the network. Polkadot/substrate exposes a bunch of useful metrics on http://host:9615/metrics, with http://host:9615/ being a healthcheck.</p>
+<p>You should monitor each node that you run on the network. Polkadot/Substrate exposes a bunch of useful metrics on http://host:9615/metrics, with http://host:9615/ being a healthcheck. This endpoint will only be exposed on the local network interface by default but you can expose it on all interfaces with the <code>--prometheus-external</code> flag.</p>
 <p>This outputs in a simple key - value format. However you can also include tags within the key. </p>
 <p>Simple Value:</p>
 <pre><code>polkadot_database_cache_bytes 0
 </code></pre>
 <p>Values with tags:</p>
-<pre><code>polkadot_block_height{status=&quot;best&quot;} 136
-polkadot_block_height{status=&quot;finalized&quot;} 133
+<pre><code>susbtrate_block_height{status=&quot;best&quot;} 136
+susbtrate_block_height{status=&quot;finalized&quot;} 133
 </code></pre>
-<p>Another useful tool to expose the hosts statistics (e.g. cpu, memory, bandwidth usage) is using the prometheus <a href="https://github.com/prometheus/node_exporter">node exporter</a>. It is highly recommended you at least monitor the polkadot/substrate process along with the node exporter process.</p>
+<p>As the metrics provided by this endpoints don't include hosts metrics (e.g. cpu, memory, bandwidth usage), it is recommended to complement it with the <a href="https://github.com/prometheus/node_exporter">prometheus node exporter</a> which needs to be installed on the same host.</p>
 <h2 id="telemetry"><a class="header" href="#telemetry">Telemetry</a></h2>
-<p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc…This gives you a useful dashboard to view the state of nodes.</p>
+<p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
 <p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> github repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy kubernetes deployments.</p>
 
                     </main>
