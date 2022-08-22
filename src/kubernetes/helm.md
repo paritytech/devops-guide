@@ -2,7 +2,7 @@ Helm Chart
 =============
 
 
-## Overview
+# Overview
 
 Parity maintain a helm github repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your substate/polkadot binary. 
 
@@ -10,22 +10,40 @@ Parity maintain a helm github repo @ [https://github.com/paritytech/helm-charts]
 All variables are documented clearly in the [README.md](https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md) and there’s an example [values.yml](https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml) which you can start working from.
 
 
-## Examples
+## Example Rococo Local Chain
 
-First install the helm repo:
+This is a simple example of deploying a `rococo-local` test chain in kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the `Alice` validator which all other hosts use as a bootnode. 
+
+### First install the helm repo:
 
 ```
 helm repo add parity https://paritytech.github.io/helm-charts/
 helm install polkadot-node parity/node
 ```
 
-Example Polkadot Deployment:
+### Deploy Validator Alice:
+
+Alice will be deployed in a statefulset and use an example custom node key, along with deploying a service to be used as a bootnode:
 
 ```
-helm install polkadot-node parity/node --set node.chainDataSnapshotUrl=https://dot-rocksdb.polkashots.io/snapshot --set node.chainDataSnapshotFormat=lz4
+helm install rococo-alice parity/node --set node.role="validator" --set node.customNodeKey="91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1" --set node.chain=rococo-local --set node.perNodeServices.relayP2pService.enabled=true --set node.perNodeServices.relayP2pService.port=30333 --set node.flags="--alice --rpc-external --ws-external --rpc-cors all --rpc-methods=unsafe"
 ```
 
-Important Options:
+### Deploy Validator Bob:
+
+```
+helm install rococo-bob parity/node --set node.role="validator" --set node.chain=rococo-local --set node.flags="--bob --bootnodes '/dns4/rococo-alice-node-0-relay-chain-p2p/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC'"
+```
+
+### Deploy Two Full Nodes:
+
+```
+helm install rococo-pool parity/node --set node.chain=rococo-local --set node.replicas=2 --set node.flags="--bootnodes '/dns4/rococo-alice-node-0-relay-chain-p2p/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC'"
+```
+
+Once these steps are complete you will have a working `rococo-local` test chain with two validators and two full nodes.
+
+## Important Chart Options:
 
 | Option | Description |
 | ---------- | ------------------------------------------- |
