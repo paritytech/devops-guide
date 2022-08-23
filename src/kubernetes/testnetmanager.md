@@ -5,7 +5,7 @@ The [testnet manager chart](https://github.com/paritytech/helm-charts/tree/main/
 
 ### Requirements
 
-The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
+The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:s
 
 
 ```yaml
@@ -26,18 +26,45 @@ Then install the testnet manager and port forward a connection using the output 
 helm install testnet-mgr . --values values.yaml
 ```
 
+### Frontend GUI
 
-### Nodes
 
 In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.
 
-### Validator
 
-This section allows you to register / deregister validators and also rotate session keys.
+ ![testnet-mgr-frontend](../images/testnet-mgr.png)
 
-### Parachains
 
-The parachain section allows you to register or deregister collators for a specific parachain.
+### Interact with API via Frontend
 
+It's possible to view the API calls and execute them via the GUI. The main functions are:
+
+* Viewing nodes, validators, collators and parachains
+* Registering / de-registering validators and collators
+* Onboarding / off-boarding parachains
+* Rotating session keys
+
+
+![testnet-mgr-api](../images/testnet-mgr-api.png)
+
+### Examples
+
+Register a new validator in the `StateFullSet` called `rococo-val-pool`:
+
+```
+curl -X 'POST' \
+  'http://localhost:8080/api/register_validators?statefulset=rococo-val-pool' \
+  -H 'accept: application/json' \
+  -d ''
+  ```
+
+  Onboard Parachain id 1000:
+
+  ```
+  curl -X 'POST' \
+  'http://localhost:8080/api/onboard_parachain/1000' \
+  -H 'accept: application/json' \
+  -d ''
+  ```
 
 
