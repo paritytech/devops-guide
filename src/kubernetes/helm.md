@@ -43,6 +43,16 @@ helm install rococo-pool parity/node --set node.chain=rococo-local --set node.re
 
 Once these steps are complete you will have a working `rococo-local` test chain with two validators and two full nodes.
 
+
+### GitOps Tooling
+
+Below are some useful GitOps tool for managing helm releases. Here is a list of tool from simplest to more advanced:
+
+* [Helmfile](https://github.com/roboll/helmfile)
+* [Terraform Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs)
+* [Flux CD](https://fluxcd.io/)
+* [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
+
 ## Important Chart Options:
 
 | Option | Description |
