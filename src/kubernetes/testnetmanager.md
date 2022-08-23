@@ -13,7 +13,7 @@ configmap:
   WS_ENDPOINT: "ws://rococo-alice-node-0.rococo:9944"
   NODE_HTTP_PATTERN: "http://NODE_NAME.rococo:9933"
   NODE_WS_PATTERN: "ws://NODE_NAME.rococo:9944"
-  HEALTHY_MIN_PEER_COUNT: "0"
+  HEALTHY_MIN_PEER_COUNT: "1"
   SUDO_SEED: "0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a" # Alice
   VALIDATORS_ROOT_SEED: "test test test test test test test test test test test test"
   LOG_LEVEL: DEBUG
