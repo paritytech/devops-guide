@@ -5,7 +5,7 @@ The [testnet manager chart](https://github.com/paritytech/helm-charts/tree/main/
 
 ### Requirements
 
-The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:s
+The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
 
 
 ```yaml
@@ -49,7 +49,7 @@ It's possible to view the API calls and execute them via the GUI. The main funct
 
 ### Examples
 
-Register a new validator in the `StateFullSet` called `rococo-val-pool`:
+Register a new validator in the `StatefulSet` called `rococo-val-pool`:
 
 ```
 curl -X 'POST' \
