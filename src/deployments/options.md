@@ -1,32 +1,3 @@
-Deployment Options
-==================
-
-## Node Types
-
-A non exhaustive list of some common node types:
-
-| Type | Function |
-| ---------- | ------------------------------------------- |
-| Validator | Secures the Relay Chain by staking DOT, validating proofs from collators on parachains and voting on consensus along with other validators. |
-| Collator | Maintains a parachain by collecting parachain transactions and producing state transition proofs for the validators. |
-| Bootnode | A node with a static address and p2p public key, used to bootstrap a node onto the network’s distributed hash table and find peers. |
-| RPC Node | Expose an RPC interface over http or websocket for the relay chain or parachain and allow users to read the blockchain state and submit transactions (extrinsics). There are often multiple RPC nodes behind a load balancer. |
-| Archive Node | A node which is syncing to the relay chain or parachain and has a complete database starting all the way from the genesis block. |
-| Full Node | A node which is syncing the relay chain or parachain to the current best block. |
-
-
-## Deployment Targets
-
-A non exhaustive list of some common deployment targets:
-
-| Type | Description |
-| ---------- | ------------------------------------------- |
-| Physical Server | Usually a rack mounted server sitting in a data center. |
-| Virtual Machine | A virtual machine hosted by one of many cloud providers or self hosted onsite. |
-| Kubernetes | A container orchestration engine to host your blockchain instances. This option is only recommended if you already have prior experience with kubernetes, especially in production environments. |
-| Local Container | An instance running on a local container engine (e.g. containerd, docker, podman). |
-
-
 ## Special Options Per Host Type
 
 | Type | Function |
@@ -37,3 +8,17 @@ A non exhaustive list of some common deployment targets:
 | RPC Node | Use these options to allow 5000 public RPC/WS connections: --unsafe-ws-external --rpc-methods Safe --rpc-cors ‘*’  --ws-max-connections 5000 |
 | Archive Node | Use –pruning=archive to not prune any block history |
 | Full Node | N/A |
+
+## Parachain Specifics
+
+When running a parachain then you will need two sets of arguments, one for the relay chain and one for the parachain. Used in the format:
+
+```
+./statemine $PARACHAIN -- $RELAYCHAIN_OPTIONS
+```
+
+A real life example of this while executing as a statemine collator would be:
+
+```
+./statemine--detailed-log-output --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
+```
