@@ -483,6 +483,9 @@ helm install testnet-mgr parity/testnet-manager --values values.yaml
 -H 'accept: application/json' \
 -d ''
 </code></pre>
+<h3 id="how-does-it-work-"><a class="header" href="#how-does-it-work-">How does it work ?</a></h3>
+<p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (eg. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
+<p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (eg. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="monitoring-overview"><a class="header" href="#monitoring-overview">Monitoring Overview</a></h1>
 <p>We can generally split monitoring into two different areas:
 • On-chain monitoring - monitoring events on-chain, e.g. a transaction by a certain address, a validator set change etc…
