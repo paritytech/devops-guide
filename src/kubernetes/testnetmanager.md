@@ -3,6 +3,22 @@ Testnet Manager
 
 The [testnet manager chart](https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager) eanbles you to dynamically control test networks via a useful frontend GUI or API. It allows you to both view and modify information for nodes, validators and parachains in one place.
 
+
+## Rococo Example View
+
+### List Parachains
+
+![rococo-parachains](../images/rococo-parachains.png)
+
+### List Parachain Collators
+
+![rococo-collators-1002](../images/rococo-collators-1002.png)
+
+### Inspect Validator Node
+
+
+![rococo-validator-a-node-0](../images/rococo-validator-a-node-0.png)
+
 ### Requirements
 
 The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
@@ -46,6 +62,8 @@ It's possible to view the API calls and execute them via the GUI. The main funct
 
 
 ![testnet-mgr-api](../images/testnet-mgr-api.png)
+
+
 
 ### Examples
 
