@@ -3,7 +3,6 @@ Testnet Manager
 
 The [Testnet manager](https://github.com/paritytech/testnet-manager) ([helm chart](https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager)) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.
 
-
 ## Rococo Example View
 
 ### List Parachains
@@ -91,3 +90,8 @@ curl -X 'POST' \
   ```
 
 
+### How does it work ?
+
+The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node). As node pods deployed with the chart are tagged with the appropriate labels (eg. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).
+
+By combining this list of nodes with the on-chain state retrieved from RPC endpoints (eg. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: "${VALIDATORS_ROOT_SEED}//${node-name}".
