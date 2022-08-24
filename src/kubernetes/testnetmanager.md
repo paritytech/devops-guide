@@ -45,7 +45,7 @@ helm install testnet-mgr . --values values.yaml
 ### Frontend GUI
 
 
-In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.
+In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments.
 
 
  ![testnet-mgr-frontend](../images/testnet-mgr.png)
