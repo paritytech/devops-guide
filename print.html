@@ -431,21 +431,24 @@ helm install polkadot-node parity/node
 <tr><td>node.customChainspecUrl</td><td>Custon Chainspec URL</td></tr>
 </tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="testnet-manager"><a class="header" href="#testnet-manager">Testnet Manager</a></h1>
-<p>The <a href="https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager">testnet manager chart</a> eanbles you to dynamically control test networks via a useful frontend GUI or API. It allows you to both view and modify information for nodes, validators and parachains in one place.</p>
+<p>The <a href="https://github.com/paritytech/testnet-manager">Testnet manager</a> (<a href="https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager">helm chart</a>) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.</p>
 <h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
-<p>The testnet manager requires the seed phrase to the chains to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
+<p>The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
 <pre><code class="language-yaml">configmap:
   WS_ENDPOINT: &quot;ws://rococo-alice-node-0.rococo:9944&quot;
   NODE_HTTP_PATTERN: &quot;http://NODE_NAME.rococo:9933&quot;
   NODE_WS_PATTERN: &quot;ws://NODE_NAME.rococo:9944&quot;
   HEALTHY_MIN_PEER_COUNT: &quot;1&quot;
-  SUDO_SEED: &quot;0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a&quot; # Alice
-  VALIDATORS_ROOT_SEED: &quot;test test test test test test test test test test test test&quot;
   LOG_LEVEL: DEBUG
 
+secret:
+  SUDO_SEED: &quot;0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a&quot; # Alice
+  VALIDATORS_ROOT_SEED: &quot;test test test test test test test test test test test test&quot;
 </code></pre>
 <p>Then install the testnet manager and port forward a connection using the output of the install:</p>
-<pre><code>helm install testnet-mgr . --values values.yaml
+<pre><code>helm repo add parity https://paritytech.github.io/helm-charts/
+helm repo update
+helm install testnet-mgr parity/testnet-manager --values values.yaml
 </code></pre>
 <h3 id="frontend-gui"><a class="header" href="#frontend-gui">Frontend GUI</a></h3>
 <p>In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.</p>
