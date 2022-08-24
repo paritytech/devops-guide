@@ -11,6 +11,7 @@
 - [Server Deployments](./serverdeploy/index.md)
   - [Systemd](./serverdeploy/systemd.md)
   - [Logging](./serverdeploy/logging.md)
+  - [Automation](./serverdeploy/automation.md)
 
 - [Kubernetes Deployments](./kubernetes/index.md)
   - [Helm Chart](./kubernetes/helm.md)
