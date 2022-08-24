@@ -3,6 +3,24 @@ Testnet Manager
 
 The [Testnet manager](https://github.com/paritytech/testnet-manager) ([helm chart](https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager)) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.
 
+
+## Rococo Example View
+
+### List Parachains
+
+![rococo-parachains](../images/rococo-parachains.png)
+
+### List Parachain Collators
+
+![rococo-collators-1002](../images/rococo-collators-1002.png)
+
+### Inspect Validator Node
+
+
+![rococo-validator-a-node-0](../images/rococo-validator-a-node-0.png)
+
+## Usage
+
 ### Requirements
 
 The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
@@ -49,6 +67,8 @@ It's possible to view the API calls and execute them via the GUI. The main funct
 
 
 ![testnet-mgr-api](../images/testnet-mgr-api.png)
+
+
 
 ### Examples
 
