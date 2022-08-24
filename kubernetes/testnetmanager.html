@@ -145,6 +145,14 @@
                     <main>
                         <h1 id="testnet-manager"><a class="header" href="#testnet-manager">Testnet Manager</a></h1>
 <p>The <a href="https://github.com/paritytech/testnet-manager">Testnet manager</a> (<a href="https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager">helm chart</a>) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.</p>
+<h2 id="rococo-example-view"><a class="header" href="#rococo-example-view">Rococo Example View</a></h2>
+<h3 id="list-parachains"><a class="header" href="#list-parachains">List Parachains</a></h3>
+<p><img src="../images/rococo-parachains.png" alt="rococo-parachains" /></p>
+<h3 id="list-parachain-collators"><a class="header" href="#list-parachain-collators">List Parachain Collators</a></h3>
+<p><img src="../images/rococo-collators-1002.png" alt="rococo-collators-1002" /></p>
+<h3 id="inspect-validator-node"><a class="header" href="#inspect-validator-node">Inspect Validator Node</a></h3>
+<p><img src="../images/rococo-validator-a-node-0.png" alt="rococo-validator-a-node-0" /></p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
 <h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
 <p>The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
 <pre><code class="language-yaml">configmap:
