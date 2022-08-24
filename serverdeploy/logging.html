@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Role Specific Arguments - Substrate Devops Guide</title>
+        <title>Logging - Substrate Devops Guide</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html" class="active"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html" class="active"><strong aria-hidden="true">3.2.</strong> Logging</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,32 +143,142 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="special-options-per-host-type"><a class="header" href="#special-options-per-host-type">Special Options Per Host Type</a></h2>
-<table><thead><tr><th>Type</th><th>Function</th></tr></thead><tbody>
-<tr><td>Validator</td><td>Should at least be running with the –validator flag to enable block validation. Also keys should have been injected or the RPC author_rotateKeys called.</td></tr>
-<tr><td>Collator</td><td>Should at least be running with the –collator flag to enable parachain collation.</td></tr>
-<tr><td>Bootnode</td><td>A node with a static key file so the p2p public address is always the same. Store this private key in a file and use the option: --node-key-file /path/to/file</td></tr>
-<tr><td>RPC Node</td><td>Use these options to allow 5000 public RPC/WS connections: --unsafe-ws-external --rpc-methods Safe --rpc-cors ‘*’  --ws-max-connections 5000</td></tr>
-<tr><td>Archive Node</td><td>Use –pruning=archive to not prune any block history</td></tr>
-<tr><td>Full Node</td><td>N/A</td></tr>
-</tbody></table>
-<h2 id="parachain-specifics"><a class="header" href="#parachain-specifics">Parachain Specifics</a></h2>
-<p>When running a parachain then you will need two sets of arguments, one for the relay chain and one for the parachain. Used in the format:</p>
-<pre><code>./statemine $PARACHAIN -- $RELAYCHAIN_OPTIONS
+                        <h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
+<h3 id="local-logging"><a class="header" href="#local-logging">Local Logging</a></h3>
+<p>By default output from your systemd service will go to local syslog. This will mean it ends up in a place like <code>/var/log/syslog</code> or <code>/var/log/messages</code></p>
+<p>You can also view these using the <code>journalctl</code> command. To tail the current output of the polkadot process run:</p>
+<pre><code>journalctl -u polkadot -f
 </code></pre>
-<p>A real life example of this while executing as a statemine collator would be:</p>
-<pre><code>./statemine--detailed-log-output --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
+<p>It is also possible to remove old logs (say older than two days ago) using a command:</p>
+<pre><code>journalctl -u polkadot --vacuum-time=2d
 </code></pre>
+<p>Or to retain only the past 1G of data run:</p>
+<pre><code>journalctl --vacuum-size=1G
+</code></pre>
+<h2 id="remote-logging"><a class="header" href="#remote-logging">Remote Logging</a></h2>
+<p>In a setup with many hosts you will want to aggregate the logs at a central point, some common options include Loki or Elasticsearch. </p>
+<h3 id="loki"><a class="header" href="#loki">Loki</a></h3>
+<p>To log to a remote loki instance you need to install the <code>promtail</code> package. An example configuration file to send logs to a remote host:</p>
+<pre><code class="language-yaml"># promtail server config
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+  log_level: info
+positions:
+  filename: /var/lib/promtail/positions.yaml
+
+# loki servers
+clients:
+  - url: http://myloki.mycompany.com/loki/api/v1/push
+    backoff_config:
+      min_period: 1m
+      max_period: 1h
+      max_retries: 10000
+scrape_configs:
+  - job_name: journald
+    journal:
+      max_age: 1m
+      path: /var/log/journal
+      labels:
+        job: journald
+    pipeline_stages:
+      - match:
+          selector: '{job=&quot;journald&quot;}'
+          stages:
+          - multiline:
+              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+              max_lines: 2500
+          - regex:
+              expression: '(?P&lt;date&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P&lt;level&gt;(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P&lt;worker&gt;([^\s]+))\s+(?P&lt;target&gt;[\w-]+):?:?(?P&lt;subtarget&gt;[\w-]+)?:[\s]?(?P&lt;chaintype&gt;\[[\w-]+\]+)?[\s]?(?P&lt;message&gt;.+)'
+          - labels:
+              level:
+              target:
+              subtarget:
+</code></pre>
+<h3 id="elasticsearch"><a class="header" href="#elasticsearch">Elasticsearch</a></h3>
+<p>To log to a remote elasticsearch cluster you need to install the <code>logstash</code> package. An example configuration would look like:</p>
+<pre><code class="language-yaml">nput {
+     journald {
+       path      =&gt; &quot;/var/log/journal&quot;
+       seekto =&gt; &quot;tail&quot;
+       thisboot =&gt; true
+       filter    =&gt; {
+           &quot;_SYSTEMD_UNIT&quot; =&gt; &quot;polkadot.service&quot;
+       }
+       type =&gt; &quot;systemd&quot;
+     }
+}
+
+
+filter {
+date {
+     match =&gt; [&quot;timestamp&quot;, &quot;YYYY-mm-dd HH:MM:ss.SSS&quot;]
+     target =&gt; &quot;@timestamp&quot;
+  }
+  mutate {
+    rename =&gt; [ &quot;MESSAGE&quot;, &quot;message&quot; ]
+    remove_field =&gt; [ &quot;cursor&quot;, &quot;PRIORITY&quot;, &quot;SYSLOG_FACILITY&quot;, &quot;SYSLOG_IDENTIFIER&quot;, &quot;_BOOT_ID&quot;, &quot;_CAP_EFFECTIVE&quot;, &quot;_CMDLINE&quot;, &quot;_COMM&quot;, &quot;_EXE&quot;, &quot;_GID&quot;, &quot;_HOSTNAME&quot;, &quot;_MACHINE_ID&quot;, &quot;_PID&quot;, &quot;_SELINUX_CONTEXT&quot;, &quot;_STREAM_ID&quot;, &quot;_SYSTEMD_CGROUP&quot;, &quot;_SYSTEMD_INVOCATION_ID&quot;, &quot;_SYSTEMD_SLICE&quot;, &quot;_SYSTEMD_UNIT&quot;, &quot;_TRANSPORT&quot;, &quot;_UID&quot; ]
+  }
+  if ([message] =~ &quot;.*TRACE .*&quot;) { drop{ } }
+  grok {
+     match =&gt; { &quot;message&quot; =&gt; &quot;%{NOTSPACE:thread} %{LOGLEVEL:log-level} %{NOTSPACE:namespace} %{GREEDYDATA:message}&quot; }
+   }
+}
+
+output {
+   elasticsearch {
+     hosts =&gt; [&quot;https://myelasticsearch.mycompany.com:9243&quot;]
+     user =&gt; &quot;username&quot;
+     password =&gt; &quot;password&quot;
+     index =&gt; &quot;logstash-polkadot-%{+YYYY.MM.dd}&quot;
+   }
+}
+</code></pre>
+<h2 id="logging-options"><a class="header" href="#logging-options">Logging Options</a></h2>
+<p>Logging output from any substrate based changes has many log levels and targets.  All targets are set to <code>info</code> logging by default. You can adjust individual log levels using the <code>--log (-l short)</code> option, for example <code>-l afg=trace,sync=debug</code> or globally with <code>-ldebug</code>.</p>
+<p>Levels:</p>
+<ul>
+<li>error</li>
+<li>warn</li>
+<li>info</li>
+<li>debug</li>
+<li>trace</li>
+</ul>
+<p>Targets:</p>
+<ul>
+<li>afg</li>
+<li>aura</li>
+<li>babe</li>
+<li>beefy</li>
+<li>db</li>
+<li>gossip</li>
+<li>header</li>
+<li>peerset</li>
+<li>pow</li>
+<li>rpc</li>
+<li>runtime</li>
+<li>runtime::contracts</li>
+<li>sc_offchain</li>
+<li>slots</li>
+<li>state-db</li>
+<li>state_tracing</li>
+<li>sub-libp2p</li>
+<li>sync</li>
+<li>telemetry</li>
+<li>tracing</li>
+<li>trie</li>
+<li>txpool</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../deployments/targets.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../serverdeploy/systemd.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../serverdeploy/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../kubernetes/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -178,11 +288,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../deployments/targets.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../serverdeploy/systemd.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../serverdeploy/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../kubernetes/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
