@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Monitoring - Substrate Devops Guide</title>
+        <title>Automation - Substrate Devops Guide</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html" class="active"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html" class="active"><strong aria-hidden="true">3.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="../tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,37 +143,46 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="monitoring-overview"><a class="header" href="#monitoring-overview">Monitoring Overview</a></h1>
-<p>We can generally split monitoring into two different areas:
-• On-chain monitoring - monitoring events on-chain, e.g. a transaction by a certain address, a validator set change etc…
-• On-host monitoring - this is monitoring the individual node, e.g. the current block height, amount of p2p connections, amount of free memory on the host itself.</p>
-<h2 id="on-chain"><a class="header" href="#on-chain">On-Chain</a></h2>
-<p>This type of monitoring will generally check onchain via RPC nodes to check the values / delays / timing of events. You would normally only need two of these instances for all hosts. It is a good idea to run your own RPC servers to service these in case there are issues with the public RPC nodes.
-Some example applications that queries onchain information are <a href="https://gitlab.com/Polkabot/polkabot">polkabot</a> and <a href="https://github.com/paritytech/polkadot-basic-notification">polkadot-basic-notification</a>.</p>
-<h2 id="on-host"><a class="header" href="#on-host">On-Host</a></h2>
-<p>You should monitor each node that you run on the network. Polkadot/Substrate exposes a bunch of useful metrics on http://host:9615/metrics, with http://host:9615/ being a healthcheck. This endpoint will only be exposed on the local network interface by default but you can expose it on all interfaces with the <code>--prometheus-external</code> flag.</p>
-<p>This outputs in a simple key - value format. However you can also include tags within the key. </p>
-<p>Simple Value:</p>
-<pre><code>polkadot_database_cache_bytes 0
-</code></pre>
-<p>Values with tags:</p>
-<pre><code>susbtrate_block_height{status=&quot;best&quot;} 136
-susbtrate_block_height{status=&quot;finalized&quot;} 133
-</code></pre>
-<p>As the metrics provided by this endpoints don't include hosts metrics (e.g. cpu, memory, bandwidth usage), it is recommended to complement it with the <a href="https://github.com/prometheus/node_exporter">prometheus node exporter</a> which needs to be installed on the same host.</p>
-<h2 id="telemetry"><a class="header" href="#telemetry">Telemetry</a></h2>
-<p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
-<p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> github repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy kubernetes deployments.</p>
+                        <h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
+<h2 id="cloud-provisioning"><a class="header" href="#cloud-provisioning">Cloud Provisioning</a></h2>
+<p>There are multiple options to provision cloud resources, which can either be provider specific and some tools are more cloud agnostic.</p>
+<h3 id="popular-cloud-provider-specific-deployment-tooling"><a class="header" href="#popular-cloud-provider-specific-deployment-tooling">Popular Cloud Provider Specific Deployment Tooling:</a></h3>
+<ul>
+<li><a href="https://aws.amazon.com/cloudformation/">Amazon Cloud Formation</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview">Azure Resource Manager</a></li>
+<li><a href="https://cloud.google.com/deployment-manager/docs">Google Cloud Deployment</a></li>
+</ul>
+<p>These vendor specific deployment tools are easy to use, have great examples and support. However when using multiple providers with custom scripting formats, making a basic to your infrastructure can require changes to multiple sections of code, for each provider to do the same thing (e.g. open a port on a host).</p>
+<p>A more general solution where a change can be specified once and be used with multiple providers is using Terraform. Which currently has <a href="https://registry.terraform.io/browse/providers">more than</a> 2000 providers supported.</p>
+<h2 id="terraform"><a class="header" href="#terraform">Terraform</a></h2>
+<p><a href="https://www.terraform.io/">Terraform</a> is a very commonly used tool for creating all sorts of cloud resources. It supports many different providers along with having excellent modules for the main three providers (AWS, Azure, GCP). Many projects rely on this for their infrastructure deployments. </p>
+<p>It uses HashiCorp’s <a href="https://www.terraform.io/language">HashiCorp Configuration Language</a>, which makes it very easy to abstract configuration, avoid the reuse of code and enables you to plug modules together easily (e.g. RPC nodes along with a frontend load balancer).</p>
+<p>The code is also easy to read and should be in version control. Multiple environments can be defined so you can ensure you are using the same code on dev / test / production.</p>
+<p>Two ways to preconfigure your host after deployment using terraform directly is to either:</p>
+<ul>
+<li>Use a pre-packaged image with all of your software (e.g. packer or similar tooling)</li>
+<li>Use a cloud-init script to execute a certain script to preconfigure your base image</li>
+</ul>
+<p>Some examples of using terraform with multiple providers can be found in the W3F’s polkadot-validator-setup github repo. </p>
+<p>Click here for a list of <a href="https://registry.terraform.io/browse/providers">terraform providers</a>.</p>
+<h3 id="host-maintenance"><a class="header" href="#host-maintenance">Host Maintenance</a></h3>
+<p>Once your hosts are deployed you will need to configure the hosts and install the required software, configuration files etc…As mentioned this can be done in a few ways using terraform itself, however another very flexible way of configuring hosts is using ansible.</p>
+<table><thead><tr><th>Component</th><th>Description</th></tr></thead><tbody>
+<tr><td>Playbook</td><td>Playbooks are the language by which Ansible orchestrates, configures, administers, or deploys systems</td></tr>
+<tr><td>Role</td><td>Roles are units of organization in Ansible. Assigning a role to a group of hosts (or a set of groups, or host patterns, and so on) implies that they should implement a specific behavior</td></tr>
+</tbody></table>
+<p>When deploying our blockchain nodes, we will need an inventory which contains a list of our hosts and the groups they are in (e.g. validator, collator, rpc) and maybe some secrets which can be encrypted inline within the inventory using <a href="https://docs.ansible.com/ansible/latest/user_guide/vault.html">ansible vault</a>. We will then call a playbook which links hosts/groups in the inventory with roles to execute on each host.</p>
+<p>Some examples of using ansible can be found in the paritytech's <a href="https://github.com/paritytech/ansible-galaxy">ansible-galaxy</a> github repo. Specifically the node role.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../kubernetes/testnetmanager.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../serverdeploy/logging.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../monitoring/example.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../kubernetes/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -183,11 +192,11 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../kubernetes/testnetmanager.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../serverdeploy/logging.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../monitoring/example.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../kubernetes/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
