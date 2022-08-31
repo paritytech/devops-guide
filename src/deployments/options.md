@@ -14,7 +14,7 @@
 When running a parachain then you will need two sets of arguments, one for the relay chain and one for the parachain. Used in the format:
 
 ```
-./statemine $PARACHAIN -- $RELAYCHAIN_OPTIONS
+./statemine $PARACHAIN_OPTIONS -- $RELAYCHAIN_OPTIONS
 ```
 
 A real life example of this while executing as a statemine collator would be:
