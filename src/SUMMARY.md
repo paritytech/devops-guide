@@ -29,3 +29,7 @@
 - [Custom Relay/Solo Chain](./customchain.md)
 
 - [🥼 Infrastructure Tooling](./tooling.md)
+- [Examples]()
+  - [Polkadot JS CLI Tools](./examples/polkadotjstools.md)
+  - [Helmfile](./examples/helmfile.md)
+  - [Zombienet](./examples/zombienet.md)
