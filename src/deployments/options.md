@@ -14,11 +14,11 @@
 When running a parachain then you will need two sets of arguments, one for the relay chain and one for the parachain. Used in the format:
 
 ```
-./statemine $PARACHAIN -- $RELAYCHAIN_OPTIONS
+./statemine $PARACHAIN_OPTIONS -- $RELAYCHAIN_OPTIONS
 ```
 
 A real life example of this while executing as a statemine collator would be:
 
 ```
-./statemine --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
+./statemine  --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
 ```

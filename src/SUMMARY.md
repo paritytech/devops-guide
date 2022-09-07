@@ -19,10 +19,17 @@
 
 - [Monitoring](./monitoring/index.md)
   - [Example Monitoring Stack](./monitoring/example.md)
-
+    - [Prometheus](./monitoring/prometheus.md)
+    - [Grafana](./monitoring/grafana.md)
+    - [Alertmanager](./monitoring/alertmanager.md)
+    - [Loki](./monitoring/loki.md)
 
 - [Keys And Accounts](./keys_accounts.md)
 
 - [Custom Relay/Solo Chain](./customchain.md)
 
 - [🥼 Infrastructure Tooling](./tooling.md)
+- [Examples]()
+  - [Polkadot JS CLI Tools](./examples/polkadotjstools.md)
+  - [Helmfile](./examples/helmfile.md)
+  - [Zombienet](./examples/zombienet.md)
