@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="serverdeploy/automation.html"><strong aria-hidden="true">3.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li></ol></li><li class="chapter-item expanded "><a href="keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="deployments/index.html"><strong aria-hidden="true">2.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="deployments/types.html"><strong aria-hidden="true">2.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="deployments/targets.html"><strong aria-hidden="true">2.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="deployments/options.html"><strong aria-hidden="true">2.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="serverdeploy/index.html"><strong aria-hidden="true">3.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="serverdeploy/systemd.html"><strong aria-hidden="true">3.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="serverdeploy/logging.html"><strong aria-hidden="true">3.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="serverdeploy/automation.html"><strong aria-hidden="true">3.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="kubernetes/index.html"><strong aria-hidden="true">4.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kubernetes/helm.html"><strong aria-hidden="true">4.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="kubernetes/testnetmanager.html"><strong aria-hidden="true">4.2.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="monitoring/index.html"><strong aria-hidden="true">5.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monitoring/example.html"><strong aria-hidden="true">5.1.</strong> Example Monitoring Stack</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="monitoring/prometheus.html"><strong aria-hidden="true">5.1.1.</strong> Prometheus</a></li><li class="chapter-item expanded "><a href="monitoring/grafana.html"><strong aria-hidden="true">5.1.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="monitoring/alertmanager.html"><strong aria-hidden="true">5.1.3.</strong> Alertmanager</a></li><li class="chapter-item expanded "><a href="monitoring/loki.html"><strong aria-hidden="true">5.1.4.</strong> Loki</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="keys_accounts.html"><strong aria-hidden="true">6.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="customchain.html"><strong aria-hidden="true">7.</strong> Custom Relay/Solo Chain</a></li><li class="chapter-item expanded "><a href="tooling.html"><strong aria-hidden="true">8.</strong> 🥼 Infrastructure Tooling</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Examples</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="examples/polkadotjstools.html"><strong aria-hidden="true">9.1.</strong> Polkadot JS CLI Tools</a></li><li class="chapter-item expanded "><a href="examples/helmfile.html"><strong aria-hidden="true">9.2.</strong> Helmfile</a></li><li class="chapter-item expanded "><a href="examples/zombienet.html"><strong aria-hidden="true">9.3.</strong> Zombienet</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -205,10 +205,10 @@
 </tbody></table>
 <h2 id="parachain-specifics"><a class="header" href="#parachain-specifics">Parachain Specifics</a></h2>
 <p>When running a parachain then you will need two sets of arguments, one for the relay chain and one for the parachain. Used in the format:</p>
-<pre><code>./statemine $PARACHAIN -- $RELAYCHAIN_OPTIONS
+<pre><code>./statemine $PARACHAIN_OPTIONS -- $RELAYCHAIN_OPTIONS
 </code></pre>
 <p>A real life example of this while executing as a statemine collator would be:</p>
-<pre><code>./statemine --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
+<pre><code>./statemine  --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="server-deployments"><a class="header" href="#server-deployments">Server Deployments</a></h1>
 <ul>
@@ -538,8 +538,16 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
 <p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
 <p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> github repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy kubernetes deployments.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="example-monitoring-stack"><a class="header" href="#example-monitoring-stack">Example Monitoring Stack</a></h1>
-<p>An example of a very common open source monitoring stack.</p>
-<h2 id="prometheus"><a class="header" href="#prometheus">Prometheus</a></h2>
+<p><img src="monitoring/../images/monitoring-stack.png" alt="monitoring stack" /></p>
+<p>An example of a very common open source monitoring stack. There are various tools for each layer of the stack:</p>
+<ul>
+<li>Prometheus - A time series database which can hold large amounts of data that can be accessed very quickly. It scrapes data from your defined exporters and saves this data.</li>
+<li>Grafana - Grafana allows you to query, visualize, and understand your metrics. Many example dashboards exist and it is easy to create new ones.</li>
+<li>Alertmanager - Creates and routes alerts based on alert rules and metrics. Many provider plugins exist to send alerts via email / sms / telegram / pagerduty / victorops / slack / matrix etc...</li>
+<li>Loki - A highly scalable log aggregation system that allows you to view and search logs from all your infrastruture in one place.</li>
+<li>Exporter - A process that listens on a port and reports appliation specific metrics to prometheus when scraped. Lots of exporters exist and new ones are easy to write. It just requires you return data in the format of: `<key>: <value>' with labels being optional.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="prometheus"><a class="header" href="#prometheus">Prometheus</a></h2>
 <p><strong>“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.”</strong> - Prometheus Github Repository</p>
 <p>Prometheus is the engine which drives our monitoring system. For our example we will mainly focus on two sections:</p>
 <h3 id="targets"><a class="header" href="#targets">Targets</a></h3>
@@ -564,7 +572,7 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
       severity: warning
 </code></pre>
 <p>Here’s an <a href="https://github.com/ddorgan/substrate-alerting-rules/blob/main/alerting-rules.yaml">example</a> with some basic block production rules.</p>
-<h2 id="grafana"><a class="header" href="#grafana">Grafana</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="grafana"><a class="header" href="#grafana">Grafana</a></h2>
 <p>Grafana is where you can define dashboards to show the time series information that prometheus is collecting. You just need to ensure you add a datasource:</p>
 <pre><code class="language-yaml">  datasources:
       - name: &quot;prometheus-prod&quot;
@@ -579,8 +587,8 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
 
 </code></pre>
 <p>You can find <a href="https://grafana.com/grafana/dashboards/?search=polkadot">existing</a> polkadot dashboards at grafana.com -</p>
-<p><img src="monitoring/images/lb0gOx.png" alt="grafana example" /></p>
-<h2 id="alertmanager"><a class="header" href="#alertmanager">Alertmanager</a></h2>
+<p><img src="monitoring/../images/lb0gOx.png" alt="grafana example" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="alertmanager"><a class="header" href="#alertmanager">Alertmanager</a></h2>
 <p>The final part of the monitoring stack will be how and where to alert if something does go wrong. For example you may want to send instant messages for warning alerts, but page somebody 24/7 for critical alerts.</p>
 <p>Alertmanager has many modules for email / many IM formats with almost any output being supported. You can also use 3rd party providers like pagerduty or victorops and do very detailed management of oncall queues, schedules etc…</p>
 <p>A simple alert for block production being slow would look like:</p>
@@ -594,7 +602,7 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
             severity: warning
 </code></pre>
 <p>This will then be sent to the outbound path for the severity warning.</p>
-<h2 id="loki-1"><a class="header" href="#loki-1">Loki</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="loki-1"><a class="header" href="#loki-1">Loki</a></h2>
 <p><strong>“Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus”</strong></p>
 <p>Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central loki server.</p>
 <p>Example promtail.yaml configuration to collect the logs of a node managed by systemd:</p>
@@ -814,6 +822,255 @@ curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quo
 <tr><td><a href="https://github.com/polkadot-js/tools">polkadot-js-tools</a></td><td>A very flexible utility for executing API calls or running queries.</td></tr>
 <tr><td><a href="https://github.com/paritytech/subxt">Subxt</a></td><td>Submits extrinsics via RPC</td></tr>
 </tbody></table>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="polkadot-js-tools"><a class="header" href="#polkadot-js-tools">Polkadot Js Tools</a></h1>
+<p><a href="https://github.com/polkadot-js/tools">Polkadot Js Tools</a> is an amazing tool for interacting with substrate based chains. </p>
+<p>A full list of possible <a href="https://polkadot.js.org/docs/substrate/rpc/">rpc</a> calls and <a href="https://polkadot.js.org/docs/substrate/extrinsics">extrinsics</a> are available from the <a href="https://polkadot.js.org/docs/substrate/">polkadot js docs</a> page.</p>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/polkadot-js/tools/tree/master/packages/api-cli">api-cli</a> A cli tool to allow you to make API calls to any running node</p>
+</li>
+<li>
+<p><a href="https://github.com/polkadot-js/tools/blob/master/packages/json-serve">json-serve</a> A server that serves JSON outputs for specific queries</p>
+</li>
+<li>
+<p><a href="https://github.com/polkadot-js/tools/blob/master/packages/monitor-rpc">monitor-rpc</a> A simple monitoring interface that checks the health of a remote node via RPC</p>
+</li>
+<li>
+<p><a href="https://github.com/polkadot-js/tools/blob/master/packages/signer-cli">signer-cli</a> A cli tool that allows you to generate transactions in one terminal and sign them in another terminal (or computer)</p>
+</li>
+<li>
+<p><a href="https://github.com/polkadot-js/tools/blob/master/packages/vanitygen">vanitygen</a> Generate vanity addresses, matching some pattern</p>
+</li>
+</ul>
+<h3 id="install"><a class="header" href="#install">Install</a></h3>
+<p>Steps:</p>
+<ul>
+<li>
+<p>Clone repo: <code>git clone https://github.com/polkadot-js/tools.git</code></p>
+</li>
+<li>
+<p>Install dependencies and build: <code>yarn install &amp;&amp; yarn build</code></p>
+</li>
+</ul>
+<h3 id="example-chain-queries"><a class="header" href="#example-chain-queries">Example Chain Queries</a></h3>
+<p>Display block information (parent hash, block number, state root etc..) for last block:</p>
+<pre><code>yarn run:api query.chain.getHeader
+</code></pre>
+<p>Get the balance for the account <code>//Alice</code>:</p>
+<pre><code>yarn run:api query.system.account 15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5
+</code></pre>
+<p>Display all RPC methods available:</p>
+<pre><code>yarn run:api rpc.rpc.methods
+</code></pre>
+<h3 id="example-chain-transactionsextrinsics"><a class="header" href="#example-chain-transactionsextrinsics">Example Chain Transactions/Extrinsics</a></h3>
+<p>Simple transfer of 1 unit <code>//Alice</code> to <code>//Bob</code> on the same chain. Using <code>--seed</code> as the sender for signing the transactions:</p>
+<pre><code>yarn run:api tx.balances.transfer 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty 10000000000 --seed &quot;//Alice&quot;
+</code></pre>
+<p>Transfer 1.23 units from <code>//Alice</code> on the relay chain to <code>//Charlie</code> on the parachain <code>1000</code>:</p>
+<pre><code>yarn run:api tx.xcmPallet.limitedTeleportAssets '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;parachain&quot;:1000}}}}' '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;AccountId32&quot;: {&quot;id&quot;: &quot;0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22&quot;, &quot;network&quot;: &quot;Any&quot;}}}}}' '{&quot;v1&quot;: [ {&quot;id&quot;: { &quot;Concrete&quot;: {&quot;parents&quot;:0, &quot;interior&quot;:&quot;Here&quot; }}, &quot;Fun&quot;: { &quot;Fungible&quot;: &quot;12300000000&quot;}}]}'  0 Unlimited  --seed &quot;//Alice&quot;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="helmfile"><a class="header" href="#helmfile">Helmfile</a></h1>
+<p>Below are two examples of helmfile in action. One a simple single helmfile for testing and the second a more realistic example to be used in production.</p>
+<h3 id="basic-helmfile-example"><a class="header" href="#basic-helmfile-example">Basic helmfile example</a></h3>
+<p>This is a  very simple one file example of a helmfile to deploy two <code>rococo-local</code> relaychain validators along with two parachains <code>statemint-dev</code> and <code>contracts-rococo-dev</code>. It is intended for basic testing and familiarisation of helmfile. </p>
+<p>A more more real world example is listed below which comes from the <code>testnet-manager</code> repo. An nginx contrainer will also be deployed to host chain spec files.</p>
+<p>Steps:</p>
+<ul>
+<li>
+<p>Create a helmfile based on the <a href="examples/helmfile.html#basic_helmfile">simple example</a> below and name it helmfile.yaml</p>
+</li>
+<li>
+<p>Install a webserver to host helmfiles using <code>kubectl create -f https://raw.githubusercontent.com/paritytech/testnet-manager/main/local-kubernetes/kube-setup/validators-chainspec.yml</code></p>
+</li>
+<li>
+<p>Add relaychain and parachains using: <code>helmfile sync</code></p>
+</li>
+</ul>
+<h3 id="real-world-helmfile-example"><a class="header" href="#real-world-helmfile-example">Real world helmfile example</a></h3>
+<p>You can find a good reference helmfile example at the testnet-manager <a href="https://github.com/paritytech/testnet-manager/tree/main/local-kubernetes/charts">examples</a> folder.</p>
+<h3 id="basic_helmfile"><a class="header" href="#basic_helmfile">Basic_helmfile</a></h3>
+<pre><code>repositories:
+  - name: parity
+    url: https://paritytech.github.io/helm-charts/
+
+helmDefaults:
+  createNamespace: false
+  waitForJobs: true
+
+releases:
+## relay chain Rococo ##
+  - name: validator-alice
+    namespace: rococo
+    chart: parity/node
+    version: 2.11.4
+    values:
+      - node:
+          chain: rococo-local
+          replicas: 1
+          customChainspecUrl: &quot;http://chainspec.rococo/rococo-local.json&quot;
+          role: authority
+          flags:
+            - &quot;--alice&quot;
+            - &quot;--unsafe-rpc-external&quot;
+            - &quot;--unsafe-ws-external&quot;
+            - &quot;--rpc-methods=unsafe&quot;
+            - &quot;--rpc-cors=all&quot;
+            - &quot;--node-key 0x91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1&quot;
+        storageClass: standard
+        extraLabels:
+          validatorAccount: &quot;5GNJqTPyNqANBkUVMN1LPPrxXnFouWXoe2wNSmmEoLctxiZY&quot; # Alice address
+          ss58Format: &quot;0&quot;
+  - name: validator-bob
+    namespace: rococo
+    chart: parity/node
+    version: 2.11.4
+    values:
+      - node:
+          chain: rococo-local
+          customChainspecUrl: &quot;http://chainspec.rococo/rococo-local.json&quot;
+          role: authority
+          replicas: 1
+          flags:
+            - &quot;--bob&quot;
+            - &quot;--unsafe-rpc-external&quot;
+            - &quot;--unsafe-ws-external&quot;
+            - &quot;--rpc-methods=unsafe&quot;
+            - &quot;--rpc-cors=all&quot;
+        storageClass: standard
+        extraLabels:
+          validatorAccount: &quot;5HpG9w8EBLe5XCrbczpwq5TSXvedjrBGCwqxK1iQ7qUsSWFc&quot; # Bob address
+          ss58Format: &quot;0&quot;
+
+## Para chain Statemint ##
+  - name: statemint-alice
+    namespace: rococo
+    chart: parity/node
+    version: 2.11.4
+    values:
+      - image:
+          repository: &quot;parity/polkadot-parachain&quot;
+          tag: &quot;latest&quot;
+      - node:
+          chain: statemint-dev
+          role: collator
+          command: &quot;/usr/local/bin/polkadot-parachain&quot;
+          collator:
+            isParachain: true
+            relayChainFlags: &quot;--execution wasm --bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC&quot;
+            relayChainCustomChainspecUrl: &quot;http://chainspec.rococo/rococo-local.json&quot;
+          flags:
+            - &quot;--alice&quot;
+            - &quot;--unsafe-rpc-external&quot;
+            - &quot;--unsafe-ws-external&quot;
+            - &quot;--rpc-methods=unsafe&quot;
+            - &quot;--rpc-cors=all&quot;
+            - &quot;--force-authoring&quot;
+            - &quot;--pruning=archive&quot;
+        storageClass: standard
+        extraLabels:
+          paraId: &quot;1000&quot;
+          ss58Format: &quot;0&quot;
+
+## Para chain contracts rococo
+  - name: contracts-alice
+    namespace: rococo
+    chart: parity/node
+    version: 2.11.4
+    values:
+      - image:
+          repository: &quot;parity/polkadot-parachain&quot;
+          tag: &quot;latest&quot;
+      - node:
+          chain: contracts-rococo-dev
+          role: collator
+          command: &quot;/usr/local/bin/polkadot-parachain&quot;
+          collator:
+            isParachain: true
+            relayChainFlags: &quot;--execution wasm --bootnodes /dns4/validator-alice-node-0/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC&quot;
+            relayChainCustomChainspecUrl: &quot;http://chainspec.rococo/rococo-local.json&quot;
+          flags:
+            - &quot;--alice&quot;
+            - &quot;--unsafe-rpc-external&quot;
+            - &quot;--unsafe-ws-external&quot;
+            - &quot;--rpc-methods=unsafe&quot;
+            - &quot;--rpc-cors=all&quot;
+            - &quot;--force-authoring&quot;
+            - &quot;--pruning=archive&quot;
+        storageClass: standard
+        extraLabels:
+          paraId: &quot;1002&quot;
+          ss58Format: &quot;0&quot;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="zombienet"><a class="header" href="#zombienet">Zombienet</a></h1>
+<p>Below is an example that is similar to the helmfile example. It will deploy two <code>rococo-local</code> relaychain validators and two parachains <code>statemint-dev</code> and <code>contracts-rococo-dev</code> and also HRMP channels between parachains 1000 and 1002.</p>
+<h3 id="more-information"><a class="header" href="#more-information">More Information</a></h3>
+<p>For more information see the <a href="https://paritytech.github.io/zombienet/">Zombienet manual</a>. For more examples see the <a href="https://github.com/paritytech/zombienet/tree/main/examples">Zomebienet examples</a> in the Zombienet repo.</p>
+<h3 id="steps"><a class="header" href="#steps">Steps</a></h3>
+<ul>
+<li>
+<p>Clone the zombienet repo: <code>git@github.com:paritytech/zombienet.git</code></p>
+</li>
+<li>
+<p>Build zomebienet using: <code>npm install &amp;&amp; npm run build</code></p>
+</li>
+<li>
+<p>Create a new config file based on the <a href="examples/zombienet.html#zombienet_example">zombienet_example config</a></p>
+</li>
+<li>
+<p>Deploy this to k8s using the command: <code>node cli/dist.js spawn path/configfile.yaml</code></p>
+</li>
+</ul>
+<h3 id="zombienet_example"><a class="header" href="#zombienet_example">Zombienet_example</a></h3>
+<pre><code>relaychain]
+default_image = &quot;docker.io/paritypr/polkadot-debug:master&quot;
+default_command = &quot;polkadot&quot;
+default_args = [ &quot;-lparachain=debug&quot; ]
+
+chain = &quot;rococo-local&quot;
+
+  [[relaychain.nodes]]
+  name = &quot;alice&quot;
+  validator = true
+
+  [[relaychain.nodes]]
+  name = &quot;bob&quot;
+  validator = true
+
+[[parachains]]
+id = 1000
+cumulus_based = true
+chain = &quot;statemint-dev&quot;
+
+  [parachains.collator]
+  name = &quot;statemint-collator&quot;
+  image = &quot;docker.io/parity/polkadot-parachain:latest&quot;
+  command = &quot;polkadot-parachain&quot;
+  args = [&quot;-lparachain=debug&quot;]
+
+[[parachains]]
+id = 1002
+cumulus_based = true
+chain = &quot;contracts-rococo-dev&quot;
+
+  [parachains.collator]
+  name = &quot;contracts-collator&quot;
+  image = &quot;docker.io/parity/polkadot-parachain:latest&quot;
+  command = &quot;polkadot-parachain&quot;
+  args = [&quot;-lparachain=debug&quot;]
+
+[[hrmpChannels]]
+sender = 1000
+recipient = 1002
+maxCapacity = 4
+maxMessageSize = 512
+
+[[hrmpChannels]]
+sender = 1002 
+recipient = 1000 
+maxCapacity = 4
+maxMessageSize = 512
+</code></pre>
 
                     </main>
 
