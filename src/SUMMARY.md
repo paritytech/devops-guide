@@ -30,6 +30,7 @@
 
 - [🥼 Infrastructure Tooling](./tooling.md)
 - [Examples]()
+  - [Ansible Role](./examples/ansible.md)
   - [Polkadot JS CLI Tools](./examples/polkadotjstools.md)
   - [Helmfile](./examples/helmfile.md)
   - [Zombienet](./examples/zombienet.md)
