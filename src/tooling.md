@@ -29,8 +29,7 @@ This section is for listing some useful projects and tools that are releavant fo
 | ------ | ------------------------------------------- |
 | [substrate archive](https://github.com/paritytech/substrate-archive.git) |  Blockchain indexing engine using PostgreSql |
 | [Subsquid](https://github.com/subsquid/squid) | Blockchain indexing engine using GraphQL |
-
-
+| [SubQuery](https://academy.subquery.network/) | Open source GraphQL indexing of any Substrate network (including EVM and WASM smart contract data) directly from the RPC node. SubQuery does not require any preprocessed data making it suitable for fast changing testnets |
 
 
 ## CLI Utilities
