@@ -15,6 +15,7 @@
 
 - [Kubernetes Deployments](./kubernetes/index.md)
   - [Helm Chart](./kubernetes/helm.md)
+  - [Key Injection Example](./kubernetes/key_injection_test.md)
   - [Testnet Manager](./kubernetes/testnetmanager.md)
 
 - [Monitoring](./monitoring/index.md)
