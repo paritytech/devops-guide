@@ -34,3 +34,4 @@
   - [Polkadot JS CLI Tools](./examples/polkadotjstools.md)
   - [Helmfile](./examples/helmfile.md)
   - [Zombienet](./examples/zombienet.md)
+  - [Building and Publishing Docker Images](./examples/docker.md)
