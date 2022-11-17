@@ -55,7 +55,7 @@ Add example keys, in this case ``//Testing/babe`` (sr25519) and ``//Testing//gra
    }
 ```
 
-   ```
+```
    $ yarn run:api rpc.author.hasKey 0x7819b7ddc959b749a5da604c3a2d7d3e0097760be603d596f19d116d6207ad38 gran
    {
      "hasKey": true
