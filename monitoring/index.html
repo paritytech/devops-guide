@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
         
             </head>
     <body>
@@ -117,7 +118,13 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/monitoring/index.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -164,7 +171,7 @@ susbtrate_block_height{status=&quot;finalized&quot;} 133
 <h2 id="telemetry"><a class="header" href="#telemetry">Telemetry</a></h2>
 <p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
 <p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> github repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy kubernetes deployments.</p>
-
+<footer id="last-change">Last change: 2022-12-07, commit: <a href="https://github.com/paritytech/devops-guide/commit/b841e9e">b841e9e</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

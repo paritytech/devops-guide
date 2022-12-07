@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="last-changed.css">
         
             </head>
     <body>
@@ -117,7 +118,13 @@
                                                 <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/customchain.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -179,7 +186,7 @@ polkadot key insert -d &lt;my_chain_folder&gt; --key-type babe --scheme sr25519 
 curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;author_insertKey&quot;, &quot;params&quot;:[&quot;'&quot;${KEY_TYPE}&quot;'&quot;, &quot;'&quot;${KEY_SEED}&quot;'&quot;],&quot;id&quot;:1 }' http://localhost:9933
 
 </code></pre>
-
+<footer id="last-change">Last change: 2022-12-07, commit: <a href="https://github.com/paritytech/devops-guide/commit/b841e9e">b841e9e</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

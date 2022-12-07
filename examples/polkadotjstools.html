@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
         
             </head>
     <body>
@@ -117,7 +118,13 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/examples/polkadotjstools.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -191,7 +198,7 @@
 <p>Transfer 1.23 units from <code>//Alice</code> on the relay chain to <code>//Charlie</code> on the parachain <code>1000</code>:</p>
 <pre><code>yarn run:api tx.xcmPallet.limitedTeleportAssets '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;parachain&quot;:1000}}}}' '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;AccountId32&quot;: {&quot;id&quot;: &quot;0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22&quot;, &quot;network&quot;: &quot;Any&quot;}}}}}' '{&quot;v1&quot;: [ {&quot;id&quot;: { &quot;Concrete&quot;: {&quot;parents&quot;:0, &quot;interior&quot;:&quot;Here&quot; }}, &quot;Fun&quot;: { &quot;Fungible&quot;: &quot;12300000000&quot;}}]}'  0 Unlimited  --seed &quot;//Alice&quot;
 </code></pre>
-
+<footer id="last-change">Last change: 2022-12-07, commit: <a href="https://github.com/paritytech/devops-guide/commit/b841e9e">b841e9e</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
