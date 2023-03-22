@@ -35,9 +35,9 @@ Click here for a list of [terraform providers](https://registry.terraform.io/bro
 
 Once your hosts are deployed you will need to configure the hosts and install the required software, configuration files etc…As mentioned this can be done in a few ways using terraform itself, however another very flexible way of configuring hosts is using ansible.
 
-| Component | Description                                                                                                                                                                               |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Playbook  | Playbooks are the language by which Ansible orchestrates, configures, administers, or deploys systems                                                                                     |
+| Component | Description                                                                                                                                                                                |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Playbook  | Playbooks are the language by which Ansible orchestrates, configures, administers, or deploys systems                                                                                      |
 | Role      | Roles are units of organization in Ansible. Assigning a role to a group of hosts (or a set of groups, or host patterns, and so on) implies that they should implement a specific behaviour |
 
 When deploying our blockchain nodes, we will need an inventory which contains a list of our hosts and the groups they are in (e.g. validator, collator, rpc) and maybe some secrets which can be encrypted inline within the inventory using [ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html). We will then call a playbook which links hosts/groups in the inventory with roles to execute on each host.

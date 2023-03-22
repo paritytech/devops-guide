@@ -72,42 +72,42 @@ scrape_configs:
 
 To log to a remote elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
 
-```yaml
+```json
 input {
-journald {
-path      => "/var/log/journal"
-seekto => "tail"
-thisboot => true
-filter    => {
-"_SYSTEMD_UNIT" => "polkadot.service"
-}
-type => "systemd"
-}
+  journald {
+    path      => "/var/log/journal"
+    seekto => "tail"
+    thisboot => true
+    filter    => {
+      "_SYSTEMD_UNIT" => "polkadot.service"
+    }
+    type => "systemd"
+  }
 }
 
 
 filter {
-date {
-match => ["timestamp", "YYYY-mm-dd HH:MM:ss.SSS"]
-target => "@timestamp"
-}
-mutate {
-rename => [ "MESSAGE", "message" ]
-remove_field => [ "cursor", "PRIORITY", "SYSLOG_FACILITY", "SYSLOG_IDENTIFIER", "_BOOT_ID", "_CAP_EFFECTIVE", "_CMDLINE", "_COMM", "_EXE", "_GID", "_HOSTNAME", "_MACHINE_ID", "_PID", "_SELINUX_CONTEXT", "_STREAM_ID", "_SYSTEMD_CGROUP", "_SYSTEMD_INVOCATION_ID", "_SYSTEMD_SLICE", "_SYSTEMD_UNIT", "_TRANSPORT", "_UID" ]
-}
-if ([message] =~ ".*TRACE .*") { drop{ } }
-grok {
-match => { "message" => "%{NOTSPACE:thread} %{LOGLEVEL:log-level} %{NOTSPACE:namespace} %{GREEDYDATA:message}" }
-}
+  date {
+    match => ["timestamp", "YYYY-mm-dd HH:MM:ss.SSS"]
+    target => "@timestamp"
+  }
+  mutate {
+    rename => [ "MESSAGE", "message" ]
+    remove_field => [ "cursor", "PRIORITY", "SYSLOG_FACILITY", "SYSLOG_IDENTIFIER", "_BOOT_ID", "_CAP_EFFECTIVE", "_CMDLINE", "_COMM", "_EXE", "_GID", "_HOSTNAME", "_MACHINE_ID", "_PID", "_SELINUX_CONTEXT", "_STREAM_ID", "_SYSTEMD_CGROUP", "_SYSTEMD_INVOCATION_ID", "_SYSTEMD_SLICE", "_SYSTEMD_UNIT", "_TRANSPORT", "_UID" ]
+  }
+  if ([message] =~ ".*TRACE .*") { drop{ } }
+  grok {
+    match => { "message" => "%{NOTSPACE:thread} %{LOGLEVEL:log-level} %{NOTSPACE:namespace} %{GREEDYDATA:message}" }
+  }
 }
 
 output {
-elasticsearch {
-hosts => ["https://myelasticsearch.mycompany.com:9243"]
-user => "username"
-password => "password"
-index => "logstash-polkadot-%{+YYYY.MM.dd}"
-}
+  elasticsearch {
+    hosts => ["https://myelasticsearch.mycompany.com:9243"]
+    user => "username"
+    password => "password"
+    index => "logstash-polkadot-%{+YYYY.MM.dd}"
+  }
 }
 ```
 
