@@ -2,7 +2,7 @@
 
 The final part of the monitoring stack will be how and where to alert if something does go wrong. For example you may want to send instant messages for warning alerts, but page somebody 24/7 for critical alerts.
 
-Alertmanager has many modules for email / many IM formats with almost any output being supported. You can also use 3rd party providers like pagerduty or victorops and do very detailed management of oncall queues, schedules etc…
+Alertmanager has many modules for email / many IM formats with almost any output being supported. You can also use 3rd party providers like PagerDuty or VictorOps and do very detailed management of oncall queues, schedules etc…
 
 A simple alert for block production being slow would look like:
 

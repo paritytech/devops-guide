@@ -4,9 +4,9 @@ Below are two examples of helmfile in action. One a simple single helmfile for t
 
 ## Basic helmfile example
 
-This is a very simple one file example of a helmfile to deploy two `rococo-local` relaychain validators along with two parachains `statemint-dev` and `contracts-rococo-dev`. It is intended for basic testing and familiarisation of helmfile.
+This is a very simple one file example of a helmfile to deploy two `rococo-local` relaychain validators along with two parachains `statemint-dev` and `contracts-rococo-dev`. It is intended for basic testing and familiarization of helmfile.
 
-A more more real world example is listed below which comes from the `testnet-manager` repo. An nginx contrainer will also be deployed to host chain spec files.
+A more more real world example is listed below which comes from the `testnet-manager` repo. An nginx container will also be deployed to host chain spec files.
 
 Steps:
 

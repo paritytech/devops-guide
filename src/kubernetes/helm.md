@@ -2,7 +2,7 @@
 
 ## Overview
 
-Parity maintain a helm github repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your substate/polkadot binary.
+Parity maintain a helm github repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your substrate/polkadot binary.
 
 All variables are documented clearly in the [README.md](https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md) and there’s an example [values.yml](https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml) which you can start working from.
 
@@ -19,7 +19,7 @@ helm install polkadot-node parity/node
 
 #### Deploy Validator Alice
 
-Alice will be deployed in a statefulset and use an example custom node key, along with deploying a service to be used as a bootnode:
+Alice will be deployed in a stateful set and use an example custom node key, along with deploying a service to be used as a bootnode:
 
 ```bash
 helm install rococo-alice parity/node --set node.role="validator" --set node.customNodeKey="91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1" --set node.chain=rococo-local --set node.perNodeServices.relayP2pService.enabled=true --set node.perNodeServices.relayP2pService.port=30333 --set node.flags="--alice --rpc-external --ws-external --rpc-cors all --rpc-methods=unsafe"
@@ -55,4 +55,4 @@ Below are some useful GitOps tool for managing helm releases. Here is a list of 
 | node.chain              | Network to connect to                 |
 | node.command            | Binary to use                         |
 | node.flags              | Flags to use with binary in container |
-| node.customChainspecUrl | Custon Chainspec URL                  |
+| node.customChainspecUrl | Custom Chainspec URL                  |

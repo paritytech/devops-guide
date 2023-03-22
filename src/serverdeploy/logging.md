@@ -73,7 +73,7 @@ scrape_configs:
 To log to a remote elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
 
 ```yaml
-nput {
+input {
 journald {
 path      => "/var/log/journal"
 seekto => "tail"

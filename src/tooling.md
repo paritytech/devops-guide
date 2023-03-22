@@ -1,6 +1,6 @@
 # Infrastructure Tooling
 
-This section is for listing some useful projects and tools that are releavant for node operators and developers. A community maintained [Awesome Substrate](https://github.com/substrate-developer-hub/awesome-substrate) is a more detailed general list.
+This section is for listing some useful projects and tools that are relevant for node operators and developers. A community maintained [Awesome Substrate](https://github.com/substrate-developer-hub/awesome-substrate) is a more detailed general list.
 
 ## Testing
 
@@ -14,7 +14,7 @@ This section is for listing some useful projects and tools that are releavant fo
 | Project                                                                                          | Description                                                                                                                          |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [polkadot-js frontend](https://github.com/polkadot-js/apps)                                      | Github repo for [https://polkadot.js.org/apps/] - commonly used application for interacting with substrate and polkadot based chains |
-| [Staking Dashbord](https://github.com/paritytech/polkadot-staking-dashboard)                     | A sleek [staking dashboard](https://staking.polkadot.network/dashboard) using react and the polkadot-js library                      |
+| [Staking Dashboard](https://github.com/paritytech/polkadot-staking-dashboard)                     | A sleek [staking dashboard](https://staking.polkadot.network/dashboard) using react and the polkadot-js library                      |
 | [contracts-ui](https://github.com/paritytech/contracts-ui)                                       | Web application for deploying wasm smart contracts on Substrate chains that include the FRAME contracts pallet                       |
 | [Example polkadot-js-bundle](https://github.com/polkadot-js/common/blob/master/test-bundle.html) | Use polkadot javascript bundles to write custom frontends                                                                            |
 

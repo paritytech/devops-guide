@@ -1,6 +1,6 @@
 # Keys And Accounts
 
-This page will describe some basic information on keys and accounts. For a more general and detailed explination see [learn accounts](https://wiki.polkadot.network/docs/learn-accounts) on the polkadot wiki page.
+This page will describe some basic information on keys and accounts. For a more general and detailed explanation see [learn accounts](https://wiki.polkadot.network/docs/learn-accounts) on the polkadot wiki page.
 
 ## Encryption Schemes
 

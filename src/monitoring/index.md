@@ -24,8 +24,8 @@ polkadot_database_cache_bytes 0
 Values with tags:
 
 ```bash
-susbtrate_block_height{status="best"} 136
-susbtrate_block_height{status="finalized"} 133
+substrate_block_height{status="best"} 136
+substrate_block_height{status="finalized"} 133
 ```
 
 As the metrics provided by this endpoints don't include hosts metrics (e.g. cpu, memory, bandwidth usage), it is recommended to complement it with the [prometheus node exporter](https://github.com/prometheus/node_exporter) which needs to be installed on the same host.

@@ -38,7 +38,7 @@ Once your hosts are deployed you will need to configure the hosts and install th
 | Component | Description                                                                                                                                                                               |
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Playbook  | Playbooks are the language by which Ansible orchestrates, configures, administers, or deploys systems                                                                                     |
-| Role      | Roles are units of organization in Ansible. Assigning a role to a group of hosts (or a set of groups, or host patterns, and so on) implies that they should implement a specific behavior |
+| Role      | Roles are units of organization in Ansible. Assigning a role to a group of hosts (or a set of groups, or host patterns, and so on) implies that they should implement a specific behaviour |
 
 When deploying our blockchain nodes, we will need an inventory which contains a list of our hosts and the groups they are in (e.g. validator, collator, rpc) and maybe some secrets which can be encrypted inline within the inventory using [ansible vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html). We will then call a playbook which links hosts/groups in the inventory with roles to execute on each host.
 

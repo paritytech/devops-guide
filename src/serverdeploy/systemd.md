@@ -26,7 +26,7 @@ WantedBy=multi-user.target
 
 This file should be placed in /etc/systemd/system/polkadot.service and then enabled with `systemctl enable polkadot` then `systemctl start polkadot` to start the service.
 
-## Using Environment Varible Files
+## Using Environment Variable Files
 
 If we want to remove some options from the systemd file itself (e.g. `--dev --alice`) and put them in an environment variable file then the systemd service would now look like:
 
