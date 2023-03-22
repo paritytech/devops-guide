@@ -1,4 +1,4 @@
-## Loki
+# Loki
 
 **“Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus”**
 
@@ -100,4 +100,4 @@ scrape_configs:
         replacement: $1
 ```
 
-The above example also configures the following custom metrics derived from logs `promtail_chain_log_lines_total`, `promtail_chain_error_log_lines_total` and  `promtail_chain_panic_log_lines_total` to be exposed on the promtail metrics endpoint (http://host:9080).
+The above example also configures the following custom metrics derived from logs `promtail_chain_log_lines_total`, `promtail_chain_error_log_lines_total` and `promtail_chain_panic_log_lines_total` to be exposed on the promtail metrics endpoint (http://host:9080).

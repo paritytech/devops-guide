@@ -1,21 +1,19 @@
-Overview
-============
-
+# Overview
 
 This document has been written for two main functions. First to provide a clear overview of the existing setup. The second is to provide some guidance on agreeing the CI strategy moving forward.
 
 ## General Approach to Infrastructure
 
-
 It is highly recommended that projects deploying networks have an infrastructure as code mindset. The infrastructure components in deployments should be written in code and put in a version control system.
 
 This ensures that:
- - Your Infrastructure is in a known state
- - Version control is available to see changes and enforce reviews etc..
- - Rolling back is made very easy
- - There are no manual actions required to redeploy
 
- ![workflow](images/3osxC7.png)
+- Your Infrastructure is in a known state
+- Version control is available to see changes and enforce reviews etc..
+- Rolling back is made very easy
+- There are no manual actions required to redeploy
+
+![workflow](images/3osxC7.png)
 
 ## General Approach to Security
 
@@ -27,7 +25,6 @@ On the chain operations side, there are two very useful concepts to increase you
 
 First is using cold / warm / hot keys, so that the compromise of say a session key would not lead to any funds being stolen. Also using multi-sig accounts on offline devices can greatly help security and also give an on-chain audit trail of all actions, allows for alerting for any onchain actions etc..
 
- ![key stages](images/AEEVr6.png)
-
+![key stages](images/AEEVr6.png)
 
 Proxy accounts also let you limit the permission that an account or multisig account has on a particular target account (e.g. only staking functions can be executed by the staking controller multisig account and require 3 of 5 people to approve).

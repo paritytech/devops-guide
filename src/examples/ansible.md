@@ -1,23 +1,20 @@
-Ansible
-====================
+# Ansible
 
-Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in [ansible galaxy](https://galaxy.ansible.com/). 
+Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in [ansible galaxy](https://galaxy.ansible.com/).
 
 The paritytech.chain_operations module is maintained on [github](https://github.com/paritytech/ansible-galaxy) and available via [ansible-galaxy]()
 
-
-### Installation
+## Installation
 
 Create a `requirements.yml` file and use `ansible-galaxy` to download the latest version. See the [chain_operations README.md](https://github.com/paritytech/ansible-galaxy/blob/main/README.md) for setup instructions.
 
-
-### Deploy Development Network
+## Deploy Development Network
 
 Goal: Deploy two relaychain validators and one parachain collator.
 
 It expects a relaychain and parachain chain specification. A [guide](https://docs.substrate.io/reference/how-to-guides/parachains/connect-to-a-relay-chain/) on how to create these chain specifications is available. This network will use default `Alice` and `Bob` keys.
 
-#### Development Network Inventory:
+### Development Network Inventory:
 
 ```yaml
 all:
@@ -54,8 +51,7 @@ all:
           onboard_para_parachain_id: 1000
 ```
 
-
-#### Development Network Deployment Playbook:
+### Development Network Deployment Playbook:
 
 ```yaml
 ---
@@ -72,17 +68,13 @@ all:
     - parity.chain.onboard_para
 ```
 
-
-
-### Deploy Custom Network
+## Deploy Custom Network
 
 Goal: Deploy two relaychain validators and one parachain collator, this time with custom validator keys instead of using `Alice` and `Bob`. Custom keys will be given in the inventory file and injected during deployment.
 
 A [guide](https://docs.substrate.io/tutorials/get-started/add-trusted-nodes/) is available on creating a chain spec with custom keys.
 
-
-#### Custom Network Inventory:
-
+### Custom Network Inventory:
 
 ```yaml
 all:
@@ -103,7 +95,7 @@ all:
       hosts:
         validator-1:
           node_custom_options: ["--validator"]
-          key_inject_validator_seed: "0x0" 
+          key_inject_validator_seed: "0x0"
           ansible_host: validator-1.mycompany.com
         validator-2:
           node_custom_options: ["--validator"]
@@ -121,7 +113,7 @@ all:
           key_inject_parachain_aura_private_key: "0x0"
 ```
 
-#### Custom Network Deployment Playbook:
+### Custom Network Deployment Playbook:
 
 ```yaml
 ---

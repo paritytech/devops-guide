@@ -1,13 +1,12 @@
 name: Proposal
 description: Suggest an idea for this project
-title: 'proposal: '
+title: "proposal: "
 labels: proposal
 assignees: peaceiris
 body:
   - type: markdown
     attributes:
-      value:
-        Please note we will close your issue without comment if you do not fill out the issue checklist below and provide ALL the requested information.
+      value: Please note we will close your issue without comment if you do not fill out the issue checklist below and provide ALL the requested information.
   - type: checkboxes
     attributes:
       label: Checklist

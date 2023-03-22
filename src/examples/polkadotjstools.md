@@ -1,7 +1,6 @@
-Polkadot Js Tools
-=======================
+# Polkadot Js Tools
 
-[Polkadot Js Tools](https://github.com/polkadot-js/tools) is an amazing tool for interacting with substrate based chains. 
+[Polkadot Js Tools](https://github.com/polkadot-js/tools) is an amazing tool for interacting with substrate based chains.
 
 A full list of possible [rpc](https://polkadot.js.org/docs/substrate/rpc/) calls and [extrinsics](https://polkadot.js.org/docs/substrate/extrinsics) are available from the [polkadot js docs](https://polkadot.js.org/docs/substrate/) page.
 
@@ -55,8 +54,6 @@ yarn run:api tx.balances.transfer 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694
 
 Transfer 1.23 units from `//Alice` on the relay chain to `//Charlie` on the parachain `1000`:
 
-   ```
-   yarn run:api tx.xcmPallet.limitedTeleportAssets '{"v1":{"parents":0,"interior":{"x1":{"parachain":1000}}}}' '{"v1":{"parents":0,"interior":{"x1":{"AccountId32": {"id": "0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22", "network": "Any"}}}}}' '{"v1": [ {"id": { "Concrete": {"parents":0, "interior":"Here" }}, "Fun": { "Fungible": "12300000000"}}]}'  0 Unlimited  --seed "//Alice"
-   ```
-
-
+```
+yarn run:api tx.xcmPallet.limitedTeleportAssets '{"v1":{"parents":0,"interior":{"x1":{"parachain":1000}}}}' '{"v1":{"parents":0,"interior":{"x1":{"AccountId32": {"id": "0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22", "network": "Any"}}}}}' '{"v1": [ {"id": { "Concrete": {"parents":0, "interior":"Here" }}, "Fun": { "Fungible": "12300000000"}}]}'  0 Unlimited  --seed "//Alice"
+```

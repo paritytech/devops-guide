@@ -1,5 +1,4 @@
-Custom Chain
-=============
+# Custom Chain
 
 This section will explain what is required to build a custom chain spec for your own dev network.
 
@@ -15,16 +14,14 @@ Create a non-raw chainspec for your network with:
 
 **Important Fields**:
 
-| Field | Purpose |
-| ------- | ----------- |
-| Name | Name of the network |
-| id | Id of network, also used for the filesystem path |
-| bootNodes | List of multiaddr’s of bootnodes for the network |
+| Field              | Purpose                                           |
+| ------------------ | ------------------------------------------------- |
+| Name               | Name of the network                               |
+| id                 | Id of network, also used for the filesystem path  |
+| bootNodes          | List of multiaddr’s of bootnodes for the network  |
 | telemetryEndpoints | List of telemetry endpoints to contact by default |
-| staking.stakers | List of initial validators |
-| session.keys | List of initial session keys for validators |
-
-
+| staking.stakers    | List of initial validators                        |
+| session.keys       | List of initial session keys for validators       |
 
 Once the values have been updated this chainspec should be converted in raw format using the command:
 
@@ -33,7 +30,6 @@ Once the values have been updated this chainspec should be converted in raw form
 polkadot  build-spec –chain custom-chainspec.json –raw > custom-chainspec-raw.json
 
 ```
-
 
 ## Inject initial validator keys
 
@@ -58,4 +54,3 @@ Example to inject key via RPC, edit the KEY_TYPE sand KEY_SEED:
 curl -H "Content-Type: application/json" \ --data '{ "jsonrpc":"2.0", "method":"author_insertKey", "params":["'"${KEY_TYPE}"'", "'"${KEY_SEED}"'"],"id":1 }' http://localhost:9933
 
 ```
-

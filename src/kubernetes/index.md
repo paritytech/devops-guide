@@ -1,9 +1,6 @@
-Kubernetes
-==========
+# Kubernetes
 
-
-As previously mentioned, kubernetes deployments are only recommended for people with good prior operating experience of kubernetes. 
-
+As previously mentioned, kubernetes deployments are only recommended for people with good prior operating experience of kubernetes.
 
 The management of substrate/polkadot based nodes in kubernetes is made very easy with:
 

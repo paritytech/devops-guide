@@ -1,5 +1,4 @@
-Server Deployments
-======================
+# Server Deployments
 
 - [Systemd](./serverdeploy/systemd.md) describes options for running a node and various systemd specific options.
 

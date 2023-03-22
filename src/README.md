@@ -22,16 +22,13 @@ We can run **mdBook** on a virtual machine of **GitHub Actions** by this mdBook 
 Linux, macOS, and Windows are supported.
 
 | OS (runs-on) | ubuntu-18.04, ubuntu-20.04 | macos-latest | windows-2019 |
-|---|:---:|:---:|:---:|
-| Support | ✅️ | ✅️ | ✅️ |
-
-
+| ------------ | :------------------------: | :----------: | :----------: |
+| Support      |            ✅️             |     ✅️      |     ✅️      |
 
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 
 - [Getting Started](#getting-started)
   - [⭐️ Create your workflow](#%EF%B8%8F-create-your-workflow)
@@ -45,8 +42,6 @@ Linux, macOS, and Windows are supported.
 - [Maintainer Notes](#maintainer-notes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-
 
 ## Getting Started
 
@@ -79,7 +74,7 @@ jobs:
       - name: Setup mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
-          mdbook-version: '0.4.10'
+          mdbook-version: "0.4.10"
           # mdbook-version: 'latest'
 
       - run: mdbook build
@@ -96,8 +91,6 @@ jobs:
 <a href="#table-of-contents">Back to TOC ☝️</a>
 </div>
 
-
-
 ## Options
 
 ### ⭐️ Use the latest version of mdBook
@@ -108,7 +101,7 @@ Set `mdbook-version: 'latest'` to use the latest version of mdBook.
 - name: Setup mdBook
   uses: peaceiris/actions-mdbook@v1
   with:
-    mdbook-version: 'latest'
+    mdbook-version: "latest"
 ```
 
 This action fetches the latest version of mdBook by [mdbook — Homebrew Formulae](https://formulae.brew.sh/formula/mdbook)
@@ -116,8 +109,6 @@ This action fetches the latest version of mdBook by [mdbook — Homebrew Formula
 <div align="right">
 <a href="#table-of-contents">Back to TOC ☝️</a>
 </div>
-
-
 
 ## Tips
 
@@ -134,22 +125,22 @@ MDBOOK_VERSION=0.4.10
 Next, add a step to read a mdBook version from the `.env` file.
 
 ```yaml
-    - name: Read .env
-      id: mdbook-version
-      run: |
-        . ./.env
-        echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
+- name: Read .env
+  id: mdbook-version
+  run: |
+    . ./.env
+    echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
 
-    - name: Setup mdBook
-      uses: peaceiris/actions-mdbook@v1
-      with:
-        mdbook-version: '${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}'
+- name: Setup mdBook
+  uses: peaceiris/actions-mdbook@v1
+  with:
+    mdbook-version: "${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}"
 ```
 
 Here is a `docker-compose.yml` example.
 
 ```yaml
-version: '3'
+version: "3"
 
 services:
   mdbook:
@@ -166,7 +157,7 @@ services:
     command:
       - serve
       - --hostname
-      - '0.0.0.0'
+      - "0.0.0.0"
 ```
 
 The alpine base mdBook Docker image is provided on the following repository.
@@ -177,13 +168,9 @@ The alpine base mdBook Docker image is provided on the following repository.
 <a href="#table-of-contents">Back to TOC ☝️</a>
 </div>
 
-
-
 ## CHANGELOG
 
 - [CHANGELOG.md](CHANGELOG.md)
-
-
 
 ## License
 
@@ -191,14 +178,10 @@ The alpine base mdBook Docker image is provided on the following repository.
 
 [MIT License - peaceiris/actions-mdbook]: https://github.com/peaceiris/actions-mdbook/blob/main/LICENSE
 
-
-
 ## About Maintainer
 
 - [peaceiris homepage](https://peaceiris.com/)
 - [GitHub Action Hero: Shohei Ueda - The GitHub Blog](https://github.blog/2020-03-22-github-action-hero-shohei-ueda/)
-
-
 
 ## Maintainer Notes
 
@@ -217,8 +200,6 @@ make commit msg="chore: Add Makefile"
 # Release
 ./release.sh
 ```
-
-
 
 <div align="right">
 <a href="#table-of-contents">Back to TOC ☝️</a>
