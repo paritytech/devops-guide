@@ -38,9 +38,9 @@ Some important options are:
 
 ## Generate
 
-**Create Polkadot Random Key**:
+### Create Polkadot Random Key
 
-```
+```bash
 $ polkadot key generate -n polkadot
 Secret phrase:       settle whisper usual blast device source region pumpkin ugly beyond promote cluster
   Network ID:        polkadot
@@ -53,9 +53,9 @@ Secret phrase:       settle whisper usual blast device source region pumpkin ugl
 
 ## Inspection
 
-**Inspect Created Key**:
+### Inspect Created Key
 
-```
+```bash
 $ ./polkadot key inspect -n polkadot "settle whisper usual blast device source region pumpkin ugly beyond promote cluster"
 Secret phrase:       settle whisper usual blast device source region pumpkin ugly beyond promote cluster
   Network ID:        polkadot
@@ -66,9 +66,9 @@ Secret phrase:       settle whisper usual blast device source region pumpkin ugl
   SS58 Address:      14agqii5GAiM5z4yzGhJdyWQ3a6HeY2oXvLdCrdhFXRnQ77D
 ```
 
-**Inspect Created Key With Hard Derivation //Stash//0**:
+### Inspect Created Key With Hard Derivation //Stash//0
 
-```
+```bash
 $ polkadot key inspect -n polkadot "settle whisper usual blast device source region pumpkin ugly beyond promote cluster//Stash//0"
 Secret Key URI `settle whisper usual blast device source region pumpkin ugly beyond promote cluster//Stash//0` is account:
   Network ID:        polkadot

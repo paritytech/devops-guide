@@ -28,19 +28,19 @@ Steps:
 
 Display block information (parent hash, block number, state root etc..) for last block:
 
-```
+```bash
 yarn run:api query.chain.getHeader
 ```
 
 Get the balance for the account `//Alice`:
 
-```
+```bash
 yarn run:api query.system.account 15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5
 ```
 
 Display all RPC methods available:
 
-```
+```bash
 yarn run:api rpc.rpc.methods
 ```
 
@@ -48,12 +48,12 @@ yarn run:api rpc.rpc.methods
 
 Simple transfer of 1 unit `//Alice` to `//Bob` on the same chain. Using `--seed` as the sender for signing the transactions:
 
-```
+```bash
 yarn run:api tx.balances.transfer 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty 10000000000 --seed "//Alice"
 ```
 
 Transfer 1.23 units from `//Alice` on the relay chain to `//Charlie` on the parachain `1000`:
 
-```
+```bash
 yarn run:api tx.xcmPallet.limitedTeleportAssets '{"v1":{"parents":0,"interior":{"x1":{"parachain":1000}}}}' '{"v1":{"parents":0,"interior":{"x1":{"AccountId32": {"id": "0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22", "network": "Any"}}}}}' '{"v1": [ {"id": { "Concrete": {"parents":0, "interior":"Here" }}, "Fun": { "Fungible": "12300000000"}}]}'  0 Unlimited  --seed "//Alice"
 ```

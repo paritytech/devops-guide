@@ -2,7 +2,7 @@
 
 Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in [ansible galaxy](https://galaxy.ansible.com/).
 
-The paritytech.chain_operations module is maintained on [github](https://github.com/paritytech/ansible-galaxy) and available via [ansible-galaxy]()
+The paritytech.chain_operations module is maintained on [github](https://github.com/paritytech/ansible-galaxy) and available via `ansible-galaxy`.
 
 ## Installation
 
@@ -14,7 +14,7 @@ Goal: Deploy two relaychain validators and one parachain collator.
 
 It expects a relaychain and parachain chain specification. A [guide](https://docs.substrate.io/reference/how-to-guides/parachains/connect-to-a-relay-chain/) on how to create these chain specifications is available. This network will use default `Alice` and `Bob` keys.
 
-### Development Network Inventory:
+### Development Network Inventory
 
 ```yaml
 all:
@@ -51,7 +51,7 @@ all:
           onboard_para_parachain_id: 1000
 ```
 
-### Development Network Deployment Playbook:
+### Development Network Deployment Playbook
 
 ```yaml
 ---
@@ -74,7 +74,7 @@ Goal: Deploy two relaychain validators and one parachain collator, this time wit
 
 A [guide](https://docs.substrate.io/tutorials/get-started/add-trusted-nodes/) is available on creating a chain spec with custom keys.
 
-### Custom Network Inventory:
+### Custom Network Inventory
 
 ```yaml
 all:
@@ -113,7 +113,7 @@ all:
           key_inject_parachain_aura_private_key: "0x0"
 ```
 
-### Custom Network Deployment Playbook:
+### Custom Network Deployment Playbook
 
 ```yaml
 ---

@@ -1,24 +1,24 @@
 # Logging
 
-### Local Logging
+## Local Logging
 
 By default output from your systemd service will go to local syslog. This will mean it ends up in a place like `/var/log/syslog` or `/var/log/messages`
 
 You can also view these using the `journalctl` command. To tail the current output of the polkadot process run:
 
-```
+```bash
 journalctl -u polkadot -f
 ```
 
 It is also possible to remove old logs (say older than two days ago) using a command:
 
-```
+```bash
 journalctl -u polkadot --vacuum-time=2d
 ```
 
 Or to retain only the past 1G of data run:
 
-```
+```bash
 journalctl --vacuum-size=1G
 ```
 

@@ -4,7 +4,7 @@
 
 There are multiple options to provision cloud resources, which can either be provider specific and some tools are more cloud agnostic.
 
-### Popular Cloud Provider Specific Deployment Tooling:
+### Popular Cloud Provider Specific Deployment Tooling
 
 - [Amazon Cloud Formation](https://aws.amazon.com/cloudformation/)
 - [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview)

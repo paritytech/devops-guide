@@ -37,7 +37,7 @@ secret:
 
 Then install the testnet manager and port forward a connection using the output of the install:
 
-```
+```bash
 helm repo add parity https://paritytech.github.io/helm-charts/
 helm repo update
 helm install testnet-mgr parity/testnet-manager --values values.yaml
@@ -64,7 +64,7 @@ It's possible to view the API calls and execute them via the GUI. The main funct
 
 Register a new validator in the `StatefulSet` called `rococo-val-pool`:
 
-```
+```bash
 curl -X 'POST' \
   'http://localhost:8080/api/register_validators?statefulset=rococo-val-pool' \
   -H 'accept: application/json' \
@@ -73,7 +73,7 @@ curl -X 'POST' \
 
 Onboard Parachain id 1000:
 
-```
+```bash
 curl -X 'POST' \
 'http://localhost:8080/api/onboard_parachain/1000' \
 -H 'accept: application/json' \

@@ -4,7 +4,7 @@
 
 Prometheus is the engine which drives our monitoring system. For our example we will mainly focus on two sections:
 
-### Targets
+## Targets
 
 Targets are a list of endpoints you want to scrape. The two main exporters we care about are for 1) polkadot/substrate and 2) the node-exporter. An example of scraping these on the IP address 1.1.1.1 would be:
 
@@ -18,7 +18,7 @@ scrape_configs:
           - 1.1.1.1:9615 # substrate node
 ```
 
-### Rules
+## Rules
 
 Now that you are gathering data from the host you can add rules that will trigger alerts. These are defined in the format:
 

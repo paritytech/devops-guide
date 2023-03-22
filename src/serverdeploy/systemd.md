@@ -1,12 +1,12 @@
 # Systemd
 
-### Overview
+## Overview
 
 Systemd is a common way to manage services on linux hosts. It can ensure the process is enabled and running, allows you to set a policy for restarts and also set the user running the host, limit the memory usage etc..
 
 It can also use an environment variable file which can help abstract the variables into it's own file per server.
 
-### Simple Example
+## Simple Example
 
 A simple example running a local dev chain as Alice, assuming the username is called polkadot would look like:
 
@@ -26,7 +26,7 @@ WantedBy=multi-user.target
 
 This file should be placed in /etc/systemd/system/polkadot.service and then enabled with `systemctl enable polkadot` then `systemctl start polkadot` to start the service.
 
-### Using Environment Varible Files
+## Using Environment Varible Files
 
 If we want to remove some options from the systemd file itself (e.g. `--dev --alice`) and put them in an environment variable file then the systemd service would now look like:
 
@@ -47,7 +47,7 @@ WantedBy=multi-user.target
 
 Then you would need to create a file in /etc/default/polkadot which looks like:
 
-```
+```bash
 START_OPTIONS="--dev --alice"
 ```
 

@@ -8,7 +8,7 @@ The following examples can be found in the Substrate Node Template repo: <https:
 
 This follows the best practices to build the image in a secure way that minimises the attack surface, it is a similar version to that used to create the official Polkadot images. You can also consult [Docker's own best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
 
-```
+```dockerfile
 # This is an example build stage for the node template. Here we create the binary in a temporary image.
 
 # This is a base image to build substrate nodes

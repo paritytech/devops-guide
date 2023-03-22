@@ -18,8 +18,8 @@ For more information see the [Zombienet manual](https://paritytech.github.io/zom
 
 ## Zombienet_example
 
-```
-relaychain]
+```toml
+[relaychain]
 default_image = "docker.io/paritypr/polkadot-debug:master"
 default_command = "polkadot"
 default_args = [ "-lparachain=debug" ]

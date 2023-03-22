@@ -9,14 +9,14 @@ body:
       value: Please note we will close your issue without comment if you do not fill out the issue checklist below and provide ALL the requested information.
   - type: checkboxes
     attributes:
-      label: Checklist
+      label: Checklist.
       description: Checklist before creating an issue.
       options:
-        - label: "I am using the latest version of this action."
+        - label: I am using the latest version of this action.
           required: true
-        - label: "I have read the latest README and followed the instructions."
+        - label: I have read the latest README and followed the instructions.
           required: true
-        - label: "I have read the latest GitHub Actions official documentation and learned the basic spec and concepts."
+        - label: I have read the latest GitHub Actions official documentation and learned the basic spec and concepts.
           required: true
   - type: textarea
     attributes:
