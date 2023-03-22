@@ -1,6 +1,6 @@
 # Prometheus
 
-**“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.”** - Prometheus Github Repository
+> “Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.” - Prometheus GitHub repository.
 
 Prometheus is the engine which drives our monitoring system. For our example we will mainly focus on two sections:
 

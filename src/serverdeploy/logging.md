@@ -2,7 +2,7 @@
 
 ## Local Logging
 
-By default output from your systemd service will go to local syslog. This will mean it ends up in a place like `/var/log/syslog` or `/var/log/messages`
+By default, output from your systemd service will go to local syslog. This will mean it ends up in a place like `/var/log/syslog` or `/var/log/messages`
 
 You can also view these using the `journalctl` command. To tail the current output of the polkadot process run:
 
@@ -28,7 +28,7 @@ In a setup with many hosts you will want to aggregate the logs at a central poin
 
 ### Loki
 
-To log to a remote loki instance you need to install the `promtail` package. An example configuration file to send logs to a remote host:
+To log to a remote Loki instance you need to install the `promtail` package. An example configuration file to send logs to a remote host:
 
 ```yaml
 # promtail server config
@@ -70,7 +70,7 @@ scrape_configs:
 
 ### Elasticsearch
 
-To log to a remote elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
+To log to a remote Elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
 
 ```json
 input {

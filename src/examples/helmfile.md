@@ -6,13 +6,13 @@ Below are two examples of helmfile in action. One a simple single helmfile for t
 
 This is a very simple one file example of a helmfile to deploy two `rococo-local` relaychain validators along with two parachains `statemint-dev` and `contracts-rococo-dev`. It is intended for basic testing and familiarization of helmfile.
 
-A more more real world example is listed below which comes from the `testnet-manager` repo. An nginx container will also be deployed to host chain spec files.
+A more real world example is listed below which comes from the `testnet-manager` repo. A nginx container will also be deployed to host chain spec files.
 
 Steps:
 
 - Create a helmfile based on the [simple example](#basic_helmfile) below and name it helmfile.yaml
 
-- Install a webserver to host helmfiles using `kubectl create -f https://raw.githubusercontent.com/paritytech/testnet-manager/main/local-kubernetes/kube-setup/validators-chainspec.yml`
+- Install a web server to host helmfiles using `kubectl create -f https://raw.githubusercontent.com/paritytech/testnet-manager/main/local-kubernetes/kube-setup/validators-chainspec.yml`
 
 - Add relaychain and parachains using: `helmfile sync`
 

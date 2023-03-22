@@ -1,9 +1,9 @@
 # Kubernetes
 
-As previously mentioned, kubernetes deployments are only recommended for people with good prior operating experience of kubernetes.
+As previously mentioned, Kubernetes deployments are only recommended for people with good prior operating experience of Kubernetes.
 
-The management of substrate/polkadot based nodes in kubernetes is made very easy with:
+The management of substrate/polkadot based nodes in Kubernetes is made very easy with:
 
-- [Parity Helm Chart](./kubernetes/helm.md) a helm chart to deploy all types of nodes to kubernetes
+- [Parity Helm Chart](./kubernetes/helm.md) a helm chart to deploy all types of nodes to Kubernetes
 
-- [Testnet Manager](./helm/testnetmanager.md) a powerful tool for deploying and maintaining test networks in kubernetes.
+- [Testnet Manager](./helm/testnetmanager.md) a powerful tool for deploying and maintaining test networks in Kubernetes.

@@ -1,8 +1,8 @@
 # Loki
 
-> "Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus”
+> "Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus"
 
-Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central loki server.
+Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central Loki server.
 
 Example promtail.yaml configuration to collect the logs of a node managed by systemd:
 

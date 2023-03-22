@@ -20,7 +20,7 @@ The [Testnet manager](https://github.com/paritytech/testnet-manager) ([helm char
 
 ### Requirements
 
-The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
+The testnet manager requires the chain Sudo seed phrase to perform management functions. Also, some chain specific variables should be defined in a configmap, this can be added to the `values.yaml`:
 
 ```yaml
 configmap:
@@ -35,7 +35,7 @@ secret:
   VALIDATORS_ROOT_SEED: "test test test test test test test test test test test test"
 ```
 
-Then install the testnet manager and port forward a connection using the output of the install:
+Then install the testnet manager and port forward a connection using the output of `helm install ...`:
 
 ```bash
 helm repo add parity https://paritytech.github.io/helm-charts/
@@ -45,7 +45,7 @@ helm install testnet-mgr parity/testnet-manager --values values.yaml
 
 ### Frontend GUI
 
-In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.
+In the nodes section you can view all running nodes, their roles, chain, uptime, CLI arguments, and you can also view logs.
 
 ![testnet-mgr-frontend](../images/testnet-mgr.png)
 
@@ -54,7 +54,7 @@ In the nodes section you can view all running nodes, their roles, chain, uptime,
 It's possible to view the API calls and execute them via the GUI. The main functions are:
 
 - Viewing nodes, validators, collators and parachains
-- Registering / de-registering validators and collators
+- Registering / deregistering validators and collators
 - Onboarding / off-boarding parachains
 - Rotating session keys
 
@@ -82,6 +82,6 @@ curl -X 'POST' \
 
 ### How does it work ?
 
-The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node). As node pods deployed with the chart are tagged with the appropriate labels (eg. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).
+The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node). As node pods deployed with the chart are tagged with the appropriate labels (e.g. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).
 
-By combining this list of nodes with the on-chain state retrieved from RPC endpoints (eg. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: "${VALIDATORS_ROOT_SEED}//${node-name}".
+By combining this list of nodes with the on-chain state retrieved from RPC endpoints (e.g. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: "${VALIDATORS_ROOT_SEED}//${node-name}".

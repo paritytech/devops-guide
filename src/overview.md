@@ -9,7 +9,7 @@ It is highly recommended that projects deploying networks have an infrastructure
 This ensures that:
 
 - Your Infrastructure is in a known state
-- Version control is available to see changes and enforce reviews etc..
+- Version control is available to see changes and enforce reviews etc...
 - Rolling back is made very easy
 - There are no manual actions required to redeploy
 
@@ -23,7 +23,7 @@ On the infrastructure side, having strict rules and blocking any non-required co
 
 On the chain operations side, there are two very useful concepts to increase your security.
 
-First is using cold / warm / hot keys, so that the compromise of say a session key would not lead to any funds being stolen. Also using multi-sig accounts on offline devices can greatly help security and also give an on-chain audit trail of all actions, allows for alerting for any onchain actions etc..
+First is using cold / warm / hot keys, so that the compromise of say a session key would not lead to any funds being stolen. Also using multisig accounts on offline devices can greatly help security and also give an on-chain audit trail of all actions, allows for alerting for any onchain actions etc...
 
 ![key stages](images/AEEVr6.png)
 

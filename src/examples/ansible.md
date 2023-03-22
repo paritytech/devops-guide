@@ -1,8 +1,8 @@
 # Ansible
 
-Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in [ansible galaxy](https://galaxy.ansible.com/).
+Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in [Ansible Galaxy](https://galaxy.ansible.com/).
 
-The paritytech.chain_operations module is maintained on [github](https://github.com/paritytech/ansible-galaxy) and available via `ansible-galaxy`.
+The paritytech.chain_operations module is maintained on [GitHub](https://github.com/paritytech/ansible-galaxy) and available via `ansible-galaxy`.
 
 ## Installation
 

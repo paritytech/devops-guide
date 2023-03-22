@@ -1,6 +1,6 @@
 # Grafana
 
-Grafana is where you can define dashboards to show the time series information that prometheus is collecting. You just need to ensure you add a datasource:
+Grafana is where you can define dashboards to show the time series information that Prometheus is collecting. You just need to ensure you add a datasource:
 
 ```yaml
 datasources:
@@ -17,4 +17,4 @@ datasources:
 
 You can find [existing](https://grafana.com/grafana/dashboards/?search=polkadot) polkadot dashboards at grafana.com -
 
-![grafana example](../images/lb0gOx.png)
+![Grafana example](../images/lb0gOx.png)

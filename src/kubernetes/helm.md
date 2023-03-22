@@ -2,13 +2,13 @@
 
 ## Overview
 
-Parity maintain a helm github repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your substrate/polkadot binary.
+Parity maintains a helm GitHub repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your Substrate/Polkadot binary.
 
 All variables are documented clearly in the [README.md](https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md) and there’s an example [values.yml](https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml) which you can start working from.
 
 ### Example Rococo Local Chain
 
-This is a simple example of deploying a `rococo-local` test chain in kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the `Alice` validator which all other hosts use as a bootnode.
+This is a simple example of deploying a `rococo-local` test chain in Kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the `Alice` validator which all other hosts use as a bootnode.
 
 #### First install the helm repo
 
