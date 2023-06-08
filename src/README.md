@@ -138,7 +138,7 @@ Next, add a step to read a mdBook version from the `.env` file.
       id: mdbook-version
       run: |
         . ./.env
-        echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
+        echo "MDBOOK_VERSION=${MDBOOK_VERSION}" >> $GITHUB_OUTPUT
 
     - name: Setup mdBook
       uses: peaceiris/actions-mdbook@v1
