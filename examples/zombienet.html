@@ -152,15 +152,15 @@
                     <main>
                         <h1 id="zombienet"><a class="header" href="#zombienet">Zombienet</a></h1>
 <p>Below is an example that is similar to the helmfile example. It will deploy two <code>rococo-local</code> relaychain validators and two parachains <code>statemint-dev</code> and <code>contracts-rococo-dev</code> and also HRMP channels between parachains 1000 and 1002.</p>
-<h3 id="more-information"><a class="header" href="#more-information">More Information</a></h3>
-<p>For more information see the <a href="https://paritytech.github.io/zombienet/">Zombienet manual</a>. For more examples see the <a href="https://github.com/paritytech/zombienet/tree/main/examples">Zomebienet examples</a> in the Zombienet repo.</p>
-<h3 id="steps"><a class="header" href="#steps">Steps</a></h3>
+<h2 id="more-information"><a class="header" href="#more-information">More Information</a></h2>
+<p>For more information see the <a href="https://paritytech.github.io/zombienet/">Zombienet manual</a>. For more examples see the <a href="https://github.com/paritytech/zombienet/tree/main/examples">Zombienet examples</a> in the Zombienet repo.</p>
+<h2 id="steps"><a class="header" href="#steps">Steps</a></h2>
 <ul>
 <li>
 <p>Clone the zombienet repo: <code>git@github.com:paritytech/zombienet.git</code></p>
 </li>
 <li>
-<p>Build zomebienet using: <code>npm install &amp;&amp; npm run build</code></p>
+<p>Build zombienet using: <code>npm install &amp;&amp; npm run build</code></p>
 </li>
 <li>
 <p>Create a new config file based on the <a href="#zombienet_example">zombienet_example config</a></p>
@@ -169,8 +169,8 @@
 <p>Deploy this to k8s using the command: <code>node cli/dist.js spawn path/configfile.yaml</code></p>
 </li>
 </ul>
-<h3 id="zombienet_example"><a class="header" href="#zombienet_example">Zombienet_example</a></h3>
-<pre><code>relaychain]
+<h2 id="zombienet_example"><a class="header" href="#zombienet_example">Zombienet_example</a></h2>
+<pre><code class="language-toml">[relaychain]
 default_image = &quot;docker.io/paritypr/polkadot-debug:master&quot;
 default_command = &quot;polkadot&quot;
 default_args = [ &quot;-lparachain=debug&quot; ]
@@ -214,12 +214,12 @@ maxCapacity = 4
 maxMessageSize = 512
 
 [[hrmpChannels]]
-sender = 1002 
-recipient = 1000 
+sender = 1002
+recipient = 1000
 maxCapacity = 4
 maxMessageSize = 512
 </code></pre>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

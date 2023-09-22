@@ -151,14 +151,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="ansible"><a class="header" href="#ansible">Ansible</a></h1>
-<p>Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in <a href="https://galaxy.ansible.com/">ansible galaxy</a>. </p>
-<p>The paritytech.chain_operations module is maintained on <a href="https://github.com/paritytech/ansible-galaxy">github</a> and available via <a href="">ansible-galaxy</a></p>
-<h3 id="installation"><a class="header" href="#installation">Installation</a></h3>
+<p>Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in <a href="https://galaxy.ansible.com/">Ansible Galaxy</a>.</p>
+<p>The paritytech.chain_operations module is maintained on <a href="https://github.com/paritytech/ansible-galaxy">GitHub</a> and available via <code>ansible-galaxy</code>.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
 <p>Create a <code>requirements.yml</code> file and use <code>ansible-galaxy</code> to download the latest version. See the <a href="https://github.com/paritytech/ansible-galaxy/blob/main/README.md">chain_operations README.md</a> for setup instructions.</p>
-<h3 id="deploy-development-network"><a class="header" href="#deploy-development-network">Deploy Development Network</a></h3>
+<h2 id="deploy-development-network"><a class="header" href="#deploy-development-network">Deploy Development Network</a></h2>
 <p>Goal: Deploy two relaychain validators and one parachain collator.</p>
 <p>It expects a relaychain and parachain chain specification. A <a href="https://docs.substrate.io/reference/how-to-guides/parachains/connect-to-a-relay-chain/">guide</a> on how to create these chain specifications is available. This network will use default <code>Alice</code> and <code>Bob</code> keys.</p>
-<h4 id="development-network-inventory"><a class="header" href="#development-network-inventory">Development Network Inventory:</a></h4>
+<h3 id="development-network-inventory"><a class="header" href="#development-network-inventory">Development Network Inventory</a></h3>
 <pre><code class="language-yaml">all:
   vars:
     node_binary_version: v0.9.27
@@ -192,7 +192,7 @@
           node_binary: &quot;https://github.com/paritytech/cumulus/releases/download/{{ node_binary_version }}0/polkadot-parachain&quot;
           onboard_para_parachain_id: 1000
 </code></pre>
-<h4 id="development-network-deployment-playbook"><a class="header" href="#development-network-deployment-playbook">Development Network Deployment Playbook:</a></h4>
+<h3 id="development-network-deployment-playbook"><a class="header" href="#development-network-deployment-playbook">Development Network Deployment Playbook</a></h3>
 <pre><code class="language-yaml">---
 - name: deploy all nodes
   hosts: all
@@ -206,10 +206,10 @@
   roles:
     - parity.chain.onboard_para
 </code></pre>
-<h3 id="deploy-custom-network"><a class="header" href="#deploy-custom-network">Deploy Custom Network</a></h3>
+<h2 id="deploy-custom-network"><a class="header" href="#deploy-custom-network">Deploy Custom Network</a></h2>
 <p>Goal: Deploy two relaychain validators and one parachain collator, this time with custom validator keys instead of using <code>Alice</code> and <code>Bob</code>. Custom keys will be given in the inventory file and injected during deployment.</p>
 <p>A <a href="https://docs.substrate.io/tutorials/get-started/add-trusted-nodes/">guide</a> is available on creating a chain spec with custom keys.</p>
-<h4 id="custom-network-inventory"><a class="header" href="#custom-network-inventory">Custom Network Inventory:</a></h4>
+<h3 id="custom-network-inventory"><a class="header" href="#custom-network-inventory">Custom Network Inventory</a></h3>
 <pre><code class="language-yaml">all:
   vars:
     node_binary_version: v0.9.27
@@ -228,7 +228,7 @@
       hosts:
         validator-1:
           node_custom_options: [&quot;--validator&quot;]
-          key_inject_validator_seed: &quot;0x0&quot; 
+          key_inject_validator_seed: &quot;0x0&quot;
           ansible_host: validator-1.mycompany.com
         validator-2:
           node_custom_options: [&quot;--validator&quot;]
@@ -245,7 +245,7 @@
           onboard_para_parachain_id: 1000
           key_inject_parachain_aura_private_key: &quot;0x0&quot;
 </code></pre>
-<h4 id="custom-network-deployment-playbook"><a class="header" href="#custom-network-deployment-playbook">Custom Network Deployment Playbook:</a></h4>
+<h3 id="custom-network-deployment-playbook"><a class="header" href="#custom-network-deployment-playbook">Custom Network Deployment Playbook</a></h3>
 <pre><code class="language-yaml">---
 - name: deploy all nodes
   hosts: all
@@ -265,7 +265,7 @@
   roles:
     - parity.chain.onboard_para
 </code></pre>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

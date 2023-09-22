@@ -161,7 +161,7 @@
 <p><img src="../images/rococo-validator-a-node-0.png" alt="rococo-validator-a-node-0" /></p>
 <h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
 <h3 id="requirements"><a class="header" href="#requirements">Requirements</a></h3>
-<p>The testnet manager requires the chain Sudo seed phrase to perform management functions. Also some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
+<p>The testnet manager requires the chain Sudo seed phrase to perform management functions. Also, some chain specific variables should be defined in a configmap, this can be added to the <code>values.yaml</code>:</p>
 <pre><code class="language-yaml">configmap:
   WS_ENDPOINT: &quot;ws://rococo-alice-node-0.rococo:9944&quot;
   NODE_HTTP_PATTERN: &quot;http://NODE_NAME.rococo:9933&quot;
@@ -173,40 +173,40 @@ secret:
   SUDO_SEED: &quot;0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a&quot; # Alice
   VALIDATORS_ROOT_SEED: &quot;test test test test test test test test test test test test&quot;
 </code></pre>
-<p>Then install the testnet manager and port forward a connection using the output of the install:</p>
-<pre><code>helm repo add parity https://paritytech.github.io/helm-charts/
+<p>Then install the testnet manager and port forward a connection using the output of <code>helm install ...</code>:</p>
+<pre><code class="language-bash">helm repo add parity https://paritytech.github.io/helm-charts/
 helm repo update
 helm install testnet-mgr parity/testnet-manager --values values.yaml
 </code></pre>
 <h3 id="frontend-gui"><a class="header" href="#frontend-gui">Frontend GUI</a></h3>
-<p>In the nodes section you can view all running nodes, their roles, chain, uptime, cli arguments and you can also view logs.</p>
+<p>In the nodes section you can view all running nodes, their roles, chain, uptime, CLI arguments, and you can also view logs.</p>
 <p><img src="../images/testnet-mgr.png" alt="testnet-mgr-frontend" /></p>
 <h3 id="interact-with-api-via-frontend"><a class="header" href="#interact-with-api-via-frontend">Interact with API via Frontend</a></h3>
 <p>It's possible to view the API calls and execute them via the GUI. The main functions are:</p>
 <ul>
 <li>Viewing nodes, validators, collators and parachains</li>
-<li>Registering / de-registering validators and collators</li>
+<li>Registering / deregistering validators and collators</li>
 <li>Onboarding / off-boarding parachains</li>
 <li>Rotating session keys</li>
 </ul>
 <p><img src="../images/testnet-mgr-api.png" alt="testnet-mgr-api" /></p>
 <h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
 <p>Register a new validator in the <code>StatefulSet</code> called <code>rococo-val-pool</code>:</p>
-<pre><code>curl -X 'POST' \
+<pre><code class="language-bash">curl -X 'POST' \
   'http://localhost:8080/api/register_validators?statefulset=rococo-val-pool' \
   -H 'accept: application/json' \
   -d ''
 </code></pre>
 <p>Onboard Parachain id 1000:</p>
-<pre><code>curl -X 'POST' \
+<pre><code class="language-bash">curl -X 'POST' \
 'http://localhost:8080/api/onboard_parachain/1000' \
 -H 'accept: application/json' \
 -d ''
 </code></pre>
 <h3 id="how-does-it-work-"><a class="header" href="#how-does-it-work-">How does it work ?</a></h3>
-<p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (eg. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
-<p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (eg. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (e.g. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
+<p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (e.g. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

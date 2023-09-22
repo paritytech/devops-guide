@@ -150,23 +150,22 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="grafana"><a class="header" href="#grafana">Grafana</a></h2>
-<p>Grafana is where you can define dashboards to show the time series information that prometheus is collecting. You just need to ensure you add a datasource:</p>
-<pre><code class="language-yaml">  datasources:
-      - name: &quot;prometheus-prod&quot;
-        type: prometheus
-        access: proxy
-        editable: false
-        orgId: 1
-        url: &quot;http://prometheus-prod.monitoring.svc.cluster.local&quot;
-        version: 1
-        jsonData:
-          timeInterval: 30s
-
+                        <h1 id="grafana"><a class="header" href="#grafana">Grafana</a></h1>
+<p>Grafana is where you can define dashboards to show the time series information that Prometheus is collecting. You just need to ensure you add a datasource:</p>
+<pre><code class="language-yaml">datasources:
+  - name: &quot;prometheus-prod&quot;
+    type: prometheus
+    access: proxy
+    editable: false
+    orgId: 1
+    url: &quot;http://prometheus-prod.monitoring.svc.cluster.local&quot;
+    version: 1
+    jsonData:
+      timeInterval: 30s
 </code></pre>
 <p>You can find <a href="https://grafana.com/grafana/dashboards/?search=polkadot">existing</a> polkadot dashboards at grafana.com -</p>
-<p><img src="../images/lb0gOx.png" alt="grafana example" /></p>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<p><img src="../images/lb0gOx.png" alt="Grafana example" /></p>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

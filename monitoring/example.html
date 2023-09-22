@@ -155,12 +155,12 @@
 <p>An example of a very common open source monitoring stack. There are various tools for each layer of the stack:</p>
 <ul>
 <li>Prometheus - A time series database which can hold large amounts of data that can be accessed very quickly. It scrapes data from your defined exporters and saves this data.</li>
-<li>Grafana - Grafana allows you to query, visualize, and understand your metrics. Many example dashboards exist and it is easy to create new ones.</li>
-<li>Alertmanager - Creates and routes alerts based on alert rules and metrics. Many provider plugins exist to send alerts via email / sms / telegram / pagerduty / victorops / slack / matrix etc...</li>
-<li>Loki - A highly scalable log aggregation system that allows you to view and search logs from all your infrastruture in one place.</li>
-<li>Exporter - A process that listens on a port and reports appliation specific metrics to prometheus when scraped. Lots of exporters exist and new ones are easy to write. It just requires you return data in the format of: `<key>: <value>' with labels being optional.</li>
+<li>Grafana - Grafana allows you to query, visualize, and understand your metrics. Many example dashboards exist, and it is easy to create new ones.</li>
+<li>Alertmanager - Creates and routes alerts based on alert rules and metrics. Many provider plugins exist to send alerts via email / SMS / Telegram / PagerDuty / VictorOps / slack / matrix etc...</li>
+<li>Loki - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.</li>
+<li>Exporter - A process that listens on a port and reports application specific metrics to Prometheus when scraped. Lots of exporters exist, and new ones are easy to write. It just requires you return data in the format of: <code>&lt;key&gt;: &lt;value&gt;</code> with labels being optional.</li>
 </ul>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

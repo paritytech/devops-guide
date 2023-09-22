@@ -150,11 +150,13 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="loki"><a class="header" href="#loki">Loki</a></h2>
-<p><strong>“Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus”</strong></p>
-<p>Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central loki server.</p>
+                        <h1 id="loki"><a class="header" href="#loki">Loki</a></h1>
+<blockquote>
+<p>&quot;Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus&quot;</p>
+</blockquote>
+<p>Loki is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central Loki server.</p>
 <p>Example promtail.yaml configuration to collect the logs of a node managed by systemd:</p>
-<pre><code># promtail server config
+<pre><code class="language-yaml"># promtail server config
 server:
   http_listen_port: 9080
   grpc_listen_port: 0
@@ -181,73 +183,73 @@ scrape_configs:
       - match:
           selector: '{job=&quot;journald&quot;}'
           stages:
-          - multiline:
-              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
-              max_lines: 2500
-          - regex:
-              expression: '(?P&lt;date&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P&lt;level&gt;(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P&lt;worker&gt;([^\s]+))\s+(?P&lt;target&gt;[\w-]+):?:?(?P&lt;subtarget&gt;[\w-]+)?:[\s]?(?P&lt;chaintype&gt;\[[\w-]+\]+)?[\s]?(?P&lt;message&gt;.+)'
-          - labels:
-              level:
-              target:
-              subtarget:
-          - metrics:
-              log_lines_total:
-                type: Counter
-                Description: &quot;Total Number of Chain Logs&quot;
-                prefix: &quot;promtail_chain_&quot;
-                max_idle_duration: 24h
-                config:
-                  match_all: true
-                  action: inc
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - regex:
+                expression: '(?P&lt;date&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P&lt;level&gt;(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P&lt;worker&gt;([^\s]+))\s+(?P&lt;target&gt;[\w-]+):?:?(?P&lt;subtarget&gt;[\w-]+)?:[\s]?(?P&lt;chaintype&gt;\[[\w-]+\]+)?[\s]?(?P&lt;message&gt;.+)'
+            - labels:
+                level:
+                target:
+                subtarget:
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Logs&quot;
+                  prefix: &quot;promtail_chain_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
       - match:
           selector: '{job=&quot;journald&quot;, level=&quot;ERROR&quot;}'
           stages:
-          - multiline:
-              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
-              max_lines: 2500
-          - metrics:
-              log_lines_total:
-                type: Counter
-                Description: &quot;Total Number of Chain Error Logs&quot;
-                prefix: &quot;promtail_chain_error_&quot;
-                max_idle_duration: 24h
-                config:
-                  match_all: true
-                  action: inc
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Error Logs&quot;
+                  prefix: &quot;promtail_chain_error_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
       - match:
           selector: '{job=&quot;journald&quot;, level=~&quot;.+&quot;} |~ &quot;(?i)(panic)&quot;'
           stages:
-          - multiline:
-              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
-              max_lines: 2500
-          - metrics:
-              log_lines_total:
-                type: Counter
-                Description: &quot;Total Number of Chain Panic Logs&quot;
-                prefix: &quot;promtail_chain_panic_&quot;
-                max_idle_duration: 24h
-                config:
-                  match_all: true
-                  action: inc
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Panic Logs&quot;
+                  prefix: &quot;promtail_chain_panic_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
     relabel_configs:
-      - source_labels: ['__journal__systemd_unit']
-        target_label: 'unit'
-      - source_labels: ['unit']
-        regex: '(.*.scope|user.*.service)'
+      - source_labels: [&quot;__journal__systemd_unit&quot;]
+        target_label: &quot;unit&quot;
+      - source_labels: [&quot;unit&quot;]
+        regex: &quot;(.*.scope|user.*.service)&quot;
         action: drop
-      - source_labels: ['__journal__hostname']
-        target_label: 'host'
+      - source_labels: [&quot;__journal__hostname&quot;]
+        target_label: &quot;host&quot;
       - action: replace
         source_labels:
-        - __journal__cmdline
-        - __journal__hostname
+          - __journal__cmdline
+          - __journal__hostname
         separator: &quot;;&quot;
-        regex: '.*--chain.*;(.*)'
-        target_label: 'node'
+        regex: &quot;.*--chain.*;(.*)&quot;
+        target_label: &quot;node&quot;
         replacement: $1
 </code></pre>
-<p>The above example also configures the following custom metrics derived from logs <code>promtail_chain_log_lines_total</code>, <code>promtail_chain_error_log_lines_total</code> and  <code>promtail_chain_panic_log_lines_total</code> to be exposed on the promtail metrics endpoint (http://host:9080).</p>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<p>The above example also configures the following custom metrics derived from logs <code>promtail_chain_log_lines_total</code>, <code>promtail_chain_error_log_lines_total</code> and <code>promtail_chain_panic_log_lines_total</code> to be exposed on the promtail metrics endpoint <a href="http://host:9080">http://host:9080</a>.</p>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

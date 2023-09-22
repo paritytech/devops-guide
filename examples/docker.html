@@ -152,10 +152,10 @@
                     <main>
                         <h1 id="building-and-publishing-docker-images"><a class="header" href="#building-and-publishing-docker-images">Building and Publishing Docker Images</a></h1>
 <p>Docker images make the life of node operators (and your DevOps team) easier. They allow you to get a node up and running without configuring the vm each time, and are helpful when you need to run <em>n</em> vms in a network. External node operators (validators and RPC providers) will also thank you for providing them.</p>
-<h3 id="example-dockerfile"><a class="header" href="#example-dockerfile">Example Dockerfile</a></h3>
+<h2 id="example-dockerfile"><a class="header" href="#example-dockerfile">Example Dockerfile</a></h2>
 <p>The following examples can be found in the Substrate Node Template repo: <a href="https://github.com/substrate-developer-hub/substrate-node-template/blob/main/Dockerfile">https://github.com/substrate-developer-hub/substrate-node-template/blob/main/Dockerfile</a></p>
 <p>This follows the best practices to build the image in a secure way that minimises the attack surface, it is a similar version to that used to create the official Polkadot images. You can also consult <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Docker's own best practices</a>.</p>
-<pre><code># This is an example build stage for the node template. Here we create the binary in a temporary image.
+<pre><code class="language-dockerfile"># This is an example build stage for the node template. Here we create the binary in a temporary image.
 
 # This is a base image to build substrate nodes
 FROM docker.io/paritytech/ci-linux:production as builder
@@ -193,7 +193,7 @@ VOLUME [&quot;/chain-data&quot;]
 
 ENTRYPOINT [&quot;/usr/local/bin/node-template&quot;]
 </code></pre>
-<h3 id="automated-build-pipeline"><a class="header" href="#automated-build-pipeline">Automated Build Pipeline</a></h3>
+<h2 id="automated-build-pipeline"><a class="header" href="#automated-build-pipeline">Automated Build Pipeline</a></h2>
 <p>The following examples can be found in the Substrate Node Template repo: <a href="https://github.com/substrate-developer-hub/substrate-node-template/blob/main/.github/workflows/build-publish-image.yml">https://github.com/substrate-developer-hub/substrate-node-template/blob/main/.github/workflows/build-publish-image.yml</a></p>
 <p>This is an example GitHub action that will build and publish a Docker image to DockerHub. You will need to <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">add secrets to your GitHub Repository or Organization</a> to make this work and to publish images securely.</p>
 <p>Most teams will trigger this either on a manual workflow, or when a new release is published. You will need to save the credentials for your DockerHub account in your GitHub secrets.</p>
@@ -210,11 +210,11 @@ name: Build &amp; Publish Docker Image
 on:
   # Triggers the workflow on push events but only for the main branch
   # push:
-    # branches: [ main ]
+  # branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 # Set an environment variable (that can be overriden) for the Docker Repo
 env:
   DOCKER_REPO: parity/polkadot
@@ -230,14 +230,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v2.5.0
-      
+
       # Login to Docker hub using the credentials stored in the repository secrets
       - name: Log in to Docker Hub
         uses: docker/login-action@v2.1.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      
+
       # Get the commit short hash, to use as the rev
       - name: Calculate rev hash
         id: rev
@@ -251,7 +251,7 @@ jobs:
           push: true
           tags: ${{ env.DOCKER_REPO }}:v${{ steps.rev.outputs.value }}, ${{ secrets.DOCKER_REPO }}:latest
 </code></pre>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

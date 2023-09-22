@@ -151,7 +151,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="keys-and-accounts"><a class="header" href="#keys-and-accounts">Keys And Accounts</a></h1>
-<p>This page will describe some basic information on keys and accounts. For a more general and detailed explination see <a href="https://wiki.polkadot.network/docs/learn-accounts">learn accounts</a> on the polkadot wiki page.</p>
+<p>This page will describe some basic information on keys and accounts. For a more general and detailed explanation see <a href="https://wiki.polkadot.network/docs/learn-accounts">learn accounts</a> on the polkadot wiki page.</p>
 <h2 id="encryption-schemes"><a class="header" href="#encryption-schemes">Encryption Schemes</a></h2>
 <table><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
 <tr><td>ed25519</td><td>The vanilla ed25519 implementation using Schnorr signatures.</td></tr>
@@ -169,11 +169,11 @@
 <tr><td>beefy</td><td>ecdsa</td></tr>
 </tbody></table>
 <h2 id="key-generation-and-inspection"><a class="header" href="#key-generation-and-inspection">Key Generation and Inspection</a></h2>
-<p>You can use <code>polkadot keys</code> or the <code>subkey</code> command to generate and inspect keys. </p>
+<p>You can use <code>polkadot keys</code> or the <code>subkey</code> command to generate and inspect keys.</p>
 <p>Two important subcommands are:</p>
 <ul>
-<li><code>generate</code>  Create a new random account and print the private key data or save to a file. </li>
-<li><code>inspect</code> View the account data for an account by passing a secret phrase or seed. </li>
+<li><code>generate</code> Create a new random account and print the private key data or save to a file.</li>
+<li><code>inspect</code> View the account data for an account by passing a secret phrase or seed.</li>
 </ul>
 <p>Some important options are:</p>
 <ul>
@@ -181,8 +181,8 @@
 <li><code>--scheme</code> the scheme for the keys, default is sr25519.</li>
 </ul>
 <h2 id="generate"><a class="header" href="#generate">Generate</a></h2>
-<p><strong>Create Polkadot Random Key</strong>:</p>
-<pre><code>$ polkadot key generate -n polkadot
+<h3 id="create-polkadot-random-key"><a class="header" href="#create-polkadot-random-key">Create Polkadot Random Key</a></h3>
+<pre><code class="language-bash">$ polkadot key generate -n polkadot
 Secret phrase:       settle whisper usual blast device source region pumpkin ugly beyond promote cluster
   Network ID:        polkadot
   Secret seed:       0x2e6371e04b45f16cd5c2d66fc47c8ad7f2881215287c374abfa0e07fd003cb01
@@ -192,8 +192,8 @@ Secret phrase:       settle whisper usual blast device source region pumpkin ugl
   SS58 Address:      14agqii5GAiM5z4yzGhJdyWQ3a6HeY2oXvLdCrdhFXRnQ77D
 </code></pre>
 <h2 id="inspection"><a class="header" href="#inspection">Inspection</a></h2>
-<p><strong>Inspect Created Key</strong>:</p>
-<pre><code>$ ./polkadot key inspect -n polkadot &quot;settle whisper usual blast device source region pumpkin ugly beyond promote cluster&quot; 
+<h3 id="inspect-created-key"><a class="header" href="#inspect-created-key">Inspect Created Key</a></h3>
+<pre><code class="language-bash">$ ./polkadot key inspect -n polkadot &quot;settle whisper usual blast device source region pumpkin ugly beyond promote cluster&quot;
 Secret phrase:       settle whisper usual blast device source region pumpkin ugly beyond promote cluster
   Network ID:        polkadot
   Secret seed:       0x2e6371e04b45f16cd5c2d66fc47c8ad7f2881215287c374abfa0e07fd003cb01
@@ -202,17 +202,17 @@ Secret phrase:       settle whisper usual blast device source region pumpkin ugl
   Public key (SS58): 14agqii5GAiM5z4yzGhJdyWQ3a6HeY2oXvLdCrdhFXRnQ77D
   SS58 Address:      14agqii5GAiM5z4yzGhJdyWQ3a6HeY2oXvLdCrdhFXRnQ77D
 </code></pre>
-<p><strong>Inspect Created Key With Hard Derivation //Stash//0</strong>:</p>
-<pre><code>$ polkadot key inspect -n polkadot &quot;settle whisper usual blast device source region pumpkin ugly beyond promote cluster//Stash//0&quot; 
+<h3 id="inspect-created-key-with-hard-derivation-stash0"><a class="header" href="#inspect-created-key-with-hard-derivation-stash0">Inspect Created Key With Hard Derivation //Stash//0</a></h3>
+<pre><code class="language-bash">$ polkadot key inspect -n polkadot &quot;settle whisper usual blast device source region pumpkin ugly beyond promote cluster//Stash//0&quot;
 Secret Key URI `settle whisper usual blast device source region pumpkin ugly beyond promote cluster//Stash//0` is account:
-  Network ID:        polkadot 
+  Network ID:        polkadot
  Secret seed:       0xe9437b365161e8228e8abd53d64e6b31058dcddcd0b96f895045ecc41579ee3e
   Public key (hex):  0xd8ed7b942f6e590b06e99951ac10e3312f65f01df5b3f250b70374fc2da1046d
   Account ID:        0xd8ed7b942f6e590b06e99951ac10e3312f65f01df5b3f250b70374fc2da1046d
   Public key (SS58): 15uRtdeE4MyMHV9LP1UHKqTx4f8Qa8uVZUpxWWw8VKSroucK
   SS58 Address:      15uRtdeE4MyMHV9LP1UHKqTx4f8Qa8uVZUpxWWw8VKSroucK
 </code></pre>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

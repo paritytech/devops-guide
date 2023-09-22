@@ -151,7 +151,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="polkadot-js-tools"><a class="header" href="#polkadot-js-tools">Polkadot Js Tools</a></h1>
-<p><a href="https://github.com/polkadot-js/tools">Polkadot Js Tools</a> is an amazing tool for interacting with substrate based chains. </p>
+<p><a href="https://github.com/polkadot-js/tools">Polkadot Js Tools</a> is an amazing tool for interacting with substrate based chains.</p>
 <p>A full list of possible <a href="https://polkadot.js.org/docs/substrate/rpc/">rpc</a> calls and <a href="https://polkadot.js.org/docs/substrate/extrinsics">extrinsics</a> are available from the <a href="https://polkadot.js.org/docs/substrate/">polkadot js docs</a> page.</p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
 <ul>
@@ -183,22 +183,22 @@
 </ul>
 <h3 id="example-chain-queries"><a class="header" href="#example-chain-queries">Example Chain Queries</a></h3>
 <p>Display block information (parent hash, block number, state root etc..) for last block:</p>
-<pre><code>yarn run:api query.chain.getHeader
+<pre><code class="language-bash">yarn run:api query.chain.getHeader
 </code></pre>
 <p>Get the balance for the account <code>//Alice</code>:</p>
-<pre><code>yarn run:api query.system.account 15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5
+<pre><code class="language-bash">yarn run:api query.system.account 15oF4uVJwmo4TdGW7VfQxNLavjCXviqxT9S1MgbjMNHr6Sp5
 </code></pre>
 <p>Display all RPC methods available:</p>
-<pre><code>yarn run:api rpc.rpc.methods
+<pre><code class="language-bash">yarn run:api rpc.rpc.methods
 </code></pre>
 <h3 id="example-chain-transactionsextrinsics"><a class="header" href="#example-chain-transactionsextrinsics">Example Chain Transactions/Extrinsics</a></h3>
 <p>Simple transfer of 1 unit <code>//Alice</code> to <code>//Bob</code> on the same chain. Using <code>--seed</code> as the sender for signing the transactions:</p>
-<pre><code>yarn run:api tx.balances.transfer 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty 10000000000 --seed &quot;//Alice&quot;
+<pre><code class="language-bash">yarn run:api tx.balances.transfer 5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty 10000000000 --seed &quot;//Alice&quot;
 </code></pre>
 <p>Transfer 1.23 units from <code>//Alice</code> on the relay chain to <code>//Charlie</code> on the parachain <code>1000</code>:</p>
-<pre><code>yarn run:api tx.xcmPallet.limitedTeleportAssets '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;parachain&quot;:1000}}}}' '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;AccountId32&quot;: {&quot;id&quot;: &quot;0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22&quot;, &quot;network&quot;: &quot;Any&quot;}}}}}' '{&quot;v1&quot;: [ {&quot;id&quot;: { &quot;Concrete&quot;: {&quot;parents&quot;:0, &quot;interior&quot;:&quot;Here&quot; }}, &quot;Fun&quot;: { &quot;Fungible&quot;: &quot;12300000000&quot;}}]}'  0 Unlimited  --seed &quot;//Alice&quot;
+<pre><code class="language-bash">yarn run:api tx.xcmPallet.limitedTeleportAssets '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;parachain&quot;:1000}}}}' '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;AccountId32&quot;: {&quot;id&quot;: &quot;0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22&quot;, &quot;network&quot;: &quot;Any&quot;}}}}}' '{&quot;v1&quot;: [ {&quot;id&quot;: { &quot;Concrete&quot;: {&quot;parents&quot;:0, &quot;interior&quot;:&quot;Here&quot; }}, &quot;Fun&quot;: { &quot;Fungible&quot;: &quot;12300000000&quot;}}]}'  0 Unlimited  --seed &quot;//Alice&quot;
 </code></pre>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/ef59641">ef59641</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
