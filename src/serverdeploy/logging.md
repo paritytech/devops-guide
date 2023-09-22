@@ -1,37 +1,34 @@
-Logging
-===========
+# Logging
 
+## Local Logging
 
-### Local Logging
-
-By default output from your systemd service will go to local syslog. This will mean it ends up in a place like `/var/log/syslog` or `/var/log/messages`
+By default, output from your systemd service will go to local syslog. This will mean it ends up in a place like `/var/log/syslog` or `/var/log/messages`
 
 You can also view these using the `journalctl` command. To tail the current output of the polkadot process run:
 
-```
+```bash
 journalctl -u polkadot -f
 ```
 
 It is also possible to remove old logs (say older than two days ago) using a command:
 
-```
+```bash
 journalctl -u polkadot --vacuum-time=2d
 ```
 
 Or to retain only the past 1G of data run:
 
-```
+```bash
 journalctl --vacuum-size=1G
 ```
 
-
 ## Remote Logging
 
-In a setup with many hosts you will want to aggregate the logs at a central point, some common options include Loki or Elasticsearch. 
+In a setup with many hosts you will want to aggregate the logs at a central point, some common options include Loki or Elasticsearch.
 
 ### Loki
 
-To log to a remote loki instance you need to install the `promtail` package. An example configuration file to send logs to a remote host:
+To log to a remote Loki instance you need to install the `promtail` package. An example configuration file to send logs to a remote host:
 
 ```yaml
 # promtail server config
@@ -60,21 +57,34 @@ scrape_configs:
       - match:
           selector: '{job="journald"}'
           stages:
-          - multiline:
-              firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
-              max_lines: 2500
-          - regex:
-              expression: '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P<level>(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P<worker>([^\s]+))\s+(?P<target>[\w-]+):?:?(?P<subtarget>[\w-]+)?:[\s]?(?P<chaintype>\[[\w-]+\]+)?[\s]?(?P<message>.+)'
-          - labels:
-              level:
-              target:
-              subtarget:
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - regex:
+                expression: '(?P<date>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P<level>(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P<worker>([^\s]+))\s+(?P<target>[\w-]+):?:?(?P<subtarget>[\w-]+)?:[\s]?(?P<chaintype>\[[\w-]+\]+)?[\s]?(?P<message>.+)'
+            - labels:
+                level:
+                target:
+                subtarget:
 ```
 
 ### Elasticsearch
 
-To log to a remote elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
+To log to a remote Elasticsearch cluster you need to install the `logstash` package. An example configuration would look like:
 
+<<<<<<< HEAD
+```json
+input {
+  journald {
+    path      => "/var/log/journal"
+    seekto => "tail"
+    thisboot => true
+    filter    => {
+      "_SYSTEMD_UNIT" => "polkadot.service"
+    }
+    type => "systemd"
+  }
+=======
 
 ```yaml
 input {
@@ -87,13 +97,14 @@ input {
        }
        type => "systemd"
      }
+>>>>>>> main
 }
 
 
 filter {
-date {
-     match => ["timestamp", "YYYY-mm-dd HH:MM:ss.SSS"]
-     target => "@timestamp"
+  date {
+    match => ["timestamp", "YYYY-mm-dd HH:MM:ss.SSS"]
+    target => "@timestamp"
   }
   mutate {
     rename => [ "MESSAGE", "message" ]
@@ -101,25 +112,26 @@ date {
   }
   if ([message] =~ ".*TRACE .*") { drop{ } }
   grok {
-     match => { "message" => "%{NOTSPACE:thread} %{LOGLEVEL:log-level} %{NOTSPACE:namespace} %{GREEDYDATA:message}" }
-   }
+    match => { "message" => "%{NOTSPACE:thread} %{LOGLEVEL:log-level} %{NOTSPACE:namespace} %{GREEDYDATA:message}" }
+  }
 }
 
 output {
-   elasticsearch {
-     hosts => ["https://myelasticsearch.mycompany.com:9243"]
-     user => "username"
-     password => "password"
-     index => "logstash-polkadot-%{+YYYY.MM.dd}"
-   }
+  elasticsearch {
+    hosts => ["https://myelasticsearch.mycompany.com:9243"]
+    user => "username"
+    password => "password"
+    index => "logstash-polkadot-%{+YYYY.MM.dd}"
+  }
 }
 ```
 
 ## Logging Options
 
-Logging output from any substrate based changes has many log levels and targets.  All targets are set to `info` logging by default. You can adjust individual log levels using the `--log (-l short)` option, for example `-l afg=trace,sync=debug` or globally with `-ldebug`.
+Logging output from any substrate based changes has many log levels and targets. All targets are set to `info` logging by default. You can adjust individual log levels using the `--log (-l short)` option, for example `-l afg=trace,sync=debug` or globally with `-ldebug`.
 
 Levels:
+
 - error
 - warn
 - info
@@ -127,6 +139,7 @@ Levels:
 - trace
 
 Targets:
+
 - afg
 - aura
 - babe

@@ -1,16 +1,14 @@
-Building and Publishing Docker Images 
-====================
+# Building and Publishing Docker Images
 
-Docker images make the life of node operators (and your DevOps team) easier. They allow you to get a node up and running without configuring the vm each time, and are helpful when you need to run *n* vms in a network. External node operators (validators and RPC providers) will also thank you for providing them.
+Docker images make the life of node operators (and your DevOps team) easier. They allow you to get a node up and running without configuring the vm each time, and are helpful when you need to run _n_ vms in a network. External node operators (validators and RPC providers) will also thank you for providing them.
 
-
-### Example Dockerfile
+## Example Dockerfile
 
 The following examples can be found in the Substrate Node Template repo: <https://github.com/substrate-developer-hub/substrate-node-template/blob/main/Dockerfile>
 
 This follows the best practices to build the image in a secure way that minimises the attack surface, it is a similar version to that used to create the official Polkadot images. You can also consult [Docker's own best practices](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
 
-```
+```dockerfile
 # This is an example build stage for the node template. Here we create the binary in a temporary image.
 
 # This is a base image to build substrate nodes
@@ -50,7 +48,7 @@ VOLUME ["/chain-data"]
 ENTRYPOINT ["/usr/local/bin/node-template"]
 ```
 
-### Automated Build Pipeline
+## Automated Build Pipeline
 
 The following examples can be found in the Substrate Node Template repo: <https://github.com/substrate-developer-hub/substrate-node-template/blob/main/.github/workflows/build-publish-image.yml>
 
@@ -73,11 +71,11 @@ name: Build & Publish Docker Image
 on:
   # Triggers the workflow on push events but only for the main branch
   # push:
-    # branches: [ main ]
+  # branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 # Set an environment variable (that can be overriden) for the Docker Repo
 env:
   DOCKER_REPO: parity/polkadot
@@ -93,14 +91,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out the repo
         uses: actions/checkout@v2.5.0
-      
+
       # Login to Docker hub using the credentials stored in the repository secrets
       - name: Log in to Docker Hub
         uses: docker/login-action@v2.1.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      
+
       # Get the commit short hash, to use as the rev
       - name: Calculate rev hash
         id: rev
