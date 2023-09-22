@@ -204,7 +204,7 @@ scrape_configs:
 </code></pre>
 <h3 id="elasticsearch"><a class="header" href="#elasticsearch">Elasticsearch</a></h3>
 <p>To log to a remote elasticsearch cluster you need to install the <code>logstash</code> package. An example configuration would look like:</p>
-<pre><code class="language-yaml">nput {
+<pre><code class="language-yaml">input {
      journald {
        path      =&gt; &quot;/var/log/journal&quot;
        seekto =&gt; &quot;tail&quot;
@@ -276,7 +276,7 @@ output {
 <li>trie</li>
 <li>txpool</li>
 </ul>
-<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/0fa3430">0fa3430</a></footer>
+<footer id="last-change">Last change: 2023-09-22, commit: <a href="https://github.com/paritytech/devops-guide/commit/79c5a3e">79c5a3e</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
