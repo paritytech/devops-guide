@@ -77,7 +77,7 @@ To log to a remote elasticsearch cluster you need to install the `logstash` pack
 
 
 ```yaml
-nput {
+input {
      journald {
        path      => "/var/log/journal"
        seekto => "tail"
