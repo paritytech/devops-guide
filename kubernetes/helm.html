@@ -158,7 +158,6 @@
 <p>This is a simple example of deploying a <code>rococo-local</code> test chain in Kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the <code>Alice</code> validator which all other hosts use as a bootnode.</p>
 <h4 id="first-install-the-helm-repo"><a class="header" href="#first-install-the-helm-repo">First install the helm repo</a></h4>
 <pre><code class="language-bash">helm repo add parity https://paritytech.github.io/helm-charts/
-helm install polkadot-node parity/node
 </code></pre>
 <h4 id="deploy-validator-alice"><a class="header" href="#deploy-validator-alice">Deploy Validator Alice</a></h4>
 <p>Alice will be deployed in a stateful set and use an example custom node key, along with deploying a service to be used as a bootnode:</p>
@@ -186,7 +185,7 @@ helm install polkadot-node parity/node
 <tr><td>node.flags</td><td>Flags to use with binary in container</td></tr>
 <tr><td>node.customChainspecUrl</td><td>Custom Chainspec URL</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-01-04, commit: <a href="https://github.com/paritytech/devops-guide/commit/821aff4">821aff4</a></footer>
+<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
