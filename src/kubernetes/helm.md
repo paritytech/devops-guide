@@ -14,7 +14,6 @@ This is a simple example of deploying a `rococo-local` test chain in Kubernetes.
 
 ```bash
 helm repo add parity https://paritytech.github.io/helm-charts/
-helm install polkadot-node parity/node
 ```
 
 #### Deploy Validator Alice
