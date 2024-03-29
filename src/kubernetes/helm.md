@@ -4,7 +4,7 @@
 
 Parity maintains a helm GitHub repo @ [https://github.com/paritytech/helm-charts](https://github.com/paritytech/helm-charts) - Inside this repo is the [node](https://github.com/paritytech/helm-charts/tree/main/charts/node) chart which should be used for deploying your Substrate/Polkadot binary.
 
-All variables are documented clearly in the [README.md](https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md) and there’s an example [values.yml](https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml) which you can start working from.
+All variables are documented clearly in the [README.md](https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md) and there’s an example [local-rococo](https://github.com/paritytech/helm-charts/tree/main/charts/node/examples/local-rococo) which you can start working from.
 
 ### Example Rococo Local Chain
 
