@@ -153,7 +153,7 @@
                         <h1 id="helm-chart"><a class="header" href="#helm-chart">Helm Chart</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <p>Parity maintains a helm GitHub repo @ <a href="https://github.com/paritytech/helm-charts">https://github.com/paritytech/helm-charts</a> - Inside this repo is the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node</a> chart which should be used for deploying your Substrate/Polkadot binary.</p>
-<p>All variables are documented clearly in the <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md">README.md</a> and there’s an example <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml">values.yml</a> which you can start working from.</p>
+<p>All variables are documented clearly in the <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md">README.md</a> and there’s an example <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node/examples/local-rococo">local-rococo</a> which you can start working from.</p>
 <h3 id="example-rococo-local-chain"><a class="header" href="#example-rococo-local-chain">Example Rococo Local Chain</a></h3>
 <p>This is a simple example of deploying a <code>rococo-local</code> test chain in Kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the <code>Alice</code> validator which all other hosts use as a bootnode.</p>
 <h4 id="first-install-the-helm-repo"><a class="header" href="#first-install-the-helm-repo">First install the helm repo</a></h4>
@@ -185,7 +185,7 @@
 <tr><td>node.flags</td><td>Flags to use with binary in container</td></tr>
 <tr><td>node.customChainspecUrl</td><td>Custom Chainspec URL</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

@@ -167,7 +167,7 @@
 <p>First is using cold / warm / hot keys, so that the compromise of say a session key would not lead to any funds being stolen. Also using multisig accounts on offline devices can greatly help security and also give an on-chain audit trail of all actions, allows for alerting for any onchain actions etc...</p>
 <p><img src="images/AEEVr6.png" alt="key stages" /></p>
 <p>Proxy accounts also let you limit the permission that an account or multisig account has on a particular target account (e.g. only staking functions can be executed by the staking controller multisig account and require 3 of 5 people to approve).</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="deployments"><a class="header" href="#deployments">Deployments</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="deployments"><a class="header" href="#deployments">Deployments</a></h1>
 <p>This section describes the various types of deployments and options used for each.</p>
 <ul>
 <li>
@@ -180,7 +180,7 @@
 <p><a href="deployments/./deployments/options.html">Role Specific Arguments</a> lists specific options to be used for each node type</p>
 </li>
 </ul>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="node-types"><a class="header" href="#node-types">Node Types</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="node-types"><a class="header" href="#node-types">Node Types</a></h1>
 <p>A non exhaustive list of some common node types:</p>
 <table><thead><tr><th>Type</th><th>Function</th></tr></thead><tbody>
 <tr><td>Validator</td><td>Secures the Relay Chain by staking DOT, validating proofs from collators on parachains and voting on consensus along with other validators.</td></tr>
@@ -190,7 +190,7 @@
 <tr><td>Archive Node</td><td>A node which is syncing to the relay chain or parachain and has a complete database starting all the way from the genesis block.</td></tr>
 <tr><td>Full Node</td><td>A node which is syncing the relay chain or parachain to the current best block.</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="deployment-targets"><a class="header" href="#deployment-targets">Deployment Targets</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="deployment-targets"><a class="header" href="#deployment-targets">Deployment Targets</a></h1>
 <p>A non-exhaustive list of some common deployment targets:</p>
 <table><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>Physical Server</td><td>Usually a rack mounted server sitting in a data center.</td></tr>
@@ -198,7 +198,7 @@
 <tr><td>Kubernetes</td><td>A container orchestration engine to host your blockchain instances. This option is only recommended if you already have prior experience with Kubernetes, especially in production environments.</td></tr>
 <tr><td>Local Container</td><td>An instance running on a local container engine (e.g. containerd, docker, Podman).</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="special-options-per-host-type"><a class="header" href="#special-options-per-host-type">Special Options Per Host Type</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="special-options-per-host-type"><a class="header" href="#special-options-per-host-type">Special Options Per Host Type</a></h1>
 <table><thead><tr><th>Type</th><th>Function</th></tr></thead><tbody>
 <tr><td>Validator</td><td>Should at least be running with the <code>--validator</code> flag to enable block validation. Also keys should have been injected or the RPC <code>author_rotateKeys</code> called.</td></tr>
 <tr><td>Collator</td><td>Should at least be running with the <code>--collator</code> flag to enable parachain collation.</td></tr>
@@ -214,7 +214,7 @@
 <p>A real life example of this while executing as a statemine collator would be:</p>
 <pre><code class="language-bash">./statemine  --chain statemine --in-peers 25 --out-peers 25 --db-cache 512 --pruning=1000 --unsafe-pruning -- --chain kusama -db-cache 512 --pruning=1000 --wasm-execution Compiled
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="server-deployments"><a class="header" href="#server-deployments">Server Deployments</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="server-deployments"><a class="header" href="#server-deployments">Server Deployments</a></h1>
 <ul>
 <li>
 <p><a href="serverdeploy/./serverdeploy/systemd.html">Systemd</a> describes options for running a node and various systemd specific options.</p>
@@ -223,7 +223,7 @@
 <p><a href="serverdeploy/./serverdeploy/logging.html">Logging</a> shows some common local and remote logging configurations.</p>
 </li>
 </ul>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="systemd"><a class="header" href="#systemd">Systemd</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="systemd"><a class="header" href="#systemd">Systemd</a></h1>
 <h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
 <p>Systemd is a common way to manage services on Linux hosts. It can ensure the process is enabled and running, allows you to set a policy for restarts and also set the user running the host, limit the memory usage etc...</p>
 <p>It can also use an environment variable file which can help abstract the variables into its own file per server.</p>
@@ -261,7 +261,7 @@ WantedBy=multi-user.target
 <pre><code class="language-bash">START_OPTIONS=&quot;--dev --alice&quot;
 </code></pre>
 <p>You can do this with multiple variables to abstract the configuration from the systemd file running on your hosts.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
 <h2 id="local-logging"><a class="header" href="#local-logging">Local Logging</a></h2>
 <p>By default, output from your systemd service will go to local syslog. This will mean it ends up in a place like <code>/var/log/syslog</code> or <code>/var/log/messages</code></p>
 <p>You can also view these using the <code>journalctl</code> command. To tail the current output of the polkadot process run:</p>
@@ -402,7 +402,7 @@ output {
 <li>trie</li>
 <li>txpool</li>
 </ul>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="automation"><a class="header" href="#automation">Automation</a></h1>
 <h2 id="cloud-provisioning"><a class="header" href="#cloud-provisioning">Cloud Provisioning</a></h2>
 <p>There are multiple options to provision cloud resources, which can either be provider specific and some tools are more cloud-agnostic.</p>
 <h3 id="popular-cloud-provider-specific-deployment-tooling"><a class="header" href="#popular-cloud-provider-specific-deployment-tooling">Popular Cloud Provider Specific Deployment Tooling</a></h3>
@@ -432,7 +432,7 @@ output {
 </tbody></table>
 <p>When deploying our blockchain nodes, we will need an inventory which contains a list of our hosts and the groups they are in (e.g. validator, collator, rpc) and maybe some secrets which can be encrypted inline within the inventory using <a href="https://docs.ansible.com/ansible/latest/user_guide/vault.html">Ansible vault</a>. We will then call a playbook which links hosts/groups in the inventory with roles to execute on each host.</p>
 <p>Some examples of using Ansible can be found in the Paritytech's <a href="https://github.com/paritytech/ansible-galaxy">Ansible Galaxy</a> GitHub repo. Specifically the node role.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="kubernetes"><a class="header" href="#kubernetes">Kubernetes</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="kubernetes"><a class="header" href="#kubernetes">Kubernetes</a></h1>
 <p>As previously mentioned, Kubernetes deployments are only recommended for people with good prior operating experience of Kubernetes.</p>
 <p>The management of substrate/polkadot based nodes in Kubernetes is made very easy with:</p>
 <ul>
@@ -443,10 +443,10 @@ output {
 <p><a href="kubernetes/./helm/testnetmanager.html">Testnet Manager</a> a powerful tool for deploying and maintaining test networks in Kubernetes.</p>
 </li>
 </ul>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="helm-chart"><a class="header" href="#helm-chart">Helm Chart</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="helm-chart"><a class="header" href="#helm-chart">Helm Chart</a></h1>
 <h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
 <p>Parity maintains a helm GitHub repo @ <a href="https://github.com/paritytech/helm-charts">https://github.com/paritytech/helm-charts</a> - Inside this repo is the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node</a> chart which should be used for deploying your Substrate/Polkadot binary.</p>
-<p>All variables are documented clearly in the <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md">README.md</a> and there’s an example <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/values.yaml">values.yml</a> which you can start working from.</p>
+<p>All variables are documented clearly in the <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md">README.md</a> and there’s an example <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node/examples/local-rococo">local-rococo</a> which you can start working from.</p>
 <h3 id="example-rococo-local-chain"><a class="header" href="#example-rococo-local-chain">Example Rococo Local Chain</a></h3>
 <p>This is a simple example of deploying a <code>rococo-local</code> test chain in Kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the <code>Alice</code> validator which all other hosts use as a bootnode.</p>
 <h4 id="first-install-the-helm-repo"><a class="header" href="#first-install-the-helm-repo">First install the helm repo</a></h4>
@@ -478,7 +478,7 @@ output {
 <tr><td>node.flags</td><td>Flags to use with binary in container</td></tr>
 <tr><td>node.customChainspecUrl</td><td>Custom Chainspec URL</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="polkadot-key-injection"><a class="header" href="#polkadot-key-injection">Polkadot Key Injection</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="polkadot-key-injection"><a class="header" href="#polkadot-key-injection">Polkadot Key Injection</a></h1>
 <h2 id="chart-settings"><a class="header" href="#chart-settings">Chart Settings:</a></h2>
 <p>Ensure <code>allowUnsafeRpcMethods: true</code> is set in the helm chart values.</p>
 <h2 id="example-key-injection-values"><a class="header" href="#example-key-injection-values">Example Key Injection Values:</a></h2>
@@ -526,7 +526,7 @@ output {
      &quot;hasKey&quot;: true
    }
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="testnet-manager"><a class="header" href="#testnet-manager">Testnet Manager</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="testnet-manager"><a class="header" href="#testnet-manager">Testnet Manager</a></h1>
 <p>The <a href="https://github.com/paritytech/testnet-manager">Testnet manager</a> (<a href="https://github.com/paritytech/helm-charts/tree/main/charts/testnet-manager">helm chart</a>) lets you dynamically control test networks via a simple UI or API. It gives you a single pane of glass to list, inspect and interact with the nodes (full nodes, validators and parachain collators) running in a given Kubernetes namespace.</p>
 <h2 id="rococo-example-view"><a class="header" href="#rococo-example-view">Rococo Example View</a></h2>
 <h3 id="list-parachains"><a class="header" href="#list-parachains">List Parachains</a></h3>
@@ -582,7 +582,7 @@ helm install testnet-mgr parity/testnet-manager --values values.yaml
 <h3 id="how-does-it-work-"><a class="header" href="#how-does-it-work-">How does it work ?</a></h3>
 <p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (e.g. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
 <p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (e.g. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="monitoring-overview"><a class="header" href="#monitoring-overview">Monitoring Overview</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="monitoring-overview"><a class="header" href="#monitoring-overview">Monitoring Overview</a></h1>
 <p>We can generally split monitoring into two different areas:
 • On-chain monitoring - monitoring events on-chain, e.g. a transaction by a certain address, a validator set change etc…
 • On-host monitoring - this is monitoring the individual node, e.g. the current block height, amount of p2p connections, amount of free memory on the host itself.</p>
@@ -603,7 +603,7 @@ substrate_block_height{status=&quot;finalized&quot;} 133
 <h2 id="telemetry"><a class="header" href="#telemetry">Telemetry</a></h2>
 <p>The telemetry server is used for real time information from nodes, showing information about their name, location, current best &amp; finalized blocks etc… This gives you a useful dashboard to view the state of nodes.</p>
 <p>The project is in the <a href="https://github.com/paritytech/substrate-telemetry">substrate-telemetry</a> GitHub repo, a <a href="https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry">helm chart</a> is also available to allow easy Kubernetes deployments.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="example-monitoring-stack"><a class="header" href="#example-monitoring-stack">Example Monitoring Stack</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="example-monitoring-stack"><a class="header" href="#example-monitoring-stack">Example Monitoring Stack</a></h1>
 <p><img src="monitoring/../images/monitoring-stack.png" alt="monitoring stack" /></p>
 <p>An example of a very common open source monitoring stack. There are various tools for each layer of the stack:</p>
 <ul>
@@ -613,7 +613,7 @@ substrate_block_height{status=&quot;finalized&quot;} 133
 <li>Loki - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.</li>
 <li>Exporter - A process that listens on a port and reports application specific metrics to Prometheus when scraped. Lots of exporters exist, and new ones are easy to write. It just requires you return data in the format of: <code>&lt;key&gt;: &lt;value&gt;</code> with labels being optional.</li>
 </ul>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="prometheus"><a class="header" href="#prometheus">Prometheus</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="prometheus"><a class="header" href="#prometheus">Prometheus</a></h1>
 <blockquote>
 <p>“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.” - Prometheus GitHub repository.</p>
 </blockquote>
@@ -640,7 +640,7 @@ substrate_block_height{status=&quot;finalized&quot;} 133
       severity: warning
 </code></pre>
 <p>Here’s an <a href="https://github.com/ddorgan/substrate-alerting-rules/blob/main/alerting-rules.yaml">example</a> with some basic block production rules.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="grafana"><a class="header" href="#grafana">Grafana</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="grafana"><a class="header" href="#grafana">Grafana</a></h1>
 <p>Grafana is where you can define dashboards to show the time series information that Prometheus is collecting. You just need to ensure you add a datasource:</p>
 <pre><code class="language-yaml">datasources:
   - name: &quot;prometheus-prod&quot;
@@ -655,7 +655,7 @@ substrate_block_height{status=&quot;finalized&quot;} 133
 </code></pre>
 <p>You can find <a href="https://grafana.com/grafana/dashboards/?search=polkadot">existing</a> polkadot dashboards at grafana.com -</p>
 <p><img src="monitoring/../images/lb0gOx.png" alt="Grafana example" /></p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="alertmanager"><a class="header" href="#alertmanager">Alertmanager</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="alertmanager"><a class="header" href="#alertmanager">Alertmanager</a></h1>
 <p>The final part of the monitoring stack will be how and where to alert if something does go wrong. For example, you may want to send instant messages for warning alerts, but page somebody 24/7 for critical alerts.</p>
 <p>Alertmanager has many modules for email / many IM formats with almost any output being supported. You can also use 3rd party providers like PagerDuty or VictorOps and do very detailed management of oncall queues, schedules etc…</p>
 <p>A simple alert for block production being slow would look like:</p>
@@ -669,7 +669,7 @@ less than 1 per minute for more than 3 minutes.'
     severity: warning
 </code></pre>
 <p>This will then be sent to the outbound path for the severity warning.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="loki-1"><a class="header" href="#loki-1">Loki</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="loki-1"><a class="header" href="#loki-1">Loki</a></h1>
 <blockquote>
 <p>&quot;Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus&quot;</p>
 </blockquote>
@@ -768,7 +768,7 @@ scrape_configs:
         replacement: $1
 </code></pre>
 <p>The above example also configures the following custom metrics derived from logs <code>promtail_chain_log_lines_total</code>, <code>promtail_chain_error_log_lines_total</code> and <code>promtail_chain_panic_log_lines_total</code> to be exposed on the promtail metrics endpoint <a href="http://host:9080">http://host:9080</a>.</p>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="keys-and-accounts"><a class="header" href="#keys-and-accounts">Keys And Accounts</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="keys-and-accounts"><a class="header" href="#keys-and-accounts">Keys And Accounts</a></h1>
 <p>This page will describe some basic information on keys and accounts. For a more general and detailed explanation see <a href="https://wiki.polkadot.network/docs/learn-accounts">learn accounts</a> on the polkadot wiki page.</p>
 <h2 id="encryption-schemes"><a class="header" href="#encryption-schemes">Encryption Schemes</a></h2>
 <table><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
@@ -830,7 +830,7 @@ Secret Key URI `settle whisper usual blast device source region pumpkin ugly bey
   Public key (SS58): 15uRtdeE4MyMHV9LP1UHKqTx4f8Qa8uVZUpxWWw8VKSroucK
   SS58 Address:      15uRtdeE4MyMHV9LP1UHKqTx4f8Qa8uVZUpxWWw8VKSroucK
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="custom-chain"><a class="header" href="#custom-chain">Custom Chain</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="custom-chain"><a class="header" href="#custom-chain">Custom Chain</a></h1>
 <p>This section will explain what is required to build a custom chain spec for your own dev network.</p>
 <h2 id="create-chain-spec"><a class="header" href="#create-chain-spec">Create Chain Spec</a></h2>
 <p>Create a non-raw chainspec for your network with:</p>
@@ -866,7 +866,7 @@ polkadot key insert -d &lt;my_chain_folder&gt; --key-type babe --scheme sr25519 
 curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;author_insertKey&quot;, &quot;params&quot;:[&quot;'&quot;${KEY_TYPE}&quot;'&quot;, &quot;'&quot;${KEY_SEED}&quot;'&quot;],&quot;id&quot;:1 }' http://localhost:9933
 
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="infrastructure-tooling"><a class="header" href="#infrastructure-tooling">Infrastructure Tooling</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="infrastructure-tooling"><a class="header" href="#infrastructure-tooling">Infrastructure Tooling</a></h1>
 <p>This section is for listing some useful projects and tools that are relevant for node operators and developers. A community maintained <a href="https://github.com/substrate-developer-hub/awesome-substrate">Awesome Substrate</a> is a more detailed general list.</p>
 <h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
 <table><thead><tr><th>Project</th><th>Description</th></tr></thead><tbody>
@@ -892,7 +892,7 @@ curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quo
 <tr><td><a href="https://github.com/polkadot-js/tools">polkadot-js-tools</a></td><td>A very flexible utility for executing API calls or running queries.</td></tr>
 <tr><td><a href="https://github.com/paritytech/subxt">Subxt</a></td><td>Submits extrinsics via RPC</td></tr>
 </tbody></table>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="ansible"><a class="header" href="#ansible">Ansible</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="ansible"><a class="header" href="#ansible">Ansible</a></h1>
 <p>Ansible is a popular tool to detect if a host matches the current expected state and also apply any changes or updates if required. Lots of create pre-packaged modules exist in <a href="https://galaxy.ansible.com/">Ansible Galaxy</a>.</p>
 <p>The paritytech.chain_operations module is maintained on <a href="https://github.com/paritytech/ansible-galaxy">GitHub</a> and available via <code>ansible-galaxy</code>.</p>
 <h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
@@ -1007,7 +1007,7 @@ curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quo
   roles:
     - parity.chain.onboard_para
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="polkadot-js-tools"><a class="header" href="#polkadot-js-tools">Polkadot Js Tools</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="polkadot-js-tools"><a class="header" href="#polkadot-js-tools">Polkadot Js Tools</a></h1>
 <p><a href="https://github.com/polkadot-js/tools">Polkadot Js Tools</a> is an amazing tool for interacting with substrate based chains.</p>
 <p>A full list of possible <a href="https://polkadot.js.org/docs/substrate/rpc/">rpc</a> calls and <a href="https://polkadot.js.org/docs/substrate/extrinsics">extrinsics</a> are available from the <a href="https://polkadot.js.org/docs/substrate/">polkadot js docs</a> page.</p>
 <h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
@@ -1055,7 +1055,7 @@ curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quo
 <p>Transfer 1.23 units from <code>//Alice</code> on the relay chain to <code>//Charlie</code> on the parachain <code>1000</code>:</p>
 <pre><code class="language-bash">yarn run:api tx.xcmPallet.limitedTeleportAssets '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;parachain&quot;:1000}}}}' '{&quot;v1&quot;:{&quot;parents&quot;:0,&quot;interior&quot;:{&quot;x1&quot;:{&quot;AccountId32&quot;: {&quot;id&quot;: &quot;0x90b5ab205c6974c9ea841be688864633dc9ca8a357843eeacf2314649965fe22&quot;, &quot;network&quot;: &quot;Any&quot;}}}}}' '{&quot;v1&quot;: [ {&quot;id&quot;: { &quot;Concrete&quot;: {&quot;parents&quot;:0, &quot;interior&quot;:&quot;Here&quot; }}, &quot;Fun&quot;: { &quot;Fungible&quot;: &quot;12300000000&quot;}}]}'  0 Unlimited  --seed &quot;//Alice&quot;
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="helmfile"><a class="header" href="#helmfile">Helmfile</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="helmfile"><a class="header" href="#helmfile">Helmfile</a></h1>
 <p>Below are two examples of helmfile in action. One a simple single helmfile for testing and the second a more realistic example to be used in production.</p>
 <h2 id="basic-helmfile-example"><a class="header" href="#basic-helmfile-example">Basic helmfile example</a></h2>
 <p>This is a very simple one file example of a helmfile to deploy two <code>rococo-local</code> relaychain validators along with two parachains <code>statemint-dev</code> and <code>contracts-rococo-dev</code>. It is intended for basic testing and familiarization of helmfile.</p>
@@ -1187,7 +1187,7 @@ releases:
           paraId: &quot;1002&quot;
           ss58Format: &quot;0&quot;
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="zombienet"><a class="header" href="#zombienet">Zombienet</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="zombienet"><a class="header" href="#zombienet">Zombienet</a></h1>
 <p>Below is an example that is similar to the helmfile example. It will deploy two <code>rococo-local</code> relaychain validators and two parachains <code>statemint-dev</code> and <code>contracts-rococo-dev</code> and also HRMP channels between parachains 1000 and 1002.</p>
 <h2 id="more-information"><a class="header" href="#more-information">More Information</a></h2>
 <p>For more information see the <a href="https://paritytech.github.io/zombienet/">Zombienet manual</a>. For more examples see the <a href="https://github.com/paritytech/zombienet/tree/main/examples">Zombienet examples</a> in the Zombienet repo.</p>
@@ -1256,7 +1256,7 @@ recipient = 1000
 maxCapacity = 4
 maxMessageSize = 512
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="building-and-publishing-docker-images"><a class="header" href="#building-and-publishing-docker-images">Building and Publishing Docker Images</a></h1>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer><div style="break-before: page; page-break-before: always;"></div><h1 id="building-and-publishing-docker-images"><a class="header" href="#building-and-publishing-docker-images">Building and Publishing Docker Images</a></h1>
 <p>Docker images make the life of node operators (and your DevOps team) easier. They allow you to get a node up and running without configuring the vm each time, and are helpful when you need to run <em>n</em> vms in a network. External node operators (validators and RPC providers) will also thank you for providing them.</p>
 <h2 id="example-dockerfile"><a class="header" href="#example-dockerfile">Example Dockerfile</a></h2>
 <p>The following examples can be found in the Substrate Node Template repo: <a href="https://github.com/substrate-developer-hub/substrate-node-template/blob/main/Dockerfile">https://github.com/substrate-developer-hub/substrate-node-template/blob/main/Dockerfile</a></p>
@@ -1357,7 +1357,7 @@ jobs:
           push: true
           tags: ${{ env.DOCKER_REPO }}:v${{ steps.rev.outputs.value }}, ${{ secrets.DOCKER_REPO }}:latest
 </code></pre>
-<footer id="last-change">Last change: 2024-03-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/634443a">634443a</a></footer>
+<footer id="last-change">Last change: 2024-03-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/937fd62">937fd62</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
