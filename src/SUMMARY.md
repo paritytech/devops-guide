@@ -1,7 +1,8 @@
 # Summary
 
 - [Overview](./overview.md)
-
+- [Parachain Deployment Guide ](./parachain_deployment_guide.md)
+- Reference
 - [Deployment Options](./deployments/index.md)
 
   - [Role Types](./deployments/types.md)
@@ -33,10 +34,3 @@
 - [Custom Relay/Solo Chain](./customchain.md)
 
 - [🥼 Infrastructure Tooling](./tooling.md)
-
-- [Examples]()
-  - [Ansible Role](./examples/ansible.md)
-  - [Polkadot JS CLI Tools](./examples/polkadotjstools.md)
-  - [Helmfile](./examples/helmfile.md)
-  - [Zombienet](./examples/zombienet.md)
-  - [Building and Publishing Docker Images](./examples/docker.md)
