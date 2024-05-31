@@ -35,3 +35,14 @@ As the metrics provided by these endpoints don't include hosts metrics (e.g. CPU
 The telemetry server is used for real time information from nodes, showing information about their name, location, current best & finalized blocks etc… This gives you a useful dashboard to view the state of nodes.
 
 The project is in the [substrate-telemetry](https://github.com/paritytech/substrate-telemetry) GitHub repo, a [helm chart](https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry) is also available to allow easy Kubernetes deployments.
+
+# Monitoring Stack
+
+![monitoring stack](../images/monitoring-stack.png)
+
+The recommended Polkadot monitoring stack consists of the following tools:
+
+- [Prometheus](./prometheus.md): A systems and service monitoring system based on a timeseries database.
+- [Grafana](./grafana.md): allows you to query, visualize, and understand your metrics.
+- [Alertmanager](./alertmanager.md): Creates and routes alerts to the tool of your choice (Email / SMS / Telegram / PagerDuty / Slack / Matrix) based on alert rules and metrics
+- [Loki](./loki.md) - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.
