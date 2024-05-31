@@ -11,7 +11,7 @@ For a testnet, medium-sized virtual machines (2 to 4 cores) will suffice. Howeve
 Requirements:
 
 * The machines should have a public IP and allow network access on their P2P ports (defaults 30333 and 30334) as well as the RPC port for the RPC node (9944 for ws or 443 for wss).
-* The machine should have a big enough disk to host the relay-chain pruned database (>200Gb for Rococo)
+* The machine should have a big enough disk to host the relay-chain pruned database (>250 GB for Rococo)
 * You should have obtained SSH access to these machines.
 
 ### Parachain binary or docker image
@@ -263,11 +263,11 @@ You can use any method you choose to set up your nodes on your machines, we reco
 
 ### Deploy your nodes with Ansible
 
-Clone the project at 
+Clone the project at [paritytech/parachain-deployment-quickstart](https://github.com/paritytech/parachain-deployment-quickstart/) and follow instructions in the `ansible` folder.
 
 ### Deploy your nodes with Kubernetes
 
-TODO
+Clone the project at [paritytech/parachain-deployment-quickstart](https://github.com/paritytech/parachain-deployment-quickstart/) and follow instructions in the `kubernetes` folder.
 
 ## Register and activate your Parachain on the Relaychain (Rococo)
 

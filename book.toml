@@ -1,5 +1,5 @@
 [book]
-authors = ["ddorgan"]
+authors = ["Parity DevOps Team", "ddorgan", "PierreBesson"]
 language = "en"
 multilingual = false
 src = "src"
@@ -7,7 +7,7 @@ title = "Substrate Devops Guide"
 
 [output.html]
 additional-css = ["last-changed.css"]
-default-theme = "Ayu"
+default-theme = "Light"
 git-repository-url = "https://github.com/paritytech/devops-guide"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/paritytech/devops-guide/edit/master/{path}"

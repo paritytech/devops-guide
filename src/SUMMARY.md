@@ -1,36 +1,26 @@
 # Summary
 
 - [Overview](./overview.md)
-- [Parachain Deployment Guide ](./parachain_deployment_guide.md)
-- Reference
-- [Deployment Options](./deployments/index.md)
-
-  - [Role Types](./deployments/types.md)
-  - [Remote Targets](./deployments/targets.md)
-  - [Role Specific Arguments](./deployments/options.md)
-
-- [Server Deployments](./serverdeploy/index.md)
-
-  - [Systemd](./serverdeploy/systemd.md)
-  - [Logging](./serverdeploy/logging.md)
-  - [Automation](./serverdeploy/automation.md)
-
-- [Kubernetes Deployments](./kubernetes/index.md)
-
-  - [Helm Chart](./kubernetes/helm.md)
-  - [Key Injection Example](./kubernetes/key_injection_test.md)
-  - [Testnet Manager](./kubernetes/testnetmanager.md)
-
-- [Monitoring](./monitoring/index.md)
-
-  - [Example Monitoring Stack](./monitoring/example.md)
+- [How-to Guides](./guides/index.md)
+  - [Parachain Deployment](./guides/parachain_deployment.md)
+- [Explanations](./explanations/index.md)
+  - [Deployment Options](./deployments/index.md)
+    - [Role Types](./deployments/types.md)
+    - [Remote Targets](./deployments/targets.md)
+    - [Role Specific Arguments](./deployments/options.md)
+  - [Server Deployments](./serverdeploy/index.md)
+    - [Systemd](./serverdeploy/systemd.md)
+    - [Logging](./serverdeploy/logging.md)
+    - [Automation](./serverdeploy/automation.md)
+  - [Kubernetes Deployments](./kubernetes/index.md)
+    - [Helm Chart](./kubernetes/helm.md)
+    - [Key Injection Example](./kubernetes/key_injection_test.md)
+    - [Testnet Manager](./kubernetes/testnetmanager.md)
+  - [Monitoring](./monitoring/index.md)
     - [Prometheus](./monitoring/prometheus.md)
     - [Grafana](./monitoring/grafana.md)
     - [Alertmanager](./monitoring/alertmanager.md)
     - [Loki](./monitoring/loki.md)
-
-- [Keys And Accounts](./keys_accounts.md)
-
-- [Custom Relay/Solo Chain](./customchain.md)
-
-- [🥼 Infrastructure Tooling](./tooling.md)
+  - [Keys And Accounts](./keys_accounts.md)
+  - [Custom Relay/Solo Chain](./customchain.md)
+- [References](./references/index.md)

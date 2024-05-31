@@ -1,4 +1,4 @@
-# Infrastructure Tooling
+# Infrastructure Tooling References
 
 This section is for listing some useful projects and tools that are relevant for node operators and developers. A community maintained [Awesome Substrate](https://github.com/substrate-developer-hub/awesome-substrate) is a more detailed general list.
 
