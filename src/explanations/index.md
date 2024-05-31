@@ -11,7 +11,7 @@ This ensures that:
 - Rolling back is made very easy
 - There are no manual actions required to redeploy
 
-![workflow](images/3osxC7.png)
+![workflow](../images/3osxC7.png)
 
 ## General Approach to Security
 
@@ -23,6 +23,6 @@ On the chain operations side, there are two very useful concepts to increase you
 
 First is using cold / warm / hot keys, so that the compromise of say a session key would not lead to any funds being stolen. Also using multisig accounts on offline devices can greatly help security and also give an on-chain audit trail of all actions, allows for alerting for any onchain actions etc...
 
-![key stages](images/AEEVr6.png)
+![key stages](../images/AEEVr6.png)
 
 Proxy accounts also let you limit the permission that an account or multisig account has on a particular target account (e.g. only staking functions can be executed by the staking controller multisig account and require 3 of 5 people to approve).
