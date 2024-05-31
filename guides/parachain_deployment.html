@@ -1,0 +1,478 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Parachain Deployment - Substrate Devops Guide</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html" class="active"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">3.1.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/prometheus.html"><strong aria-hidden="true">3.4.1.</strong> Prometheus</a></li><li class="chapter-item expanded "><a href="../monitoring/grafana.html"><strong aria-hidden="true">3.4.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../monitoring/alertmanager.html"><strong aria-hidden="true">3.4.3.</strong> Alertmanager</a></li><li class="chapter-item expanded "><a href="../monitoring/loki.html"><strong aria-hidden="true">3.4.4.</strong> Loki</a></li></ol></li><li class="chapter-item expanded "><a href="../keys_accounts.html"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../customchain.html"><strong aria-hidden="true">3.6.</strong> Custom Relay/Solo Chain</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Substrate Devops Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/guides/parachain_deployment.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="guide-deploying-a-parachain-network"><a class="header" href="#guide-deploying-a-parachain-network">Guide: Deploying a Parachain Network</a></h1>
+<p>This guide demonstrates the deployment of a parachain test network composed of 2 collators (nodes authoring blocks) and 1 RPC node.
+We are using Rococo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Rococo, Paseo) or a mainnet (Polkadot, Kusama).</p>
+<h2 id="preparations"><a class="header" href="#preparations">Preparations</a></h2>
+<h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
+<p>For this example network, you will need 3 machines.
+The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the  <a href="https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware">&quot;validator reference hardware&quot; as detailed in the Polkadot Wiki</a>.</p>
+<p>Requirements:</p>
+<ul>
+<li>The machines should have a public IP and allow network access on their P2P ports (defaults 30333 and 30334) as well as the RPC port for the RPC node (9944 for ws or 443 for wss).</li>
+<li>The machine should have a big enough disk to host the relay-chain pruned database (&gt;250 GB for Rococo)</li>
+<li>You should have obtained SSH access to these machines.</li>
+</ul>
+<h3 id="parachain-binary-or-docker-image"><a class="header" href="#parachain-binary-or-docker-image">Parachain binary or docker image</a></h3>
+<h3 id="prepare-the-binary-for-use-with-ansible"><a class="header" href="#prepare-the-binary-for-use-with-ansible">Prepare the binary for use with Ansible</a></h3>
+<p>To deploy your network with the <a href="https://github.com/paritytech/ansible-galaxy/blob/main/roles/node">Ansible node role</a>, you will need to have the node binary available from a public URL.
+If this binary is not already available for your parachain, you will need to build it yourself using the following command:</p>
+<pre><code>cargo build --release
+</code></pre>
+<p>Then publish the node binary present in <code>target/releases</code> somewhere and note down the public URL. One option to One option to do this is to add it as a <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">GitHub release asset</a>.
+In this guide, we will use the polkadot-parachain binary released on the paritytech/polkadot-sdk.</p>
+<p>This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at <a href="https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain">https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain</a>.</p>
+<h3 id="prepare-the-docker-image-for-use-with-kubernetes"><a class="header" href="#prepare-the-docker-image-for-use-with-kubernetes">Prepare the docker image for use with Kubernetes</a></h3>
+<p>To deploy your network with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>, you will need to have a node docker image published to a public registry.
+In this guide, we will use the official <a href="https://hub.docker.com/r/parity/polkadot-parachain/tags"><code>paritech/polkadot-parachain</code> image published on Docker Hub</a>.</p>
+<h2 id="generate-parachain-private-keys"><a class="header" href="#generate-parachain-private-keys">Generate parachain private keys</a></h2>
+<h3 id="generate-static-node-keys-aka-network-keys"><a class="header" href="#generate-static-node-keys-aka-network-keys">Generate static node keys (aka network keys)</a></h3>
+<p>Node keys are used to identify nodes on the P2P network with a unique PeerID.
+To ensure this identifier persists across restarts, it is highly recommended to generate a static network key for all nodes.
+This practice is particularly important for bootnodes, which have publicly listed addresses that are used by other nodes to bootstrap their connections to the network.</p>
+<p>To generate a static node key:</p>
+<pre><code>$ polkadot-parachain key generate-node-key
+# example output
+12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
+d5e120e30dfb0eac39b1a6727d81c548e9c6b39ca97e565438a33d87726781a6% # private node key, do not copy the percent sign
+</code></pre>
+<p>You can use this bash script to generate several keys in one go. Save this file to <code>generate-node-keys.sh</code></p>
+<pre><code>#!/bin/bash
+# $1: chain name / name of the folder to create in keys will be saved
+# $2: number of keys to generate
+
+mkdir -p $1
+
+let &quot;max_key_id=$2-1&quot;
+echo &quot;generating $2 node-keys for chain $1&quot;
+
+for i in ` seq -w 0 $max_key_id `; do
+  # generate node key
+  subkey generate-node-key --file $1/node-key-$i
+  subkey inspect-node-key --file $1/node-key-$i &gt; $1/node-key-$i-id
+  # save node key info
+  echo &quot;$1-node-$i:&quot;
+  echo &quot;  node_parachain_p2p_public_key: $(cat $1/node-key-$i-id)&quot;
+  echo &quot;  node_parachain_p2p_private_key: $(cat $1/node-key-$i)&quot;
+done
+</code></pre>
+<pre><code>chmod +x generate-node-keys.sh
+./generate-node-keys.sh my-parachain 3
+</code></pre>
+<h3 id="generate-keys-for-your-collators-accountaura-keys"><a class="header" href="#generate-keys-for-your-collators-accountaura-keys">Generate keys for your collators (account+aura keys)</a></h3>
+<p>For parachains using the collatorSelection pallet to manage their collator set, you will need to generate a set of keys for each collator:</p>
+<ul>
+<li>Collator Account: a regular substrate account</li>
+<li>Aura keys (part of the collator “session keys”)</li>
+</ul>
+<p>In this example, we will use the same seed for both. Use the following command generate a secret seed for each collator:</p>
+<pre><code>polkadot-parachain key generate
+</code></pre>
+<p>You can derive public keys and account IDs from an existing seed by using:</p>
+<pre><code>$ ./polkadot-parachain key inspect &quot;//Alice&quot;
+
+Secret Key URI `//Alice` is account:
+  Network ID:        substrate
+  Secret seed:       0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a
+  Public key (hex):  0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d
+  Account ID:        0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d
+  Public key (SS58): 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+  SS58 Address:      5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
+</code></pre>
+<h2 id="create-your-network-chainspec"><a class="header" href="#create-your-network-chainspec">Create your Network Chainspec</a></h2>
+<p>When launching a new parachain network, customizing the chainspec (chain specification) is a crucial step.
+Here are the general steps to customize your chainspec.</p>
+<h3 id="generate-a-plain-chainspec"><a class="header" href="#generate-a-plain-chainspec">Generate a plain Chainspec</a></h3>
+<pre><code>./polkadot-parachain build-spec --disable-default-bootnode &gt; chainspec.plain.json
+</code></pre>
+<p>If you want to select a specific built-in chainspec of your binary, add <code>--chain chain-name</code> to your command.</p>
+<h3 id="customize-the-plain-chainspec"><a class="header" href="#customize-the-plain-chainspec">Customize the Plain Chainspec</a></h3>
+<p>To customize the chainspec for your parachain network, you'll need to edit the following fields in the <code>chainspec.plain.json</code> file:</p>
+<ul>
+<li>Set <code>name</code>, <code>id</code>, and <code>protocolId</code> to unique values:</li>
+</ul>
+<pre><code class="language-json">{
+&quot;name&quot;: &quot;UniqueParachainName&quot;,
+&quot;id&quot;: &quot;unique-parachain-id&quot;,
+&quot;protocolId&quot;: &quot;unique-protocol-id&quot;,
+...
+}
+</code></pre>
+<ul>
+<li>Set <code>relay_chain</code> to rococo:</li>
+</ul>
+<pre><code class="language-json">{
+&quot;relay_chain&quot;: &quot;rococo&quot;,
+...
+}
+</code></pre>
+<ul>
+<li>Set <code>chainType</code> to Live:</li>
+</ul>
+<pre><code class="language-json">{
+&quot;chainType&quot;: &quot;Live&quot;,
+...
+}
+</code></pre>
+<ul>
+<li>Set your ParaID in both <code>para_id</code> and <code>genesis.runtimeGenesis.patch.parachainInfo.parachainId</code>:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;para_id&quot;: &lt;your-parachain-id&gt;,
+  &quot;genesis&quot;: {
+    &quot;runtime&quot;: {
+      &quot;runtimeGenesis&quot;: {
+        &quot;patch&quot;: {
+          &quot;parachainInfo&quot;: {
+            &quot;parachainId&quot;: &lt;your-parachain-id&gt;
+        }
+      }
+    }
+  }
+},
+...
+}
+</code></pre>
+<ul>
+<li>Set <code>sudo.key</code> to your desired sudo account:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;genesis&quot;: {
+    &quot;runtime&quot;: {
+      &quot;sudo&quot;: {
+        &quot;key&quot;: &quot;&lt;your-sudo-account&gt;&quot;
+      }
+    }
+  },
+  ...
+}
+</code></pre>
+<p>You will also need specific customization relevant to your nodes:</p>
+<ul>
+<li>Set <code>bootNodes</code> addresses, any node which has a public IP or DNS can be a bootnode:</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;bootNodes&quot;: [
+   # eg. IP bootnode
+   &quot;/ip4/&lt;Node-Public-IP&gt;/tcp/30333/p2p/&lt;Node-ID&gt;&quot;
+   # eg. DNS bootnode
+   &quot;/dns/&lt;Node-Public-DNS&gt;/tcp/30333/p2p/&lt;Node-ID&gt;&quot;,
+   # (Optional) WSS Bootnodes (for light clients, requires a TLS cert, see https://wiki.polkadot.network/docs/maintain-bootnode)   
+   &quot;/dns/&lt;Node-Public-DNS&gt;/tcp/443/wss/p2p/&lt;Node-ID&gt;&quot;,
+...
+}
+</code></pre>
+<ul>
+<li>Set your genesis collator keys:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;collatorSelection&quot;: {
+     &quot;candidacyBond&quot;: 16000000000, # For non-invulnerables collators
+     &quot;invulnerables&quot;: [
+       &quot;5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY&quot;, # Collator 1 Address
+       &quot;5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty&quot; # Collator 2 Address
+     ]
+    },
+    ...
+    &quot;session&quot;: {
+     &quot;keys&quot;: [
+       [
+         &quot;5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY&quot;, # Collator Address
+         &quot;5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY&quot;, # Collator Controller Address (for legacy controller/stash separation, just set this to the same as above)
+         {
+           &quot;aura&quot;: &quot;5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY&quot; # Collator aura public key
+         }
+       ],
+       [
+         ...
+       ]
+     ]
+},
+</code></pre>
+<h3 id="convert-your-plain-chainspec-to-raw"><a class="header" href="#convert-your-plain-chainspec-to-raw">Convert your Plain Chainspec to Raw</a></h3>
+<p>To initialize the genesis storage for your chain, you need convert your chainspec from plain to raw format.
+This process transforms the human-readable keys in the plain chainspec into actual storage keys and defines a unique genesis block.</p>
+<p>A unique <a href="https://docs.substrate.io/build/chain-spec/#raw-chain-specifications">raw chainspec</a> can be created from the plain chainspec with this command:</p>
+<pre><code>polkadot-parachain build-spec --chain chainspec.plain.json --raw &gt;  chainspec.raw.json
+</code></pre>
+<p>⚠️ Only use the raw chainspec to launch your chain, not the plain chainspec.</p>
+<h3 id="optional-dry-run-your-parachain-network-locally"><a class="header" href="#optional-dry-run-your-parachain-network-locally">(Optional) Dry-run your Parachain Network Locally</a></h3>
+<p>You should now have everything ready to launch your network locally to validate that everything is properly set up.</p>
+<ul>
+<li>Start your node (we use the <code>--tmp</code> flag to prevent the node database files from being persisted to disk):</li>
+</ul>
+<pre><code>./polkadot-parachain --chain chainspec.raw.json --tmp
+</code></pre>
+<ul>
+<li>Connect to it with <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944">Polkadot.js Apps</a> on <code>ws://127.0.0.1:9944</code>.</li>
+<li>You can inspect the <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate">chain state in Polkadot.js Apps</a> to verify that everything is in order for the launch.</li>
+</ul>
+<p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). You don’t have to wait until it is fully synced.</p>
+<h2 id="deploy-your-nodes"><a class="header" href="#deploy-your-nodes">Deploy your nodes</a></h2>
+<p>You can use any method you choose to set up your nodes on your machines, we recommend either Ansible </p>
+<h3 id="deploy-your-nodes-with-ansible"><a class="header" href="#deploy-your-nodes-with-ansible">Deploy your nodes with Ansible</a></h3>
+<p>Clone the project at <a href="https://github.com/paritytech/parachain-deployment-quickstart/">paritytech/parachain-deployment-quickstart</a> and follow instructions in the <code>ansible</code> folder.</p>
+<h3 id="deploy-your-nodes-with-kubernetes"><a class="header" href="#deploy-your-nodes-with-kubernetes">Deploy your nodes with Kubernetes</a></h3>
+<p>Clone the project at <a href="https://github.com/paritytech/parachain-deployment-quickstart/">paritytech/parachain-deployment-quickstart</a> and follow instructions in the <code>kubernetes</code> folder.</p>
+<h2 id="register-and-activate-your-parachain-on-the-relaychain"><a class="header" href="#register-and-activate-your-parachain-on-the-relaychain">Register and activate your Parachain on the Relaychain</a></h2>
+<h3 id="reserve-a-paraid-on-rococo"><a class="header" href="#reserve-a-paraid-on-rococo">Reserve a ParaId on Rococo</a></h3>
+<p>Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.</p>
+<p>To get reserve a ParaId for your parachain on Rococo, navigate to the <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io">Polkadot.js Apps interface</a>.</p>
+<ul>
+<li>Ensure you are connected to the Rococo network by selecting the appropriate RPC endpoint (<code>wss://rococo-rpc.polkadot.io</code>).</li>
+<li>Go to the &quot;Developer&quot; tab and select &quot;Extrinsics&quot;.</li>
+<li>Choose <code>registrar.reserve</code> from the dropdown menu and execute it with your account.</li>
+<li>Check the included extrinsic result in the block to find your reserved <code>para_id</code> and note it down.</li>
+</ul>
+<h3 id="register-parachain-genesis-code-and-state-on-relay-chain"><a class="header" href="#register-parachain-genesis-code-and-state-on-relay-chain">Register parachain genesis code and state on relay-chain</a></h3>
+<p>You can export the genesis runtime (WASM code) and state files from your chainspec. Then, these files can be registered on the relaychain to initialize your parachain.</p>
+<ul>
+<li>Export the genesis state:</li>
+</ul>
+<pre><code>./polkadot-parachain export-genesis-state --chain chainspec.raw.json &gt; genesis_state_head
+</code></pre>
+<ul>
+<li>Export the genesis runtime:</li>
+</ul>
+<pre><code>./polkadot-parachain export-genesis-wasm --chain chainspec.raw.json &gt; genesis_wasm_code
+</code></pre>
+<ul>
+<li>Register your parachain genesis configuration on the relay-chain by executing the registrar.register  extrinsic on Rococo:
+<ul>
+<li><code>id</code>: your parachain ID</li>
+<li><code>genesisHead</code>: select the <code>genesis_state_head</code> file</li>
+<li><code>validationCode</code>: select the <code>genesis_wasm_code</code> file</li>
+</ul>
+</li>
+</ul>
+<h3 id="obtain-on-demand-coretime-to-produce-your-first-block"><a class="header" href="#obtain-on-demand-coretime-to-produce-your-first-block">Obtain on-demand coretime to produce your first block</a></h3>
+<ul>
+<li>Execute extrinsic: <code>onDemandAssignmentProvider.placeOrderAllowDeath</code> or <code>onDemandAssignmentProvider.placeOrderKeepAlive</code>:
+<ul>
+<li><code>maxAmount</code>: <code>10000000000000</code> (13 zeros, ie. 10 ROC)</li>
+<li><code>paraId</code>: your parachain ID</li>
+</ul>
+</li>
+</ul>
+<p>After executing this, you should have successfully produced your first block !</p>
+<pre><code>INFO tokio-runtime-worker substrate: [Parachain] ✨ Imported #1 (0xa075…10d6)
+</code></pre>
+<h2 id="manage-coretime-for-your-chain"><a class="header" href="#manage-coretime-for-your-chain">Manage Coretime for your chain</a></h2>
+<p>To allow your parachain to produce blocks it needs to be allocated <a href="https://wiki.polkadot.network/docs/learn-agile-coretime">coretime</a> (time allocated for utilizing a core) on the relaychain.
+What we mean by &quot;core&quot; is the ability of the relaychain (and its validators) to validate the new blocks of a parachain (received from the collators) so that they are “included” in Polkadot as finalized parachain blocks.</p>
+<p>There are 2 types of coretime:</p>
+<ul>
+<li><strong>On-demand coretime</strong>: lets users buy coretime by the block. Useful for parachains which don’t require continuous block production</li>
+<li><strong>Bulk coretime</strong>: an allocation of uninterrupted 28 days (default region length) of coretime (possibly split in timeslices)</li>
+</ul>
+<p>For more information, please refer to the <a href="https://wiki.polkadot.network/docs/learn-guides-coretime-parachains">Parachain Coretime Guide</a>.</p>
+<h3 id="reserve-bulk-coretime"><a class="header" href="#reserve-bulk-coretime">Reserve Bulk Coretime</a></h3>
+<ul>
+<li>Go on <a href="https://www.lastic.xyz/rococo/bulkcore1">Lastic Rococo Coretime Sales page</a> and buy 1 core</li>
+<li>Go on <a href="https://www.lastic.xyz/rococo/my-cores">Lastic Rococo Homepage</a>, click on the “core nb X” that you own to show its dedicated page, then click &quot;assign core&quot;.
+Assign it to your ParaID and Finality: <code>Final</code></li>
+</ul>
+<p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
+<h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
+<p>TODO</p>
+<footer id="last-change">Last change: 2024-05-31, commit: <a href="https://github.com/paritytech/devops-guide/commit/5788252">5788252</a></footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../guides/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../explanations/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../guides/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../explanations/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
