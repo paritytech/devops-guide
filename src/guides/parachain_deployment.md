@@ -1,12 +1,14 @@
 # Guide: Deploying a Parachain Network
 
 This guide demonstrates the deployment of a parachain test network composed of 2 collators (nodes authoring blocks) and 1 RPC node.
+We are using Rococo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Rococo, Paseo) or a mainnet (Polkadot, Kusama).
 
 ## Preparations
 
 ### Hardware
-To run your nodes, you'll need suitable machines. For this example network, you will need 3 machines.
-For a testnet, medium-sized virtual machines (2 to 4 cores) will suffice. However, for mainnet nodes, it is recommended to follow the ["validator reference hardware" as detailed in the Polkadot Wiki](https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware).
+
+For this example network, you will need 3 machines.
+The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the  ["validator reference hardware" as detailed in the Polkadot Wiki](https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware).
 
 Requirements:
 
@@ -25,21 +27,23 @@ If this binary is not already available for your parachain, you will need to bui
 cargo build --release
 ```
 
-Then publish the node binary present in `target/releases` somewhere and note down the public URL. One option to One option to do this is to add it as a [Github release asset](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
-In this guide, we will use the polkadot-parachain binary released on the paritytech/polkadot-sdk. This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at `https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain`.
+Then publish the node binary present in `target/releases` somewhere and note down the public URL. One option to One option to do this is to add it as a [GitHub release asset](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+In this guide, we will use the polkadot-parachain binary released on the paritytech/polkadot-sdk.
+
+This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at [https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain](https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain).
 
 ### Prepare the docker image for use with Kubernetes
 
-To deploy your network with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node), you will need to have a node docker image published in a registry
-In this guide, we will use the [official `paritech/polkadot-parachain` published on Docker Hub](https://hub.docker.com/r/parity/polkadot-parachain/tags).
+To deploy your network with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node), you will need to have a node docker image published to a public registry.
+In this guide, we will use the official [`paritech/polkadot-parachain` image published on Docker Hub](https://hub.docker.com/r/parity/polkadot-parachain/tags).
 
 ## Generate parachain private keys 
 
 ### Generate static node keys (aka network keys)
 
 Node keys are used to identify nodes on the P2P network with a unique PeerID.
-To ensure this identifier persists across restarts, it is highly recommended to generate a static key for all nodes.
-This practice is particularly important for bootnodes, as other nodes in the network use these bootnodes to bootstrap their connections to the network.
+To ensure this identifier persists across restarts, it is highly recommended to generate a static network key for all nodes.
+This practice is particularly important for bootnodes, which have publicly listed addresses that are used by other nodes to bootstrap their connections to the network.
 
 To generate a static node key:
 
@@ -106,7 +110,7 @@ Secret Key URI `//Alice` is account:
 ## Create your Network Chainspec
 
 When launching a new parachain network, customizing the chainspec (chain specification) is a crucial step.
-Here are the general steps to customize your chainspec:
+Here are the general steps to customize your chainspec.
 
 ### Generate a plain Chainspec
 
@@ -201,7 +205,7 @@ You will also need specific customization relevant to your nodes:
 }
 ```
 
-* Set your genesis parachain keys
+* Set your genesis collator keys:
 
 ```json
 {
@@ -269,7 +273,7 @@ Clone the project at [paritytech/parachain-deployment-quickstart](https://github
 
 Clone the project at [paritytech/parachain-deployment-quickstart](https://github.com/paritytech/parachain-deployment-quickstart/) and follow instructions in the `kubernetes` folder.
 
-## Register and activate your Parachain on the Relaychain (Rococo)
+## Register and activate your Parachain on the Relaychain
 
 ### Reserve a ParaId on Rococo
 
@@ -317,8 +321,8 @@ To allow your parachain to produce blocks it needs to be allocated [coretime](ht
 What we mean by "core" is the ability of the relaychain (and its validators) to validate the new blocks of a parachain (received from the collators) so that they are “included” in Polkadot as finalized parachain blocks.
 
 There are 2 types of coretime:
-- On-demand coretime: lets users buy coretime by the block. Useful for parachains which don’t require continuous block production
-- Bulk coretime: an allocation of uninterrupted 28 days (default region length) of coretime (possibly split in timeslices)
+- **On-demand coretime**: lets users buy coretime by the block. Useful for parachains which don’t require continuous block production
+- **Bulk coretime**: an allocation of uninterrupted 28 days (default region length) of coretime (possibly split in timeslices)
 
 For more information, please refer to the [Parachain Coretime Guide](https://wiki.polkadot.network/docs/learn-guides-coretime-parachains).
 
@@ -329,7 +333,6 @@ For more information, please refer to the [Parachain Coretime Guide](https://wik
   Assign it to your ParaID and Finality: `Final`
 
 Note: any account with enough funds can buy and assign coretime for a parachain.
-
 
 ### Renew Bulk Coretime
 
