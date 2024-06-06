@@ -48,37 +48,11 @@ This practice is particularly important for bootnodes, which have publicly liste
 To generate a static node key:
 
 ```
-$ polkadot-parachain key generate-node-key
+./polkadot-parachain key generate-node-key --file node.key
 # example output
 12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
+cat node.key
 d5e120e30dfb0eac39b1a6727d81c548e9c6b39ca97e565438a33d87726781a6% # private node key, do not copy the percent sign
-```
-
-You can use this bash script to generate several keys in one go. Save this file to `generate-node-keys.sh`
-```
-#!/bin/bash
-# $1: chain name / name of the folder to create in keys will be saved
-# $2: number of keys to generate
-
-mkdir -p $1
-
-let "max_key_id=$2-1"
-echo "generating $2 node-keys for chain $1"
-
-for i in ` seq -w 0 $max_key_id `; do
-  # generate node key
-  subkey generate-node-key --file $1/node-key-$i
-  subkey inspect-node-key --file $1/node-key-$i > $1/node-key-$i-id
-  # save node key info
-  echo "$1-node-$i:"
-  echo "  node_parachain_p2p_public_key: $(cat $1/node-key-$i-id)"
-  echo "  node_parachain_p2p_private_key: $(cat $1/node-key-$i)"
-done
-```
-
-```
-chmod +x generate-node-keys.sh
-./generate-node-keys.sh my-parachain 3
 ```
 
 ### Generate keys for your collators (account+aura keys)
@@ -96,8 +70,8 @@ polkadot-parachain key generate
 
 You can derive public keys and account IDs from an existing seed by using:
 ```
-$ ./polkadot-parachain key inspect "//Alice"
-
+./polkadot-parachain key inspect "<secret-seed>"
+# example output
 Secret Key URI `//Alice` is account:
   Network ID:        substrate
   Secret seed:       0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a
