@@ -267,7 +267,7 @@ You can export the genesis runtime (WASM code) and state files from your chainsp
 ```
 ./polkadot-parachain export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
 ```
-* Register your parachain genesis configuration on the relay-chain by executing the registrar.register  extrinsic on Rococo:
+* Register your parachain genesis configuration on the relay-chain by executing the `registrar.register` extrinsic on Rococo:
   - `id`: your parachain ID
   - `genesisHead`: select the `genesis_state_head` file
   - `validationCode`: select the `genesis_wasm_code` file
