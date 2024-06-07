@@ -98,40 +98,50 @@ If you want to select a specific built-in chainspec of your binary, add `--chain
 
 To customize the chainspec for your parachain network, you'll need to edit the following fields in the `chainspec.plain.json` file:
 
-* Set `name`, `id`, and `protocolId` to unique values:
+
+* Set `name`, `id`, and `protocolId` values:
 
 ```json
 {
 "name": "UniqueParachainName",
 "id": "unique-parachain-id",
 "protocolId": "unique-protocol-id",
-...
 }
 ```
 
-* Set `relay_chain` to rococo:
+* Set `relay_chain`, `chainType`, `para_id`:
 
 ```json
 {
-"relay_chain": "rococo",
-...
-}
-```
-
-* Set `chainType` to Live:
-
-```json
-{
-"chainType": "Live",
-...
-}
-```
-
-* Set your ParaID in both `para_id` and `genesis.runtimeGenesis.patch.parachainInfo.parachainId`:
-
-```json
-{
+  "relay_chain": "rococo",
+  "chainType": "Live",
   "para_id": <your-parachain-id>,
+
+  ...
+}
+```
+
+* Set `bootNodes` addresses, any node which has a public IP or DNS can be a bootnode:
+
+```json
+{
+  "bootNodes": [
+   # eg. IP bootnode
+   "/ip4/<Node-Public-IP>/tcp/30333/p2p/<Node-ID>"
+   # eg. DNS bootnode
+   "/dns/<Node-Public-DNS>/tcp/30333/p2p/<Node-ID>",
+   # (Optional) WSS Bootnodes (for light clients, requires a TLS cert, see https://wiki.polkadot.network/docs/maintain-bootnode)   
+   "/dns/<Node-Public-DNS>/tcp/443/wss/p2p/<Node-ID>",
+...
+}
+```
+
+### Customize your runtime genesis config
+
+* The ParaID needs to be set both `para_id` and `genesis.runtimeGenesis.patch.parachainInfo.parachainId`:
+
+```json
+{
   "genesis": {
     "runtime": {
       "runtimeGenesis": {
@@ -163,21 +173,6 @@ To customize the chainspec for your parachain network, you'll need to edit the f
 ```
 
 You will also need specific customization relevant to your nodes:
-
-* Set `bootNodes` addresses, any node which has a public IP or DNS can be a bootnode:
-
-```json
-{
-  "bootNodes": [
-   # eg. IP bootnode
-   "/ip4/<Node-Public-IP>/tcp/30333/p2p/<Node-ID>"
-   # eg. DNS bootnode
-   "/dns/<Node-Public-DNS>/tcp/30333/p2p/<Node-ID>",
-   # (Optional) WSS Bootnodes (for light clients, requires a TLS cert, see https://wiki.polkadot.network/docs/maintain-bootnode)   
-   "/dns/<Node-Public-DNS>/tcp/443/wss/p2p/<Node-ID>",
-...
-}
-```
 
 * Set your genesis collator keys:
 
