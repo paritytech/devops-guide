@@ -28,14 +28,13 @@ cargo build --release
 ```
 
 Then publish the node binary present in `target/releases` somewhere and note down the public URL. One option to One option to do this is to add it as a [GitHub release asset](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
-In this guide, we will use the polkadot-parachain binary released on the paritytech/polkadot-sdk.
+In this guide, we will use the parachain-template-node that you can get from [paritytech/polkadot-sdk-parachain-template](https://github.com/paritytech/polkadot-sdk-parachain-template).
 
 This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at [https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain](https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain).
 
 ### Prepare the docker image for use with Kubernetes
 
 To deploy your network with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node), you will need to have a node docker image published to a public registry.
-In this guide, we will use the official [`paritech/polkadot-parachain` image published on Docker Hub](https://hub.docker.com/r/parity/polkadot-parachain/tags).
 
 ## Generate parachain private keys 
 
@@ -48,7 +47,7 @@ This practice is particularly important for bootnodes, which have publicly liste
 To generate a static node key:
 
 ```
-./polkadot-parachain key generate-node-key --file node.key
+parachain-template-node  key generate-node-key --file node.key
 # example output
 12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
 cat node.key
@@ -70,7 +69,7 @@ polkadot-parachain key generate
 
 You can derive public keys and account IDs from an existing seed by using:
 ```
-./polkadot-parachain key inspect "<secret-seed>"
+parachain-template-node  key inspect "<secret-seed>"
 # example output
 Secret Key URI `//Alice` is account:
   Network ID:        substrate
@@ -84,122 +83,122 @@ Secret Key URI `//Alice` is account:
 ## Create your Network Chainspec
 
 When launching a new parachain network, customizing the chainspec (chain specification) is a crucial step.
-Here are the general steps to customize your chainspec.
 
-### Generate a plain Chainspec
+### Export your runtime file
+
+First export your runtime file from your node binary (here `--raw` is used to export the output as binary not hex string):
 
 ```
-./polkadot-parachain build-spec --disable-default-bootnode > chainspec.plain.json
+parachain-template-node export-genesis-wasm --raw > runtime.wasm
 ```
 
-If you want to select a specific built-in chainspec of your binary, add `--chain chain-name` to your command.
+If you want to select a specific built-in runtimle of your binary, add `--chain chain-name` to your command.
 
-### Customize the Plain Chainspec
+### Prepare your genesis patch config
 
-To customize the chainspec for your parachain network, you'll need to edit the following fields in the `chainspec.plain.json` file:
-
-
-* Set `name`, `id`, and `protocolId` values:
-
+Save the following to `genesis-patch.json` (replace keys and configuration with your own):
 ```json
 {
-"name": "UniqueParachainName",
-"id": "unique-parachain-id",
-"protocolId": "unique-protocol-id",
+  "balances": {
+    "balances": [
+      [
+        "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+        1152921504606846976
+      ],
+      [
+        "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+        1152921504606846976
+      ]
+    ]
+  },
+  "collatorSelection": {
+    "candidacyBond": 16000000000,
+    "invulnerables": [
+      "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+      "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+    ]
+  },
+  "session": {
+    "keys": [
+      [
+        "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+        "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY",
+        {
+          "aura": "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+        }
+      ],
+      [
+        "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+        "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty",
+        {
+          "aura": "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty"
+        }
+      ]
+    ]
+  },
+  "parachainInfo": {
+    "parachainId": 4435
+  },
+  "polkadotXcm": {
+    "safeXcmVersion": 4
+  },
+  "sudo": {
+    "key": "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+  }
 }
 ```
 
-* Set `relay_chain`, `chainType`, `para_id`:
+In this example:
 
-```json
+* `balances`: initial account balances
+* `collatorSelection`: configure the collatorSelection pallet properties, in this example we set Alice and Bob as initial invulnerable collators.
+* `session.keys`: initial session keys
+* `parachainInfo.parachainId`: parachain ID
+* `sudo.keys`: initial sudo key account
+
+Note that:
+- `5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY`: Alice's account address
+- `5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty`: Bob's account address
+
+### Generate a customized plain Chainspec
+
+With the **chain-spec-builder** utility, we can generate a chainspec file using only the runtime wasm file 
+on which we will apply a patch describing the customized genesis config we want to apply
+
+Download the chain-spec-builder binary from the latest [polkadot-sdk releases](https://github.com/paritytech/polkadot-sdk/releases/latest).
+Then execute it, taking as input the runtime and genesis patch files:
+
+```bash
+chain-spec-builder -c chainspec.plain.json create -n "Test Parachain" -i test-parachain -t live -r runtime.wasm patch genesis.patch.json
+```
+
+To work properly as a parachain chainspec, add the following fields to your `chainspec.plain.json`:
+```
 {
+  "protocolId": "template-local",
+  "properties": {
+    "ss58Format": 42,
+    "tokenDecimals": 12,
+    "tokenSymbol": "UNIT"
+  },
+  "para_id": 4435,
   "relay_chain": "rococo",
-  "chainType": "Live",
-  "para_id": <your-parachain-id>,
-
   ...
-}
 ```
 
-* Set `bootNodes` addresses, any node which has a public IP or DNS can be a bootnode:
+You also need to set your `bootNodes` addresses, any node which has a public IP or DNS can be a bootnode:
 
 ```json
 {
   "bootNodes": [
-   # eg. IP bootnode
-   "/ip4/<Node-Public-IP>/tcp/30333/p2p/<Node-ID>"
-   # eg. DNS bootnode
-   "/dns/<Node-Public-DNS>/tcp/30333/p2p/<Node-ID>",
-   # (Optional) WSS Bootnodes (for light clients, requires a TLS cert, see https://wiki.polkadot.network/docs/maintain-bootnode)   
-   "/dns/<Node-Public-DNS>/tcp/443/wss/p2p/<Node-ID>",
-...
-}
-```
-
-### Customize your runtime genesis config
-
-* The ParaID needs to be set both `para_id` and `genesis.runtimeGenesis.patch.parachainInfo.parachainId`:
-
-```json
-{
-  "genesis": {
-    "runtime": {
-      "runtimeGenesis": {
-        "patch": {
-          "parachainInfo": {
-            "parachainId": <your-parachain-id>
-        }
-      }
-    }
-  }
-},
-...
-}
-```
-
-* Set `sudo.key` to your desired sudo account:
-
-```json
-{
-  "genesis": {
-    "runtime": {
-      "sudo": {
-        "key": "<your-sudo-account>"
-      }
-    }
-  },
+    # eg. IP bootnode
+    "/ip4/<Node-Public-IP>/tcp/30333/p2p/<Node-ID>"
+    # eg. DNS bootnode
+    "/dns/<Node-Public-DNS>/tcp/30333/p2p/<Node-ID>",
+    # (Optional) WSS Bootnodes (for light clients, requires a TLS cert, see https://wiki.polkadot.network/docs/maintain-bootnode)   
+    "/dns/<Node-Public-DNS>/tcp/443/wss/p2p/<Node-ID>",
   ...
 }
-```
-
-You will also need specific customization relevant to your nodes:
-
-* Set your genesis collator keys:
-
-```json
-{
-    "collatorSelection": {
-     "candidacyBond": 16000000000, # For non-invulnerables collators
-     "invulnerables": [
-       "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY", # Collator 1 Address
-       "5FHneW46xGXgs5mUiveU4sbTyGBzmstUspZC92UhjJM694ty" # Collator 2 Address
-     ]
-    },
-    ...
-    "session": {
-     "keys": [
-       [
-         "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY", # Collator Address
-         "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY", # Collator Controller Address (for legacy controller/stash separation, just set this to the same as above)
-         {
-           "aura": "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY" # Collator aura public key
-         }
-       ],
-       [
-         ...
-       ]
-     ]
-},
 ```
 
 ### Convert your Plain Chainspec to Raw
@@ -223,7 +222,7 @@ You should now have everything ready to launch your network locally to validate 
 * Start your node (we use the `--tmp` flag to prevent the node database files from being persisted to disk):
 
 ```
-./polkadot-parachain --chain chainspec.raw.json --tmp
+parachain-template-node  --chain chainspec.raw.json --tmp
 ````
 * Connect to it with [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944) on `ws://127.0.0.1:9944`.
 * You can inspect the [chain state in Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate) to verify that everything is in order for the launch.
@@ -261,11 +260,11 @@ You can export the genesis runtime (WASM code) and state files from your chainsp
 
 * Export the genesis state:
 ```
-./polkadot-parachain export-genesis-state --chain chainspec.raw.json > genesis_state_head
+parachain-template-node  export-genesis-state --chain chainspec.raw.json > genesis_state_head
 ```
 * Export the genesis runtime:
 ```
-./polkadot-parachain export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
+parachain-template-node  export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
 ```
 * Register your parachain genesis configuration on the relay-chain by executing the `registrar.register` extrinsic on Rococo:
   - `id`: your parachain ID
