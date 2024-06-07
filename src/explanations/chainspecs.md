@@ -1,6 +1,6 @@
-# Custom Chain
+# Custom Chain - Chainspecs
 
-This section will explain what is required to build a custom chain spec for your own dev network.
+This section will explain what is required to build a custom chain spec for your own network.
 
 ## Create Chain Spec
 
