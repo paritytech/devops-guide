@@ -18,7 +18,6 @@ This page will describe some basic information on keys and accounts. For a more 
 | authority_discovery | sr25519 |
 | aura                | sr25519 |
 | babe                | sr25519 |
-| im_online           | sr25519 |
 | para_validator      | sr25519 |
 | para_assignment     | sr25519 |
 | beefy               | ecdsa   |
