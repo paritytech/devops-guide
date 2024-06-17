@@ -21,6 +21,6 @@
     - [Grafana](./monitoring/grafana.md)
     - [Alertmanager](./monitoring/alertmanager.md)
     - [Loki](./monitoring/loki.md)
-  - [Keys And Accounts](./keys_accounts.md)
-  - [Custom Relay/Solo Chain](./customchain.md)
+  - [Keys And Accounts](./explanations/keys_accounts.md)
+  - [Chainspecs](./explanations/chainspecs.md)
 - [References](./references/index.md)
