@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Keys And Accounts - Substrate Devops Guide</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/types.html"><strong aria-hidden="true">3.1.1.</strong> Role Types</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/prometheus.html"><strong aria-hidden="true">3.4.1.</strong> Prometheus</a></li><li class="chapter-item expanded "><a href="../monitoring/grafana.html"><strong aria-hidden="true">3.4.2.</strong> Grafana</a></li><li class="chapter-item expanded "><a href="../monitoring/alertmanager.html"><strong aria-hidden="true">3.4.3.</strong> Alertmanager</a></li><li class="chapter-item expanded "><a href="../monitoring/loki.html"><strong aria-hidden="true">3.4.4.</strong> Loki</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/keys_accounts.html" class="active"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../explanations/chainspecs.html"><strong aria-hidden="true">3.6.</strong> Chainspecs</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Substrate Devops Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/explanations/keys_accounts.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="keys-and-accounts"><a class="header" href="#keys-and-accounts">Keys And Accounts</a></h1>
+<p>This page will describe some basic information on keys and accounts. For a more general and detailed explanation see <a href="https://wiki.polkadot.network/docs/learn-accounts">learn accounts</a> on the polkadot wiki page.</p>
+<h2 id="encryption-schemes"><a class="header" href="#encryption-schemes">Encryption Schemes</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
+<tr><td>ed25519</td><td>The vanilla ed25519 implementation using Schnorr signatures.</td></tr>
+<tr><td>sr25519</td><td>The Schnorrkel/Ristretto sr25519 variant using Schnorr signatures. (default)</td></tr>
+<tr><td>ecdsa</td><td>ECDSA signatures on secp256k1</td></tr>
+</tbody></table>
+<h2 id="session-key-types"><a class="header" href="#session-key-types">Session Key Types</a></h2>
+<table><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody>
+<tr><td>grandpa</td><td>ed25519</td></tr>
+<tr><td>authority_discovery</td><td>sr25519</td></tr>
+<tr><td>aura</td><td>sr25519</td></tr>
+<tr><td>babe</td><td>sr25519</td></tr>
+<tr><td>para_validator</td><td>sr25519</td></tr>
+<tr><td>para_assignment</td><td>sr25519</td></tr>
+<tr><td>beefy</td><td>ecdsa</td></tr>
+</tbody></table>
+<h2 id="key-generation-and-inspection"><a class="header" href="#key-generation-and-inspection">Key Generation and Inspection</a></h2>
+<p>You can use <code>polkadot-parachain keys</code> or the <code>subkey</code> command to generate and inspect keys.</p>
+<p>Two important subcommands are:</p>
+<ul>
+<li><code>generate</code> Create a new random account and print the private key data or save to a file.</li>
+<li><code>inspect</code> View the account data for an account by passing a secret phrase or seed.</li>
+</ul>
+<p>Some important options are:</p>
+<ul>
+<li><code>--network</code> specify the network the keys will be used on, default is substrate.</li>
+<li><code>--scheme</code> the scheme for the keys, default is sr25519.</li>
+</ul>
+<h2 id="generate"><a class="header" href="#generate">Generate</a></h2>
+<h3 id="create-a-random-account-key"><a class="header" href="#create-a-random-account-key">Create a Random Account Key</a></h3>
+<pre><code class="language-bash">$ polkadot-parachain key generate
+Secret phrase:       test test test test test test test test test test test junk
+  Network ID:        substrate
+  Secret seed:       0x4ca479f5e0dc0ee04ebcbadb64c220267dad42b8cfa4da1f0874787523b4709c
+  Public key (hex):  0xd000ac5048ae858aca2e6aa43e00661562a47026fe88ff83992430204a159752
+  Account ID:        0xd000ac5048ae858aca2e6aa43e00661562a47026fe88ff83992430204a159752
+  Public key (SS58): 5GmS1wtCfR4tK5SSgnZbVT4kYw5W8NmxmijcsxCQE6oLW6A8
+  SS58 Address:      5GmS1wtCfR4tK5SSgnZbVT4kYw5W8NmxmijcsxCQE6oLW6A8
+</code></pre>
+<p>You can save it to a file using </p>
+<h2 id="inspection"><a class="header" href="#inspection">Inspection</a></h2>
+<h3 id="inspect-created-key"><a class="header" href="#inspect-created-key">Inspect Created Key</a></h3>
+<pre><code class="language-bash">$ polkadot-parachain key inspect &quot;test test test test test test test test test test test junk&quot;
+Secret phrase:       test test test test test test test test test test test junk
+  Network ID:        substrate
+  Secret seed:       0x4ca479f5e0dc0ee04ebcbadb64c220267dad42b8cfa4da1f0874787523b4709c
+  Public key (hex):  0xd000ac5048ae858aca2e6aa43e00661562a47026fe88ff83992430204a159752
+  Account ID:        0xd000ac5048ae858aca2e6aa43e00661562a47026fe88ff83992430204a159752
+  Public key (SS58): 5GmS1wtCfR4tK5SSgnZbVT4kYw5W8NmxmijcsxCQE6oLW6A8
+  SS58 Address:      5GmS1wtCfR4tK5SSgnZbVT4kYw5W8NmxmijcsxCQE6oLW6A8
+</code></pre>
+<h3 id="inspect-created-key-with-hard-derivation-stash0"><a class="header" href="#inspect-created-key-with-hard-derivation-stash0">Inspect Created Key With Hard Derivation //Stash//0</a></h3>
+<pre><code class="language-bash">$ polkadot-parachain key inspect &quot; test test test test test test test test test test test junk//Stash//0&quot;
+Secret Key URI ` test test test test test test test test test test test junk//Stash//0` is account:
+  Network ID:        substrate
+  Secret seed:       0x88f170a1438f83de6c2b845282ebb577dfcaee4c896655e64777ba220b3ad33d
+  Public key (hex):  0xa2a73aaf576ed83371c92642a80706bf4b007c40f689d649aa7b075833d7242c
+  Account ID:        0xa2a73aaf576ed83371c92642a80706bf4b007c40f689d649aa7b075833d7242c
+  Public key (SS58): 5FjyHtMBm7kArqgSX52DAQvZeJ2Tq5sQBwFfSmZ3NWMHs4Be
+  SS58 Address:      5FjyHtMBm7kArqgSX52DAQvZeJ2Tq5sQBwFfSmZ3NWMHs4Be
+</code></pre>
+<h2 id="managing-a-node-session-keys"><a class="header" href="#managing-a-node-session-keys">Managing a node session keys</a></h2>
+<p>In Polkadot, <strong>Session Keys</strong> refer to the hot keys set on a node to perform various network operations, such as collating or validating blocks.</p>
+<h3 id="create-new-session-keys-on-a-node-via-the-author_rotatekeys-rpc-method"><a class="header" href="#create-new-session-keys-on-a-node-via-the-author_rotatekeys-rpc-method">Create new session keys on a node via the <code>author_rotateKeys</code> RPC method</a></h3>
+<p>On the remote machine hosting the node, you can create new session keys with the following commmand:</p>
+<pre><code class="language-bash">curl -H &quot;Content-Type: application/json&quot; -d '{&quot;id&quot;:1, &quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;: &quot;author_rotateKeys&quot;, &quot;params&quot;:[]}' http://localhost:9944
+</code></pre>
+<p>The response output will then show the hex-encoded concatenation of the session public keys. This is intended to be submitted on-chain using the <a href="https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#submitting-the-setkeys-transaction">session.setKeys extrinsics</a>.</p>
+<h3 id="insert-a-specific-key-onto-a-node-keystore-via-the-author_insertkey-rpc-method"><a class="header" href="#insert-a-specific-key-onto-a-node-keystore-via-the-author_insertkey-rpc-method">Insert a specific key onto a node keystore via the <code>author_insertKey</code> RPC method</a></h3>
+<p>To inject a key via RPC, use the following command:</p>
+<pre><code class="language-bash">curl -H &quot;Content-Type: application/json&quot; \ --data '{ &quot;jsonrpc&quot;:&quot;2.0&quot;, &quot;method&quot;:&quot;author_insertKey&quot;, &quot;params&quot;:[&quot;'&quot;${KEY_TYPE}&quot;'&quot;, &quot;'&quot;${KEY_SEED}&quot;'&quot;],&quot;id&quot;:1 }' http://localhost:9933
+</code></pre>
+<p>Set:</p>
+<ul>
+<li><code>KEY_TYPE</code> to a session key type (eg. <code>babe</code>, <code>grandpa</code>)</li>
+<li><code>KEY_SEED</code> to a secret seed or private key</li>
+</ul>
+<h3 id="insert-a-specific-key-onto-a-node-keystore-using-the-node-binary"><a class="header" href="#insert-a-specific-key-onto-a-node-keystore-using-the-node-binary">Insert a specific key onto a node keystore using the node binary</a></h3>
+<p>To inject a key via the node binary, use the following command:</p>
+<pre><code class="language-bash">polkadot-parachain key insert -d &lt;my_chain_folder&gt; --key-type ${KEY_TYPE} --scheme ${KEY_SCHEME} --suri ${KEY_FILE}
+</code></pre>
+<ul>
+<li><code>KEY_TYPE</code>: a session key type (eg. <code>babe</code>, <code>grandpa</code>)</li>
+<li><code>KEY_SCHEME</code>: an encryption scheme (eg. <code>sr25519</code>, <code>ed25519</code>, <code>ecdsa</code>)</li>
+<li><code>KEY_FILE</code>: a plain text file which contains the seed or private key</li>
+</ul>
+<footer id="last-change">Last change: 2024-06-17, commit: <a href="https://github.com/paritytech/devops-guide/commit/4f9516f">4f9516f</a></footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../monitoring/loki.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../explanations/chainspecs.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../monitoring/loki.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../explanations/chainspecs.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
