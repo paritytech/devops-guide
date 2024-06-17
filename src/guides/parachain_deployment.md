@@ -47,7 +47,7 @@ This practice is particularly important for bootnodes, which have publicly liste
 To generate a static node key:
 
 ```
-parachain-template-node  key generate-node-key --file node.key
+parachain-template-node key generate-node-key --file node.key
 # example output
 12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
 cat node.key
@@ -64,7 +64,7 @@ For parachains using the collatorSelection pallet to manage their collator set, 
 In this example, we will use the same seed for both. Use the following command generate a secret seed for each collator:
 
 ```
-polkadot-parachain key generate
+parachain-template-node key generate
 ```
 
 You can derive public keys and account IDs from an existing seed by using:
@@ -79,6 +79,18 @@ Secret Key URI `//Alice` is account:
   Public key (SS58): 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
   SS58 Address:      5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
 ```
+
+## Reserve a ParaId on Rococo
+
+Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.
+
+To get reserve a ParaId for your parachain on Rococo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io).
+
+* Ensure you are connected to the Rococo network by selecting the appropriate RPC endpoint (`wss://rococo-rpc.polkadot.io`).
+* Go to the "Developer" tab and select "Extrinsics".
+* Choose `registrar.reserve` from the dropdown menu and execute it with your account.
+* Check the included extrinsic result in the block to find your reserved `para_id` and note it down.
+
 
 ## Create your Network Chainspec
 
@@ -209,7 +221,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 A unique [raw chainspec](https://docs.substrate.io/build/chain-spec/#raw-chain-specifications) can be created from the plain chainspec with this command:
 
 ```
-polkadot-parachain build-spec --chain chainspec.plain.json --raw >  chainspec.raw.json
+parachain-template-node build-spec --chain chainspec.plain.json --raw >  chainspec.raw.json
 ```
 
 ⚠️ Only use the raw chainspec to launch your chain, not the plain chainspec.
@@ -242,17 +254,6 @@ Clone the project at [paritytech/parachain-deployment-quickstart](https://github
 Clone the project at [paritytech/parachain-deployment-quickstart](https://github.com/paritytech/parachain-deployment-quickstart/) and follow instructions in the `kubernetes` folder.
 
 ## Register and activate your Parachain on the Relaychain
-
-### Reserve a ParaId on Rococo
-
-Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.
-
-To get reserve a ParaId for your parachain on Rococo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io).
-
-* Ensure you are connected to the Rococo network by selecting the appropriate RPC endpoint (`wss://rococo-rpc.polkadot.io`).
-* Go to the "Developer" tab and select "Extrinsics".
-* Choose `registrar.reserve` from the dropdown menu and execute it with your account.
-* Check the included extrinsic result in the block to find your reserved `para_id` and note it down.
 
 ### Register parachain genesis code and state on relay-chain
 
