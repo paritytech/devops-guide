@@ -30,4 +30,6 @@ The diagram below illustrate how different nodes play different roles in the net
 
 ## Downsides of deploying nodes without clear role separation
 
-Although, it is possible for a single node to assume multiple roles (collator, RPC, bootnode), robust network deployments are composed of multiple nodes of each types to ensure reliability (eg. several dedicated RPC nodes behind a load balancer can handle increased user traffic, having more collators allows downtime of a single collator without slowing down block production, etc.).
+Although, it is possible for a single node to assume multiple roles (collator, RPC, bootnode), robust network deployments are composed of multiple nodes of each types to ensure reliability.
+
+For example, if a collator node also serves as an RPC node, receiving increased user traffic might overload the node and bring down block production. To prevent this from happening, it is possible to set up several dedicated RPC nodes behind a load balancer. Similarly, setting up additional collators in your network will allows downtime of fraction of the collator set without slowing down block production.
