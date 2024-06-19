@@ -3,7 +3,7 @@ authors = ["Parity DevOps Team", "ddorgan", "PierreBesson"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Substrate Devops Guide"
+title = "Parachain Devops Guide"
 
 [output.html]
 additional-css = ["last-changed.css"]
