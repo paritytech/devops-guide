@@ -5,7 +5,7 @@
   - [Parachain Deployment](./guides/parachain_deployment.md)
 - [Explanations](./explanations/index.md)
   - [Deployment Options](./deployments/index.md)
-    - [Role Types](./deployments/types.md)
+    - [Node Roles](./deployments/roles.md)
     - [Remote Targets](./deployments/targets.md)
     - [Role Specific Arguments](./deployments/options.md)
   - [Server Deployments](./serverdeploy/index.md)
