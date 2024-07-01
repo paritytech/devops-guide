@@ -1,48 +1,48 @@
 # Monitoring Overview
 
-We can generally split monitoring into two different areas:
-• On-chain monitoring - monitoring events on-chain, e.g. a transaction by a certain address, a validator set change etc…
-• On-host monitoring - this is monitoring the individual node, e.g. the current block height, amount of p2p connections, amount of free memory on the host itself.
+Monitoring can be categorized into two main areas:
 
-## On-Chain
+### On-chain
+This involves tracking events that occur on the blockchain. Examples include:
+- Transactions by specific addresses
+- Changes in the validator set
 
-This type of monitoring will generally check onchain via RPC nodes to check the values / delays / timing of events. You would normally only need two of these instances for all hosts. It is a good idea to run your own RPC servers to service these in case there are issues with the public RPC nodes.
-Some example applications that queries onchain information are [polkabot](https://gitlab.com/Polkabot/polkabot) and [polkadot-basic-notification](https://github.com/paritytech/polkadot-basic-notification).
+On-chain monitoring typically involves checking blockchain data via RPC nodes to assess values, delays, and the timing of events. Usually, only two instances are needed for monitoring all hosts. It is recommended to run your own RPC servers to avoid potential issues with public RPC nodes.
 
-## On-Host
+##### Available Tools
 
-You should monitor each node that you run on the network. Polkadot/Substrate exposes a bunch of useful metrics on <http://host:9615/metrics>, with <http://host:9615/> being a healthcheck. This endpoint will only be exposed on the local network interface by default, but you can expose it on all interfaces with the `--prometheus-external` flag.
+- [Polkabot](https://gitlab.com/Polkabot/polkabot)
+- [Polkadot-Basic-Notification](https://github.com/paritytech/polkadot-basic-notification)
 
-This outputs in a simple key - value format. However, you can also include tags within the key.
 
-Simple Value:
+### On-Host
 
-```bash
-polkadot_database_cache_bytes 0
-```
+On-host monitoring involves tracking the individual node itself. Examples include:
+- Current block height
+- Number of peer-to-peer (P2P) connections
+- Finality lag
 
-Values with tags:
+To monitor individual node, polkadot-sdk binary exposes metrics in a Prometheus type format at <http://host:9615/metrics>. By default, this endpoint is only exposed on the local network interface, but you can expose it on all interfaces using the `--prometheus-external` flag.
 
-```bash
-substrate_block_height{status="best"} 136
-substrate_block_height{status="finalized"} 133
-```
+As the metrics provided by these endpoints don't include hosts metrics (e.g. CPU, memory, bandwidth usage), it is recommended to complement it with other tools such as [Prometheus node exporter](https://github.com/prometheus/node_exporter) which needs to be installed on the same host.
 
-As the metrics provided by these endpoints don't include hosts metrics (e.g. CPU, memory, bandwidth usage), it is recommended to complement it with the [Prometheus node exporter](https://github.com/prometheus/node_exporter) which needs to be installed on the same host.
-
-## Telemetry
-
-The telemetry server is used for real time information from nodes, showing information about their name, location, current best & finalized blocks etc… This gives you a useful dashboard to view the state of nodes.
-
-The project is in the [substrate-telemetry](https://github.com/paritytech/substrate-telemetry) GitHub repo, a [helm chart](https://github.com/paritytech/helm-charts/tree/main/charts/substrate-telemetry) is also available to allow easy Kubernetes deployments.
 
 # Monitoring Stack
 
 ![monitoring stack](../images/monitoring-stack.png)
 
+### Polkadot tools
+
+- [polkadot-introspector](https://github.com/paritytech/polkadot-introspector): The Polkadot Introspector is a collection of tools for monitoring and introspection of Polkadot or other substrate-based blockchains.
+- [polkadot-telemetry](https://github.com/paritytech/substrate-telemetry): The telemetry server is used for real time information from nodes, showing information about their name, location, current best & finalized blocks, and others. It gives a useful dashboard to view the state of nodes. An example of live running Telemetry site is https://telemetry.polkadot.io/
+
+
+### Non-Polkadot specific tools
 The recommended Polkadot monitoring stack consists of the following tools:
 
 - [Prometheus](./prometheus.md): A systems and service monitoring system based on a timeseries database.
 - [Grafana](./grafana.md): allows you to query, visualize, and understand your metrics.
 - [Alertmanager](./alertmanager.md): Creates and routes alerts to the tool of your choice (Email / SMS / Telegram / PagerDuty / Slack / Matrix) based on alert rules and metrics
 - [Loki](./loki.md) - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.
+
+For available set of Polkadot dashboards, alerts and rules are listed in [polkadot-monitoring-mixin](https://github.com/paritytech/polkadot-monitoring-mixin) repository.

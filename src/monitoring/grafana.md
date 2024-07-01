@@ -15,6 +15,6 @@ datasources:
       timeInterval: 30s
 ```
 
-You can find [existing](https://grafana.com/grafana/dashboards/?search=polkadot) polkadot dashboards at grafana.com -
+You can find [dashboards](https://github.com/paritytech/polkadot-monitoring-mixin/tree/main/dashboards) here.
 
 ![Grafana example](../images/lb0gOx.png)

@@ -17,4 +17,4 @@ less than 1 per minute for more than 3 minutes.'
     severity: warning
 ```
 
-This will then be sent to the outbound path for the severity warning.
+Here’s an [example](https://github.com/paritytech/polkadot-monitoring-mixin/tree/main/alerts) with some basic block production rules.

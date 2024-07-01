@@ -18,19 +18,3 @@ scrape_configs:
           - 1.1.1.1:9615 # substrate node
 ```
 
-## Rules
-
-Now that you are gathering data from the host you can add rules that will trigger alerts. These are defined in the format:
-
-```yaml
-  - alert: BlockProductionSlow
-    annotations:
-      message: 'Best block on instance {{ $labels.instance }} increases by
-      less than 1 per minute for more than 3 minutes.'
-    expr: increase(polkadot_block_height{status="best"}[1m]) < 1
-    for: 3m
-    labels:
-      severity: warning
-```
-
-Here’s an [example](https://github.com/ddorgan/substrate-alerting-rules/blob/main/alerting-rules.yaml) with some basic block production rules.
