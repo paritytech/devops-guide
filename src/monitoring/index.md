@@ -7,7 +7,7 @@ This involves tracking events that occur on the blockchain. Examples include:
 - Transactions by specific addresses
 - Changes in the validator set
 
-On-chain monitoring typically involves checking blockchain data via RPC nodes to assess values, delays, and the timing of events. Usually, only two instances are needed for monitoring all hosts. It is recommended to run your own RPC servers to avoid potential issues with public RPC nodes.
+On-chain monitoring typically involves checking blockchain data via RPC nodes to assess values, delays, and the timing of events. It is recommended to run your own RPC servers to avoid potential issues with public RPC nodes.
 
 ##### Available Tools
 
