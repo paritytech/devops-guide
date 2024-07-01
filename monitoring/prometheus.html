@@ -165,19 +165,7 @@
           - 1.1.1.1:9100 # node exporter
           - 1.1.1.1:9615 # substrate node
 </code></pre>
-<h2 id="rules"><a class="header" href="#rules">Rules</a></h2>
-<p>Now that you are gathering data from the host you can add rules that will trigger alerts. These are defined in the format:</p>
-<pre><code class="language-yaml">  - alert: BlockProductionSlow
-    annotations:
-      message: 'Best block on instance {{ $labels.instance }} increases by
-      less than 1 per minute for more than 3 minutes.'
-    expr: increase(polkadot_block_height{status=&quot;best&quot;}[1m]) &lt; 1
-    for: 3m
-    labels:
-      severity: warning
-</code></pre>
-<p>Here’s an <a href="https://github.com/ddorgan/substrate-alerting-rules/blob/main/alerting-rules.yaml">example</a> with some basic block production rules.</p>
-<footer id="last-change">Last change: 2024-06-20, commit: <a href="https://github.com/paritytech/devops-guide/commit/c3b5587">c3b5587</a></footer>
+<footer id="last-change">Last change: 2024-07-01, commit: <a href="https://github.com/paritytech/devops-guide/commit/a6607db">a6607db</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
