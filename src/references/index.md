@@ -41,7 +41,6 @@ This section is for listing some useful projects and tools that are relevant for
 | [Polkabot](https://gitlab.com/Polkabot/polkabot)                                         | Polkabot is a Matrix chatbot that keeps an eye on the Polkadot network. |
 | [Polkadot-Basic-Notification](https://github.com/paritytech/polkadot-basic-notification) | A basic, account-based, multi-transport notification service for the Polkadot ecosystem.                |
 | [polkadot-watcher-transaction](https://github.com/w3f/polkadot-watcher-transaction)      | The main use case of this application consits of a scanner that can be configured to start from a configured block number, and then it keeps monitoring the on-chain situation delivering alerts to a notifier.  |
-| [polkadot-watcher-validator](https://github.com/w3f/polkadot-watcher-validator)          | The watcher is a nodeJs application meant to be connected with a substrate based node through a web socket.
-It can then monitor the status of the node, leveraging on mechanisms such as the builtin heartbeat. |
+| [polkadot-watcher-validator](https://github.com/w3f/polkadot-watcher-validator)          | The watcher is a nodeJs application meant to be connected with a substrate based node through a web socket. It can then monitor the status of the node, leveraging on mechanisms such as the builtin heartbeat. |
 | [polkadot-k8s-payouts](https://github.com/w3f/polkadot-k8s-payouts)                      |  Tool that automatically claims your Kusama/Polkadot validator rewards. |
 
