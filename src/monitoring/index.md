@@ -7,12 +7,7 @@ This involves tracking events that occur on the blockchain. Examples include:
 - Transactions by specific addresses
 - Changes in the validator set
 
-On-chain monitoring typically involves checking blockchain data via RPC nodes to assess values, delays, and the timing of events. It is recommended to run your own RPC servers to avoid potential issues with public RPC nodes.
-
-##### Available Tools
-
-- [Polkabot](https://gitlab.com/Polkabot/polkabot)
-- [Polkadot-Basic-Notification](https://github.com/paritytech/polkadot-basic-notification)
+On-chain monitoring typically involves checking blockchain data via RPC nodes to assess values, delays, and the timing of events. It is recommended to run your own RPC servers to avoid potential issues with public RPC nodes. There are useful tools such as [Polkabot](https://gitlab.com/Polkabot/polkabot) and [Polkadot-Basic-Notification](https://github.com/paritytech/polkadot-basic-notification) to help with on-chain monitoring.
 
 
 ### On-Host
@@ -29,8 +24,6 @@ As the metrics provided by these endpoints don't include hosts metrics (e.g. CPU
 
 # Monitoring Stack
 
-![monitoring stack](../images/monitoring-stack.png)
-
 ### Polkadot tools
 
 - [polkadot-introspector](https://github.com/paritytech/polkadot-introspector): The Polkadot Introspector is a collection of tools for monitoring and introspection of Polkadot or other substrate-based blockchains.
@@ -46,3 +39,7 @@ The recommended Polkadot monitoring stack consists of the following tools:
 - [Loki](./loki.md) - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.
 
 For available set of Polkadot dashboards, alerts and rules are listed in [polkadot-monitoring-mixin](https://github.com/paritytech/polkadot-monitoring-mixin) repository.
+
+An example of the metric dashboard from polkadot-monitoring-mixin:
+
+![metric_dashboard](../images/metric_dashboard.png)
