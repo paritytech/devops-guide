@@ -151,21 +151,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="prometheus"><a class="header" href="#prometheus">Prometheus</a></h1>
-<blockquote>
-<p>“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.” - Prometheus GitHub repository.</p>
-</blockquote>
-<p>Prometheus is the engine which drives our monitoring system. For our example we will mainly focus on two sections:</p>
-<h2 id="targets"><a class="header" href="#targets">Targets</a></h2>
-<p>Targets are a list of endpoints you want to scrape. The two main exporters we care about are for 1) polkadot/substrate and 2) the node-exporter. An example of scraping these on the IP address 1.1.1.1 would be:</p>
-<pre><code class="language-yaml">scrape_configs:
-  - job_name: check blockchain node
-    static_configs:
-      - targets:
-          - 1.1.1.1:9080 # promtail
-          - 1.1.1.1:9100 # node exporter
-          - 1.1.1.1:9615 # substrate node
-</code></pre>
-<footer id="last-change">Last change: 2024-07-01, commit: <a href="https://github.com/paritytech/devops-guide/commit/a6607db">a6607db</a></footer>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
