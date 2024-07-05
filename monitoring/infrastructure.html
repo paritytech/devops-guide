@@ -1,0 +1,488 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Intrastructure - Parachain Devops Guide</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/roles.html"><strong aria-hidden="true">3.1.1.</strong> Node Roles</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/infrastructure.html" class="active"><strong aria-hidden="true">3.4.1.</strong> Intrastructure</a></li><li class="chapter-item expanded "><a href="../monitoring/polkadot_sdk.html"><strong aria-hidden="true">3.4.2.</strong> Polkadot SDK</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/keys_accounts.html"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../explanations/chainspecs.html"><strong aria-hidden="true">3.6.</strong> Chainspecs</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Parachain Devops Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/monitoring/infrastructure.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="infrastructure-tools"><a class="header" href="#infrastructure-tools">Infrastructure Tools</a></h2>
+<p>Prometheus, Loki, Alertmanager, and Grafana are powerful tools commonly used for monitoring and visualizing metrics and logs in a distributed system. Here, we focus on integrating these tools to effectively monitor Polkadot metrics across relay chains and parachains.</p>
+<h3 id="metrics"><a class="header" href="#metrics">Metrics</a></h3>
+<p>“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.” - Prometheus GitHub repository.</p>
+<p><a href="https://prometheus.io/docs/introduction/overview/">Prometheus</a> is the engine which drives our monitoring system as the metrics of Polkadot are exposed in Prometheus format.</p>
+<h4 id="prometheus-configuration"><a class="header" href="#prometheus-configuration">Prometheus Configuration</a></h4>
+<p>Targets are a list of endpoints you want to scrape. The two main exporters we care about are for 1) polkadot/substrate and 2) the node-exporter. An example of scraping these on the IP address 10.100.0.0 would be:</p>
+<pre><code class="language-yaml">scrape_configs:
+  - job_name: polkadot
+    static_configs:
+      - targets:
+          - 10.100.0.0:9080    # promtail
+          - 10.100.0.0:9100    # node exporter
+          - 10.100.0.0:9615    # relaychain metrics
+          - 10.100.0.0:9625    # parachain metrics
+</code></pre>
+<h3 id="logs"><a class="header" href="#logs">Logs</a></h3>
+<blockquote>
+<p>&quot;Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus&quot;</p>
+</blockquote>
+<p><a href="https://grafana.com/docs/loki/latest/">Loki</a> is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central Loki server.</p>
+<p>Example promtail.yaml configuration to collect the logs and create a Promtail metrics that aggregates each log level:</p>
+<pre><code class="language-yaml"># promtail server config
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+  log_level: info
+positions:
+  filename: /var/lib/promtail/positions.yaml
+
+# loki servers
+clients:
+  - url: http://loki.example.com/loki/api/v1/push
+    backoff_config:
+      min_period: 1m
+      max_period: 1h
+      max_retries: 10000
+
+scrape_configs:
+  - job_name: journald
+    journal:
+      max_age: 1m
+      path: /var/log/journal
+      labels:
+        job: journald
+    pipeline_stages:
+      - match:
+          selector: '{job=&quot;journald&quot;}'
+          stages:
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - regex:
+                expression: '(?P&lt;date&gt;\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3})\s+(?P&lt;level&gt;(TRACE|DEBUG|INFO|WARN|ERROR))\s+(?P&lt;worker&gt;([^\s]+))\s+(?P&lt;target&gt;[\w-]+):?:?(?P&lt;subtarget&gt;[\w-]+)?:[\s]?(?P&lt;chaintype&gt;\[[\w-]+\]+)?[\s]?(?P&lt;message&gt;.+)'
+            - labels:
+                level:
+                target:
+                subtarget:
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Logs&quot;
+                  prefix: &quot;promtail_chain_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
+      - match:
+          selector: '{job=&quot;journald&quot;, level=&quot;ERROR&quot;}'
+          stages:
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Error Logs&quot;
+                  prefix: &quot;promtail_chain_error_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
+      - match:
+          selector: '{job=&quot;journald&quot;, level=~&quot;.+&quot;} |~ &quot;(?i)(panic)&quot;'
+          stages:
+            - multiline:
+                firstline: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}'
+                max_lines: 2500
+            - metrics:
+                log_lines_total:
+                  type: Counter
+                  Description: &quot;Total Number of Chain Panic Logs&quot;
+                  prefix: &quot;promtail_chain_panic_&quot;
+                  max_idle_duration: 24h
+                  config:
+                    match_all: true
+                    action: inc
+    relabel_configs:
+      - source_labels: [&quot;__journal__systemd_unit&quot;]
+        target_label: &quot;unit&quot;
+      - source_labels: [&quot;unit&quot;]
+        regex: &quot;(.*.scope|user.*.service)&quot;
+        action: drop
+      - source_labels: [&quot;__journal__hostname&quot;]
+        target_label: &quot;host&quot;
+      - action: replace
+        source_labels:
+          - __journal__cmdline
+          - __journal__hostname
+        separator: &quot;;&quot;
+        regex: &quot;.*--chain.*;(.*)&quot;
+        target_label: &quot;node&quot;
+        replacement: $1
+</code></pre>
+<p>The above example also configures the following custom metrics derived from logs <code>promtail_chain_log_lines_total</code>, <code>promtail_chain_error_log_lines_total</code> and <code>promtail_chain_panic_log_lines_total</code> to be exposed on the promtail metrics endpoint <a href="http://host:9080">http://host:9080</a>.</p>
+<h3 id="alerts"><a class="header" href="#alerts">Alerts</a></h3>
+<p><a href="https://prometheus.io/docs/alerting/latest/alertmanager/">Alertmanager</a> handles alerts sent by Prometheus client, and responsible for deduplicating, grouping and routing to the correct receiver such as email, PagerDuty, and other mechanisms via webhook receiver. </p>
+<p>A simple alert for block production being slow would look like:</p>
+<pre><code class="language-yaml">- alert: BlockProductionSlow
+  annotations:
+    message: 'Best block on instance {{ $labels.instance }} increases by
+less than 1 per minute for more than 5 minutes.'
+  expr: increase(substrate_block_height{status=&quot;best&quot;}[1m]) &lt; 1
+  for: 5m
+  labels:
+    severity: warning
+</code></pre>
+<h3 id="visualization"><a class="header" href="#visualization">Visualization</a></h3>
+<p><a href="https://grafana.com/docs/grafana/latest/">Grafana</a> is where you can define dashboards to show the time series information that Prometheus is collecting. You just need to ensure you add a datasource:</p>
+<pre><code class="language-yaml">datasources:
+  - name: &quot;Prometheus&quot;
+    type: prometheus
+    access: proxy
+    editable: false
+    orgId: 1
+    url: &quot;http://prometheus.monitoring.svc.cluster.local&quot;
+    version: 1
+    jsonData:
+      timeInterval: 30s
+  - name: Loki
+    type: loki
+    access: proxy 
+    orgId: 1
+    url: http://loki:3100
+    basicAuth: false
+    version: 1
+    editable: true
+</code></pre>
+<h3 id="polkadot-mixin"><a class="header" href="#polkadot-mixin">Polkadot-mixin</a></h3>
+<p>Polkadot-monitoring-mixin is a set of Polkadot monitoring dashboards, alerts and rules collected based on our experience operating Polkadot Relay Chain and Parachain nodes. You can find it in this <a href="https://github.com/paritytech/polkadot-monitoring-mixin">repo</a>.</p>
+<h2 id="docker-compose"><a class="header" href="#docker-compose">Docker Compose</a></h2>
+<p>You can install the following components Docker Compose if you are evaluating, or developing monitoring stack for Polkadot.
+The configuration files associated with these installation instructions run the monitoring stack as a single binary.</p>
+<pre><code>version: &quot;3.8&quot;
+
+networks:
+  polkadot:
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.53.0
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    configs:
+      - source: prometheus_config
+        target: /etc/prometheus/prometheus.yml
+    networks:
+      - polkadot
+
+  loki:
+    container_name: loki
+    image: grafana/loki:3.1.0
+    ports:
+      - &quot;3100:3100&quot;
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - polkadot
+
+  promtail:
+    container_name: promtail
+    image: grafana/promtail:3.1.0
+    command: -config.file=/etc/promtail/config.yml
+    user: root # Required to read container logs
+    ports:
+      - 9080:9080
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    configs:
+      - source: promtail_config
+        target: /etc/promtail/config.yml
+    networks:
+      - polkadot
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    entrypoint:
+      - sh
+      - -euc
+      - |
+        mkdir -p /etc/grafana/provisioning/datasources
+        cat &lt;&lt;EOF &gt; /etc/grafana/provisioning/datasources/ds.yaml
+        apiVersion: 1
+        datasources:
+        - name: Loki
+          type: loki
+          access: proxy 
+          orgId: 1
+          url: http://loki:3100
+          basicAuth: false
+          version: 1
+          editable: true
+        - name: Prometheus
+          type: prometheus
+          access: proxy 
+          orgId: 1
+          url: http://prometheus:9090
+          basicAuth: false
+          isDefault: true
+          version: 1
+          editable: true
+        EOF
+        /run.sh
+    ports:
+      - &quot;3000:3000&quot;
+    networks:
+      - polkadot
+
+  polkadot_collator:
+    container_name: polkadot_collator
+    image: parity/polkadot-parachain:1.14.0
+    command: &gt;
+      --tmp --prometheus-external --prometheus-port 9625 -- --tmp --prometheus-external --prometheus-port 9615
+    ports:
+      - &quot;9615:9615&quot;
+      - &quot;9625:9625&quot;
+    networks:
+      - polkadot
+
+configs:
+  prometheus_config:
+    content: |
+      global:
+        scrape_interval: 15s # By default, scrape targets every 15 seconds.
+        evaluation_interval: 15s # Evaluate rules every 15 seconds.
+
+      scrape_configs:
+        - job_name: polkadot
+          static_configs:
+            - targets:
+                - polkadot_collator:9615    # relaychain metrics
+                - polkadot_collator:9625    # parachain metrics
+  promtail_config:
+    content: |
+      server:
+        http_listen_port: 9080
+      
+      positions:
+        filename: /tmp/positions.yaml
+      
+      clients:
+        - url: http://loki:3100/loki/api/v1/push
+
+      scrape_configs:
+      - job_name: containers
+        docker_sd_configs:
+          - host: unix:///var/run/docker.sock
+            refresh_interval: 5s
+            filters:
+              - name: name
+                values: [polkadot_collator]
+        relabel_configs:
+          - source_labels: ['__meta_docker_container_name']
+            regex: '/(.*)'
+            target_label: 'container'
+</code></pre>
+<footer id="last-change">Last change: 2024-07-05, commit: <a href="https://github.com/paritytech/devops-guide/commit/3481145">3481145</a></footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../monitoring/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../monitoring/polkadot_sdk.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../monitoring/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../monitoring/polkadot_sdk.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
