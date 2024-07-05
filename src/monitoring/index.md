@@ -39,3 +39,7 @@ The recommended Polkadot monitoring stack consists of the following tools:
 - [Loki](./loki.md) - A highly scalable log aggregation system that allows you to view and search logs from all your infrastructure in one place.
 
 For available set of Polkadot dashboards, alerts and rules are listed in [polkadot-monitoring-mixin](https://github.com/paritytech/polkadot-monitoring-mixin) repository.
+
+An example of the metric dashboard from polkadot-monitoring-mixin:
+
+![metric_dashboard](../images/metric_dashboard.png)
