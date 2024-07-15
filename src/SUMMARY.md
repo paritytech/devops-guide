@@ -3,10 +3,8 @@
 - [Overview](./overview.md)
 - [How-to Guides](./guides/index.md)
   - [Parachain Deployment](./guides/parachain_deployment.md)
-<<<<<<< Updated upstream
   - [RPC Deployment](./guides/rpc_index.md)
     - [Kubernetes](./guides/rpc_kubernetes.md)
-=======
   - [Collator Deployment](./guides/collator_deployment.md)
 >>>>>>> Stashed changes
 - [Explanations](./explanations/index.md)
