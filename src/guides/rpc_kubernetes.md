@@ -171,3 +171,8 @@ ingress:
         - parachain.example.com
 ```
 
+### Best Practices
+
+* The advantage of running in Kubernetes is the number of replicas can easily be added behind an ingress. 
+* A backup is ideally used due to easily scale up new RPC nodes
+* Enabling serviceMonitor to enable monitoring of the RPC nodes
