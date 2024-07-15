@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Helm Chart - Parachain Devops Guide</title>
+        <title>Kubernetes - Parachain Devops Guide</title>
                 
 
         <!-- Custom HTML head -->
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li><li class="chapter-item expanded "><a href="../guides/rpc_index.html"><strong aria-hidden="true">2.2.</strong> RPC Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/rpc_kubernetes.html"><strong aria-hidden="true">2.2.1.</strong> Kubernetes</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/roles.html"><strong aria-hidden="true">3.1.1.</strong> Node Roles</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html" class="active"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/infrastructure.html"><strong aria-hidden="true">3.4.1.</strong> Intrastructure</a></li><li class="chapter-item expanded "><a href="../monitoring/polkadot_sdk.html"><strong aria-hidden="true">3.4.2.</strong> Polkadot SDK</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/keys_accounts.html"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../explanations/chainspecs.html"><strong aria-hidden="true">3.6.</strong> Chainspecs</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li><li class="chapter-item expanded "><a href="../guides/rpc_index.html"><strong aria-hidden="true">2.2.</strong> RPC Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/rpc_kubernetes.html" class="active"><strong aria-hidden="true">2.2.1.</strong> Kubernetes</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/roles.html"><strong aria-hidden="true">3.1.1.</strong> Node Roles</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/infrastructure.html"><strong aria-hidden="true">3.4.1.</strong> Intrastructure</a></li><li class="chapter-item expanded "><a href="../monitoring/polkadot_sdk.html"><strong aria-hidden="true">3.4.2.</strong> Polkadot SDK</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/keys_accounts.html"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../explanations/chainspecs.html"><strong aria-hidden="true">3.6.</strong> Chainspecs</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -121,7 +121,7 @@
                                                                         <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/kubernetes/helm.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/guides/rpc_kubernetes.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -150,51 +150,175 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="helm-chart"><a class="header" href="#helm-chart">Helm Chart</a></h1>
-<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>Parity maintains a helm GitHub repo @ <a href="https://github.com/paritytech/helm-charts">https://github.com/paritytech/helm-charts</a> - Inside this repo is the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node</a> chart which should be used for deploying your Substrate/Polkadot binary.</p>
+                        <h1 id="guide-deploying-an-rpc-node"><a class="header" href="#guide-deploying-an-rpc-node">Guide: Deploying an RPC node</a></h1>
+<p>This guide demonstrates the deployment of an RPC node via Helm chart in Kubernetes.</p>
+<h2 id="preparations"><a class="header" href="#preparations">Preparations</a></h2>
+<p>Parity maintains a helm GitHub repo @ <a href="https://github.com/paritytech/helm-charts">https://github.com/paritytech/helm-charts</a> - Inside this repo is the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node</a> chart which can be used for deploying your Substrate/Polkadot binary.</p>
 <p>All variables are documented clearly in the <a href="https://github.com/paritytech/helm-charts/blob/main/charts/node/README.md">README.md</a> and there’s an example <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node/examples/local-rococo">local-rococo</a> which you can start working from.</p>
-<h3 id="example-rococo-local-chain"><a class="header" href="#example-rococo-local-chain">Example Rococo Local Chain</a></h3>
-<p>This is a simple example of deploying a <code>rococo-local</code> test chain in Kubernetes. Two validators and two full nodes will be deployed via the helm chart. Once both validators are running you will see block production. A custom node key is used on the <code>Alice</code> validator which all other hosts use as a bootnode.</p>
-<h4 id="first-install-the-helm-repo"><a class="header" href="#first-install-the-helm-repo">First install the helm repo</a></h4>
+<h4 id="helm-deployment"><a class="header" href="#helm-deployment">Helm Deployment</a></h4>
+<p>Binary images are available at Dockerhub. Parity maintains both <a href="https://hub.docker.com/r/parity/polkadot">Polkadot</a> and <a href="https://hub.docker.com/r/parity/polkadot-parachain">Polkadot-Parachain</a> images from the <a href="https://github.com/paritytech/polkadot-sdk">polkadot-sdk</a> repo.</p>
+<p>When running an RPC node, a sidecar called <a href="https://github.com/paritytech/scripts/tree/master/dockerfiles/ws-health-exporter">ws-health-exporter</a> is good to have to allow a readiness endpoint for Kubernetes.</p>
 <pre><code class="language-bash">helm repo add parity https://paritytech.github.io/helm-charts/
+helm -n NAMESPACE upgrade --install RELEASE_NAME -f FILE_NAME.yml parity/node
 </code></pre>
-<h4 id="deploy-validator-alice"><a class="header" href="#deploy-validator-alice">Deploy Validator Alice</a></h4>
-<p>Alice will be deployed in a stateful set and use an example custom node key, along with deploying a service to be used as a bootnode:</p>
-<pre><code class="language-bash">helm install rococo-alice parity/node --set node.role=&quot;validator&quot; --set node.customNodeKey=&quot;91cb59d86820419075b08e3043cd802ba3506388d8b161d2d4acd203af5194c1&quot; --set node.chain=rococo-local --set node.perNodeServices.relayP2pService.enabled=true --set node.perNodeServices.relayP2pService.port=30333 --set node.flags=&quot;--alice --rpc-external --ws-external --rpc-cors all --rpc-methods=unsafe&quot;
+<h4 id="relaychain-helm-values"><a class="header" href="#relaychain-helm-values">Relaychain Helm Values</a></h4>
+<pre><code>image:
+  repository: parity/polkadot
+  tag: v1.14.0
+node:
+  replicas: 1
+  chain: rococo
+  role: full
+  chainData:
+    chainPath: rococo_v2_2
+    # chainSnapshot:
+    #   enabled: true
+    #   method: http-filelist
+    #   url: https://snapshots.polkadot.io/rococo-paritydb-archive
+    volumeSize: 600Gi
+    storageClass: ssd-csi
+    database: paritydb
+    pruning: archive
+  chainKeystore:
+    mountInMemory:
+      enabled: true
+  flags:
+    - &quot;--rpc-max-connections 5000&quot;
+  perNodeServices:
+    relayP2pService:
+      enabled: true
+      type: NodePort
+    setPublicAddressToExternalIp:
+      enabled: true
+  persistGeneratedNodeKey: true
+  enableOffchainIndexing: true
+  serviceMonitor:
+    enabled: true
+  tracing:
+    enabled: false
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      cpu: 4
+      memory: 7Gi
+
+# RPC Endpoint
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: TODO
+    external-dns.alpha.kubernetes.io/target: TODO
+    cert-manager.io/cluster-issuer: TODO
+  host: parachain.example.com
+  tls:
+    - secretName: parachain.example.com
+      hosts:
+        - parachain.example.com
+
+extraContainers:
+- name: ws-health-exporter
+  image: docker.io/paritytech/ws-health-exporter:0a2e6e9b-20230412
+  env:
+  - name: WSHE_NODE_RPC_URLS
+    value: &quot;ws://127.0.0.1:9944&quot;
+  - name: WSHE_NODE_MAX_UNSYNCHRONIZED_BLOCK_DRIFT
+    value: &quot;4&quot;
+  - name: WSHE_NODE_MIN_PEERS
+    value: &quot;2&quot;
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32M
+    limits:
+      cpu: 100m
+      memory: 64M
+  readinessProbe:
+    httpGet:
+      path: /health/readiness
+      port: 8001
 </code></pre>
-<h4 id="deploy-validator-bob"><a class="header" href="#deploy-validator-bob">Deploy Validator Bob</a></h4>
-<pre><code class="language-bash">helm install rococo-bob parity/node --set node.role=&quot;validator&quot; --set node.chain=rococo-local --set node.flags=&quot;--bob --bootnodes '/dns4/rococo-alice-node-0-relay-chain-p2p/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC'&quot;
+<h4 id="parachains-helm-values"><a class="header" href="#parachains-helm-values">Parachains Helm Values</a></h4>
+<pre><code>  image:
+    repository: parity/polkadot-parachain
+    tag: 1.14.0
+  node:
+    chain: bridge-hub-rococo
+    command: polkadot-parachain
+    replicas: 1
+    role: full
+    chainData:
+      database: paritydb
+      pruning: archive
+      volumeSize: 50Gi
+      storageClass: ssd-csi
+    chainKeystore:
+      mountInMemory:
+        enabled: true
+    isParachain: true
+    collatorRelayChain:
+      chain: rococo
+      chainData:
+        database: paritydb
+        pruning: 1000
+        storageClass: ssd-csi
+        volumeSize: 150Gi
+        # chainSnapshot:
+        #   enabled: true
+        #   method: http-filelist
+        #   url: https://snapshots.polkadot.io/rococo-paritydb-prune
+        chainPath: rococo_v2_2
+      chainKeystore:
+        mountInMemory:
+          enabled: true
+    flags:
+      - &quot;--rpc-max-connections 1000&quot;
+    perNodeServices:
+      relayP2pService:
+        enabled: true
+        type: NodePort
+      paraP2pService:
+        enabled: true
+        type: NodePort
+      setPublicAddressToExternalIp:
+        enabled: true
+    resources:
+      requests:
+        cpu: 1
+        memory: 2Gi
+      limits:
+        memory: 4Gi
+        
+# RPC Endpoint
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.class: TODO
+    external-dns.alpha.kubernetes.io/target: TODO
+    cert-manager.io/cluster-issuer: TODO
+  host: parachain.example.com
+  tls:
+    - secretName: parachain.example.com
+      hosts:
+        - parachain.example.com
 </code></pre>
-<h4 id="deploy-two-full-nodes"><a class="header" href="#deploy-two-full-nodes">Deploy Two Full Nodes</a></h4>
-<pre><code class="language-bash">helm install rococo-pool parity/node --set node.chain=rococo-local --set node.replicas=2 --set node.flags=&quot;--bootnodes '/dns4/rococo-alice-node-0-relay-chain-p2p/tcp/30333/p2p/12D3KooWMeR4iQLRBNq87ViDf9W7f6cc9ydAPJgmq48rAH116WoC'&quot;
-</code></pre>
-<p>Once these steps are complete you will have a working <code>rococo-local</code> test chain with two validators and two full nodes.</p>
-<h4 id="gitops-tooling"><a class="header" href="#gitops-tooling">GitOps Tooling</a></h4>
-<p>Below are some useful GitOps tool for managing helm releases. Here is a list of tool from simplest to more advanced:</p>
+<h3 id="best-practices"><a class="header" href="#best-practices">Best Practices</a></h3>
 <ul>
-<li><a href="https://github.com/roboll/helmfile">Helmfile</a></li>
-<li><a href="https://registry.terraform.io/providers/hashicorp/helm/latest/docs">Terraform Helm provider</a></li>
-<li><a href="https://fluxcd.io/">Flux CD</a></li>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/">ArgoCD</a></li>
+<li>The advantage of running in Kubernetes is the number of replicas can easily be added behind an ingress. </li>
+<li>A backup is ideally used due to easily scale up new RPC nodes</li>
+<li>Enabling serviceMonitor to enable monitoring of the RPC nodes</li>
 </ul>
-<h2 id="important-chart-options"><a class="header" href="#important-chart-options">Important Chart Options</a></h2>
-<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
-<tr><td>node.chain</td><td>Network to connect to</td></tr>
-<tr><td>node.command</td><td>Binary to use</td></tr>
-<tr><td>node.flags</td><td>Flags to use with binary in container</td></tr>
-<tr><td>node.customChainspecUrl</td><td>Custom Chainspec URL</td></tr>
-</tbody></table>
 <footer id="last-change">Last change: 2024-07-15, commit: <a href="https://github.com/paritytech/devops-guide/commit/7c7ed28">7c7ed28</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../kubernetes/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../guides/rpc_index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../kubernetes/key_injection_test.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../explanations/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -204,11 +328,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../kubernetes/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../guides/rpc_index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../kubernetes/key_injection_test.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../explanations/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
