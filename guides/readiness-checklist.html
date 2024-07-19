@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Parachain Readiness Checklist - Parachain Devops Guide</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="../last-changed.css">
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../guides/index.html"><strong aria-hidden="true">2.</strong> How-to Guides</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/parachain_deployment.html"><strong aria-hidden="true">2.1.</strong> Parachain Deployment</a></li><li class="chapter-item expanded "><a href="../guides/rpc_index.html"><strong aria-hidden="true">2.2.</strong> RPC Deployment</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../guides/rpc_kubernetes.html"><strong aria-hidden="true">2.2.1.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../guides/readiness-checklist.html" class="active"><strong aria-hidden="true">2.3.</strong> Parachain Readiness Checklist</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/index.html"><strong aria-hidden="true">3.</strong> Explanations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/index.html"><strong aria-hidden="true">3.1.</strong> Deployment Options</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../deployments/roles.html"><strong aria-hidden="true">3.1.1.</strong> Node Roles</a></li><li class="chapter-item expanded "><a href="../deployments/targets.html"><strong aria-hidden="true">3.1.2.</strong> Remote Targets</a></li><li class="chapter-item expanded "><a href="../deployments/options.html"><strong aria-hidden="true">3.1.3.</strong> Role Specific Arguments</a></li></ol></li><li class="chapter-item expanded "><a href="../serverdeploy/index.html"><strong aria-hidden="true">3.2.</strong> Server Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../serverdeploy/systemd.html"><strong aria-hidden="true">3.2.1.</strong> Systemd</a></li><li class="chapter-item expanded "><a href="../serverdeploy/logging.html"><strong aria-hidden="true">3.2.2.</strong> Logging</a></li><li class="chapter-item expanded "><a href="../serverdeploy/automation.html"><strong aria-hidden="true">3.2.3.</strong> Automation</a></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">3.3.</strong> Kubernetes Deployments</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm.html"><strong aria-hidden="true">3.3.1.</strong> Helm Chart</a></li><li class="chapter-item expanded "><a href="../kubernetes/key_injection_test.html"><strong aria-hidden="true">3.3.2.</strong> Key Injection Example</a></li><li class="chapter-item expanded "><a href="../kubernetes/testnetmanager.html"><strong aria-hidden="true">3.3.3.</strong> Testnet Manager</a></li></ol></li><li class="chapter-item expanded "><a href="../monitoring/index.html"><strong aria-hidden="true">3.4.</strong> Monitoring</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../monitoring/infrastructure.html"><strong aria-hidden="true">3.4.1.</strong> Intrastructure</a></li><li class="chapter-item expanded "><a href="../monitoring/polkadot_sdk.html"><strong aria-hidden="true">3.4.2.</strong> Polkadot SDK</a></li></ol></li><li class="chapter-item expanded "><a href="../explanations/keys_accounts.html"><strong aria-hidden="true">3.5.</strong> Keys And Accounts</a></li><li class="chapter-item expanded "><a href="../explanations/chainspecs.html"><strong aria-hidden="true">3.6.</strong> Chainspecs</a></li></ol></li><li class="chapter-item expanded "><a href="../references/index.html"><strong aria-hidden="true">4.</strong> References</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Parachain Devops Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                                        <a href="https://github.com/paritytech/devops-guide/edit/master/src/guides/readiness-checklist.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="parachain-production-readiness-checklist"><a class="header" href="#parachain-production-readiness-checklist">Parachain Production Readiness Checklist</a></h1>
+<p>Before launching your parachain network, verify the readiness of your network infrastructure by reviewing the following five key points.</p>
+<!-- toc -->
+<ul>
+<li><a href="#1-launch-your-parachain-on-a-testnet-before-launching-on-mainnet">1. Launch your parachain on a testnet before launching on mainnet</a></li>
+<li><a href="#2-use-infrastructure-as-code">2. Use Infrastructure as Code</a></li>
+<li><a href="#3-ensure-redundancy-for-your-network-nodes">3. Ensure redundancy for your network nodes</a></li>
+<li><a href="#4-check-that-your-nodes-are-properly-configured-to-fulfil-their-roles">4. Check that your nodes are properly configured to fulfil their roles</a>
+<ul>
+<li><a href="#chainspec-checks">Chainspec checks</a></li>
+<li><a href="#bootnode-checks">Bootnode checks</a></li>
+<li><a href="#collator-checks">Collator checks</a></li>
+<li><a href="#rpc-checks">RPC checks</a></li>
+</ul>
+</li>
+<li><a href="#5-validate-that-your-nodes-are-fully-synced">5. Validate that your nodes are fully synced</a></li>
+<li><a href="#6-set-up-monitoring-and-alerting">6. Set up monitoring and alerting</a></li>
+</ul>
+<ul>
+<li><a href="#tips">Tips:</a></li>
+</ul>
+<!-- tocstop -->
+<h2 id="1-launch-your-parachain-on-a-testnet-before-launching-on-mainnet"><a class="header" href="#1-launch-your-parachain-on-a-testnet-before-launching-on-mainnet">1. Launch your parachain on a testnet before launching on mainnet</a></h2>
+<p>The best way to validate your deployment is to deploy a testnet for your parachain.
+The recommended relay-chain testnet for builders is now <a href="https://github.com/paseo-network">Paseo</a> where you can benefit from a stable and mainnet-like experience before onboarding to Polkadot.</p>
+<h2 id="2-set-up-your-nodes-using-infrastructure-as-code"><a class="header" href="#2-set-up-your-nodes-using-infrastructure-as-code">2. Set up your nodes using Infrastructure as Code</a></h2>
+<p>Using Infrastructure as Code for your blockchain nodes helps with the following:</p>
+<ul>
+<li><strong>Consistency and Reproducibility</strong>: Reduces manual configurations and allows configuration reuse across testnet and mainnet.</li>
+<li><strong>Automation and Efficiency</strong>: Although it takes upfront work to set up, you will speed up further deployments by reducing the number of manual steps.</li>
+<li><strong>Disaster Recovery</strong>: In the event of a disaster, you will be able to quickly restore your infrastructure.</li>
+</ul>
+<h2 id="3-ensure-redundancy-for-your-network-nodes"><a class="header" href="#3-ensure-redundancy-for-your-network-nodes">3. Ensure redundancy for your network nodes</a></h2>
+<p>For a reliable network, it is recommended to have at least:</p>
+<ul>
+<li>2 Bootnodes</li>
+<li>2 Collators</li>
+<li>2 RPC nodes behind a load balancer</li>
+</ul>
+<p>This will help ensure the smooth operation of the network, allowing one node to restart or upgrade while the other still performs its function.
+After launch, it is a good idea to increase the size of the network further and decentralize node operations to multiple individuals and organizations.</p>
+<h2 id="4-check-that-your-nodes-are-properly-configured-to-fulfil-their-roles"><a class="header" href="#4-check-that-your-nodes-are-properly-configured-to-fulfil-their-roles">4. Check that your nodes are properly configured to fulfil their roles</a></h2>
+<h3 id="chainspec-checks"><a class="header" href="#chainspec-checks">Chainspec checks</a></h3>
+<p>Your chainspec must:</p>
+<ul>
+<li>Have all the required properties such as <code>para_id</code> and <code>relay_chain</code></li>
+<li>Be <a href="./parachain_deployment.html#convert-your-plain-chainspec-to-raw">converted to raw format</a></li>
+<li>Have the desired chain state in <a href="./parachain_deployment.html#optional-dry-run-your-parachain-network-locally">its genesis block viewable in a local parachain dry-run</a></li>
+<li>Reference your bootnodes addresses so your nodes will connect to the correct network on startup</li>
+</ul>
+<h3 id="bootnode-checks"><a class="header" href="#bootnode-checks">Bootnode checks</a></h3>
+<p>Your bootnodes must have a fixed network ID and fixed IP or DNS in their addresses, e.g., /dns/polkadot-bootnode-0.polkadot.io/tcp/30333/p2p/12D3KooWSz8r2WyCdsfWHgPyvD8GKQdJ1UAiRmrcrs8sQB3fe2KU.
+This can be achieved with these flags, e.g:</p>
+<pre><code>--node-key-file &lt;key-file&gt; --listen-addr=/ip4/0.0.0.0/tcp/30333 --listen-addr /ip6/::/tcp/30333 --public-addr=/ip4/PUBLIC_IP/tcp/30333.
+</code></pre>
+<p>⚠️ Your bootnodes should always keep the same addresses across restarts.</p>
+<h3 id="collator-checks"><a class="header" href="#collator-checks">Collator checks</a></h3>
+<ul>
+<li>Each of your collators must have an aura key in their keystore, as explained in the [collator guide](TODO link to collator guide)</li>
+<li>The aura keys also need to be set on-chain, either:
+<ul>
+<li>in the <a href="./parachain_deployment.html#prepare-your-genesis-patch-config">genesis state directly in the chainspec file</a></li>
+<li>by [submitting a setKeys extrinsic with your collator account](TODO link to collator guide)</li>
+</ul>
+</li>
+</ul>
+<h3 id="rpc-checks"><a class="header" href="#rpc-checks">RPC checks</a></h3>
+<p>Your RPC nodes should have those flags enabled:</p>
+<ul>
+<li><code>--rpc-external</code> or <code>--unsafe-rpc-external</code> (does the same but doesn't output a warn log)</li>
+<li><code>--rpc-methods Safe</code></li>
+<li><code>--rpc-cors *</code></li>
+<li><code>--pruning=archive</code>, you generally want to have your RPC nodes to be archives to access historical blocks.</li>
+</ul>
+<p>You can also add RPC protections flags, e.g.:</p>
+<ul>
+<li><code>--rpc-max-connections 1000</code>: Allow a maximum of 1000 simultaneous open connection</li>
+<li><code>--rpc-rate-limit=10</code>: Limit to 10 calls per minute</li>
+<li><code>--rpc-rate-limit-whitelisted-ips 10.0.0.0/8 1.2.3.4/32</code>: Disable RPC rate limiting for certain ip addresses</li>
+<li><code>--rpc-rate-limit-trust-proxy-headers</code>: Trust proxy headers for determining the IP for rate limiting</li>
+</ul>
+<h2 id="5-validate-that-your-nodes-are-fully-synced"><a class="header" href="#5-validate-that-your-nodes-are-fully-synced">5. Validate that your nodes are fully synced</a></h2>
+<p>Your parachain nodes should be fully synced with the latest blocks of both your parachain and the relay-chain it is connected to.</p>
+<h2 id="6-set-up-monitoring-and-alerting"><a class="header" href="#6-set-up-monitoring-and-alerting">6. Set up monitoring and alerting</a></h2>
+<p>At a minimum, it is recommended to collect your nodes logs and be notified whenever an error or panic logs happens.</p>
+<p>It is highly recommended to set up metrics based monitoring and alerting, including:</p>
+<ul>
+<li>General system-level metrics, e.g. by using the <a href="https://awesome-prometheus-alerts.grep.to/rules.html#host-and-hardware">prometheus node exporter</a> to watch over disk, cpu, memory, oom kills, etc.</li>
+<li><a href="../monitoring/infrastructure.html#metrics">Polkadot-sdk native metrics</a></li>
+</ul>
+<h1 id="tips"><a class="header" href="#tips">Tips:</a></h1>
+<ul>
+<li>For troubleshooting testnets collators you can set<code>--log parachain=debug</code>.
+Other useful debug targets are<code>runtime=debug</code>, <code>sync=debug</code>, <code>author=debug</code>, <code>xcm=debug</code>, etc.</li>
+<li>You should avoid setting trace logging on all your nodes; if you do, set it on a limited number of nodes where it is useful and remove it when not needed anymore.</li>
+</ul>
+<footer id="last-change">Last change: 2024-07-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/c5091fc">c5091fc</a></footer>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../guides/rpc_kubernetes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../explanations/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../guides/rpc_kubernetes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../explanations/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
