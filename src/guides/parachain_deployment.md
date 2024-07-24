@@ -27,10 +27,10 @@ If this binary is not already available for your parachain, you will need to bui
 cargo build --release
 ```
 
-Then publish the node binary present in `target/releases` somewhere and note down the public URL. One option to One option to do this is to add it as a [GitHub release asset](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
-In this guide, we will use the parachain-template-node that you can get from [paritytech/polkadot-sdk-parachain-template](https://github.com/paritytech/polkadot-sdk-parachain-template).
+Then publish the node binary present in `target/releases` somewhere and note down the public URL. One option to do this is to add it as a [GitHub release asset](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
+In this guide, we will use the `parachain-template-node` that you can get from [paritytech/polkadot-sdk-parachain-template's releases assets](https://github.com/paritytech/polkadot-sdk-parachain-template/releases).
 
-This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at [https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain](https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain).
+To deploy system parachain nodes, such as asset-hub and bridge-hub, you should use the `polkadot-parachain` binary published on [https://github.com/paritytech/polkadot-sdk/releases/latest/](https://github.com/paritytech/polkadot-sdk/releases/latest).
 
 ### Prepare the docker image for use with Kubernetes
 
