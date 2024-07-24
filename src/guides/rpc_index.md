@@ -45,7 +45,7 @@ While archive nodes are essential for applications needing comprehensive histori
 5. **`--rpc-rate-limit`**: RPC rate limiting (calls/minute) for each connection..
    - Example: `--rpc-rate-limit=100`
 
-6. **`--unsafe-rpc-external`**: Listen to all RPC interfaces.
+6. **`--unsafe-rpc-external`**: Same as `--rpc-external`
    - Example: `--unsafe-rpc-external`
 
 
