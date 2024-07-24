@@ -1,5 +1,5 @@
 # Introduction
-Collators are members of the network that maintain the parachains they take part in. They run a full node (for both their particular parachain and the relay chain), and they produce the state transition proof for relay chain validators. There are some requirements that need to be considered prior to becoming a collator candidate including machine, bonding, account, and community requirements. For more info regarding collators, reference [collator section](https://wiki.polkadot.network/docs/learn-collator) on Polkadot wiki page.
+Collators are members of the network that maintain the parachains they take part in. Collators produce the state transition proof for relay chain validators but also author the blocks for the parachain and pass them to relay chain. There are some requirements that need to be considered prior to becoming a collator candidate including machine, bonding, account, and community requirements. For more info regarding collators, reference [collator section](https://wiki.polkadot.network/docs/learn-collator) on Polkadot wiki page.
 
 This doc demonstrates how to add new collators to an already running parachain.
 
