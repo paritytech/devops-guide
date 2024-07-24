@@ -169,9 +169,9 @@ The specifications of these machines will depend on your intended usage. For a t
 If this binary is not already available for your parachain, you will need to build it yourself using the following command:</p>
 <pre><code>cargo build --release
 </code></pre>
-<p>Then publish the node binary present in <code>target/releases</code> somewhere and note down the public URL. One option to One option to do this is to add it as a <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">GitHub release asset</a>.
-In this guide, we will use the parachain-template-node that you can get from <a href="https://github.com/paritytech/polkadot-sdk-parachain-template">paritytech/polkadot-sdk-parachain-template</a>.</p>
-<p>This binary is used to deploy system parachain nodes, such as asset-hub and bridge-hub and available at <a href="https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain">https://github.com/paritytech/polkadot-sdk/releases/latest/download/polkadot-parachain</a>.</p>
+<p>Then publish the node binary present in <code>target/releases</code> somewhere and note down the public URL. One option to do this is to add it as a <a href="https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository">GitHub release asset</a>.
+In this guide, we will use the <code>parachain-template-node</code> that you can get from <a href="https://github.com/paritytech/polkadot-sdk-parachain-template/releases">paritytech/polkadot-sdk-parachain-template's releases assets</a>.</p>
+<p>To deploy system parachain nodes, such as asset-hub and bridge-hub, you should use the <code>polkadot-parachain</code> binary published on <a href="https://github.com/paritytech/polkadot-sdk/releases/latest">https://github.com/paritytech/polkadot-sdk/releases/latest/</a>.</p>
 <h3 id="prepare-the-docker-image-for-use-with-kubernetes"><a class="header" href="#prepare-the-docker-image-for-use-with-kubernetes">Prepare the docker image for use with Kubernetes</a></h3>
 <p>To deploy your network with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>, you will need to have a node docker image published to a public registry.</p>
 <h2 id="generate-parachain-private-keys"><a class="header" href="#generate-parachain-private-keys">Generate parachain private keys</a></h2>
@@ -394,7 +394,7 @@ Assign it to your ParaID and Finality: <code>Final</code></li>
 <p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
 <h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
 <p>TODO</p>
-<footer id="last-change">Last change: 2024-07-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/c5091fc">c5091fc</a></footer>
+<footer id="last-change">Last change: 2024-07-24, commit: <a href="https://github.com/paritytech/devops-guide/commit/3370a65">3370a65</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
