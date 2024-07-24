@@ -150,9 +150,120 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="how-to-guides"><a class="header" href="#how-to-guides">How-to Guides</a></h1>
+                        <h1 id="rpc-overview"><a class="header" href="#rpc-overview">RPC Overview</a></h1>
+<p>An RPC node is a server that allows external applications to interact with the Polkadot chain. This interaction is facilitated through a set of standardized APIs which enable the execution of various operations and retrieval of blockchain data. Here are some key points about an RPC node in Polkadot:</p>
+<p>Functions of an RPC Node:
+<em>Querying Blockchain Data</em>: RPC nodes can be used to fetch information from the blockchain, such as block details, transaction histories, account balances, and other state information.
+<em>Submitting Transactions</em>: External applications can use RPC nodes to broadcast transactions to the network. This includes sending tokens, executing smart contracts, or any other transaction type supported by Polkadot.
+<em>Subscription to Events</em>: RPC nodes can provide real-time updates on blockchain events, such as new blocks being added, changes in account balances, or other relevant blockchain events.
+<em>Chain State and Metadata</em>: RPC nodes allow applications to query the current state of the blockchain, as well as metadata about the runtime environment, including the version of the Polkadot runtime, the list of available RPC methods, and more.</p>
+<h3 id="type-of-rpc-nodes"><a class="header" href="#type-of-rpc-nodes">Type of RPC Nodes</a></h3>
+<p>There are two common types of RPC nodes: <em>archive</em> nodes and <em>pruned</em> nodes, which differ in data storage and access.</p>
+<ul>
+<li>
+<p><strong>Archive Nodes</strong>:</p>
+<ul>
+<li>Store the entire blockchain history, providing full state access for tasks requiring historical data, such as analytics and audits.</li>
+<li>Require substantial disk space.</li>
+<li><strong>Important Flag</strong>: <code>--state-pruning archive --blocks-pruning archive</code> (Ensures the node retains all historical data)</li>
+</ul>
+</li>
+<li>
+<p><strong>Pruned Nodes</strong>:</p>
+<ul>
+<li>Retain only recent data, offering limited historical access but using significantly less storage.</li>
+<li>Suitable for most day-to-day operations and network security.</li>
+<li><strong>Important Flag</strong>: <code>--state-pruning 1000</code> (Only keeps last 1000 of finalized blocks)</li>
+</ul>
+</li>
+</ul>
+<p>While archive nodes are essential for applications needing comprehensive historical data, pruned nodes are sufficient for wallets, validators, and other typical uses.</p>
+<h3 id="important-flags-for-running-an-rpc-node"><a class="header" href="#important-flags-for-running-an-rpc-node">Important Flags for Running an RPC Node</a></h3>
+<ol>
+<li>
+<p><strong><code>--rpc-methods</code></strong>: Defines which RPC methods are available.</p>
+<ul>
+<li>Example: <code>--rpc-methods=Unsafe</code></li>
+<li>Options: <code>Auto</code>, <code>Safe</code>, <code>Unsafe</code></li>
+</ul>
+</li>
+<li>
+<p><strong><code>--rpc-cors</code></strong>: Specifies the Cross-Origin Resource Sharing (CORS) settings.</p>
+<ul>
+<li>Example: <code>--rpc-cors=all</code> (Allow all origins)</li>
+<li>Example: <code>--rpc-cors=http://localhost:3000</code> (Allow specific origin)</li>
+</ul>
+</li>
+<li>
+<p><strong><code>--rpc-port</code></strong>: Sets the port on which the RPC server listens.</p>
+<ul>
+<li>Example: <code>--rpc-port=9933</code></li>
+</ul>
+</li>
+<li>
+<p><strong><code>--rpc-external</code></strong>: Allows RPC connections from external sources.</p>
+<ul>
+<li>Example: <code>--rpc-external</code></li>
+</ul>
+</li>
+<li>
+<p><strong><code>--rpc-rate-limit</code></strong>: RPC rate limiting (calls/minute) for each connection..</p>
+<ul>
+<li>Example: <code>--rpc-rate-limit=100</code></li>
+</ul>
+</li>
+<li>
+<p><strong><code>--unsafe-rpc-external</code></strong>: Same as <code>--rpc-external</code></p>
+<ul>
+<li>Example: <code>--unsafe-rpc-external</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="securing-the-ws-port"><a class="header" href="#securing-the-ws-port">Securing the WS Port</a></h3>
+<p>Securing the WebSocket (WS) port is essential to prevent unauthorized access and potential security threats such as data breaches, man-in-the-middle attacks, and denial-of-service attacks. It is also necessary to access the node from the Polkadot-js UI.</p>
+<h4 id="tools-for-securing-websocket-connections"><a class="header" href="#tools-for-securing-websocket-connections">Tools for Securing WebSocket Connections</a></h4>
+<p>A list of most common tools available that supports securing websocket:</p>
+<ol>
+<li>
+<p><strong>NGINX</strong>: A popular web server and reverse proxy that can be configured to handle WebSocket connections securely.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">NGINX WebSocket Support</a></li>
+</ul>
+</li>
+<li>
+<p><strong>HAProxy</strong>: A high-performance TCP/HTTP load balancer that can manage WebSocket connections securely.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="http://www.haproxy.org/#docs">HAProxy WebSocket Support</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Traefik</strong>: A modern reverse proxy and load balancer that supports WebSocket connections and integrates well with various security features.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="https://doc.traefik.io/traefik/providers/websocket/">Traefik WebSocket Support</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Cloudflare</strong>: Provides WebSocket support along with security features like DDoS protection and WAF.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="https://developers.cloudflare.com/using-cloudflare/website-performance/websockets/">Cloudflare WebSocket Support</a></li>
+</ul>
+</li>
+<li>
+<p><strong>AWS Application Load Balancer (ALB)</strong>: Supports WebSocket connections and integrates with AWS WAF for additional security.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html">AWS ALB WebSocket Support</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Caddy</strong>: A web server with automatic HTTPS that can also handle WebSocket connections securely.</p>
+<ul>
+<li><strong>Documentation</strong>: <a href="https://caddyserver.com/docs/reverse-proxy#websocket">Caddy WebSocket Support</a></li>
+</ul>
+</li>
+</ol>
+<h3 id="how-to-guides"><a class="header" href="#how-to-guides">How-to Guides</a></h3>
 <p>This section provides a deployment guide for an RPC node via Ansible and Kubernetes.</p>
-<footer id="last-change">Last change: 2024-07-24, commit: <a href="https://github.com/paritytech/devops-guide/commit/3370a65">3370a65</a></footer>
+<footer id="last-change">Last change: 2024-07-24, commit: <a href="https://github.com/paritytech/devops-guide/commit/b14eceb">b14eceb</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
