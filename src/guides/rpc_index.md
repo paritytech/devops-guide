@@ -64,16 +64,16 @@ A list of most common tools available that supports securing websocket:
    - **Documentation**: [HAProxy WebSocket Support](http://www.haproxy.org/#docs)
 
 3. **Traefik**: A modern reverse proxy and load balancer that supports WebSocket connections and integrates well with various security features.
-   - **Documentation**: [Traefik WebSocket Support](https://doc.traefik.io/traefik/providers/websocket/)
+   - **Documentation**: [Traefik WebSocket Support](https://doc.traefik.io/traefik/routing/overview/)
 
 4. **Cloudflare**: Provides WebSocket support along with security features like DDoS protection and WAF.
-   - **Documentation**: [Cloudflare WebSocket Support](https://developers.cloudflare.com/using-cloudflare/website-performance/websockets/)
+   - **Documentation**: [Cloudflare WebSocket Support](https://developers.cloudflare.com/network/websockets/)
 
 5. **AWS Application Load Balancer (ALB)**: Supports WebSocket connections and integrates with AWS WAF for additional security.
    - **Documentation**: [AWS ALB WebSocket Support](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
 
 6. **Caddy**: A web server with automatic HTTPS that can also handle WebSocket connections securely.
-   - **Documentation**: [Caddy WebSocket Support](https://caddyserver.com/docs/reverse-proxy#websocket)
+   - **Documentation**: [Caddy WebSocket Support](https://caddyserver.com/docs/v2-upgrade#proxy)
 
 ### How-to Guides
 
