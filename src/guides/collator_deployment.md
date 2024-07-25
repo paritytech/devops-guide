@@ -17,7 +17,7 @@ Make sure your instance has at least the minimum recommended harware requirement
 
 
 ## 1- Create an Account
-This account is used to hold the funds.
+This account is used to hold funds and submit the extrinsics to bond and register your collator as candidate.
 
 ```
 > subkey generate
