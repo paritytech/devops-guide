@@ -4,9 +4,8 @@ Prometheus, Loki, Alertmanager, and Grafana are powerful tools commonly used for
 
 ### Metrics
 
-“Prometheus, a Cloud Native Computing Foundation project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.” - Prometheus GitHub repository.
-
-[Prometheus](https://prometheus.io/docs/introduction/overview/) is the engine which drives our monitoring system as the metrics of Polkadot are exposed in Prometheus format.
+[Prometheus](https://prometheus.io/docs/introduction/overview/) is an open source solution that can be used to collect metrics from applications.
+It collects metrics from configured targets endpoints at given intervals, evaluates rule expressions, displays the results, and can trigger alerts when specified conditions are observed.
 
 #### Prometheus Configuration
 
@@ -25,9 +24,7 @@ scrape_configs:
 
 ### Logs
 
-> "Loki is a horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus"
-
-[Loki](https://grafana.com/docs/loki/latest/) is used to aggregate logs from blockchain nodes, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent called promtail is used to push logs to the central Loki server.
+[Loki](https://grafana.com/docs/loki/latest/) is an open source solution that can be used to aggregate logs from applications, allowing the operator to see errors, patterns and be able to search through the logs from all hosts very easily. An agent such as [Promtail](https://grafana.com/docs/loki/latest/send-data/promtail) or [Grafana Alloy]() is used to push logs to the Loki server.
 
 Example promtail.yaml configuration to collect the logs and create a Promtail metrics that aggregates each log level:
 

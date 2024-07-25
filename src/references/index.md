@@ -2,21 +2,17 @@
 
 This section is for listing some useful projects and tools that are relevant for node operators and developers. A community maintained [Awesome Substrate](https://github.com/substrate-developer-hub/awesome-substrate) is a more detailed general list.
 
-## Testing
+## Deployment
 
-| Project                                                  | Description                                                                                                                                           |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Zombienet](https://github.com/paritytech/zombienet)     | A great tool for deploying test setups. Providers include native, Podman and Kubernetes. Also supports running automated tests against these networks |
-| [smart bench](https://github.com/paritytech/smart-bench) | Smart contracts benchmarking on Substrate                                                                                                             |
+| Project                                                                     | Description                              |
+|-----------------------------------------------------------------------------|------------------------------------------|
+| [Parity Helm Charts collection](https://github.com/paritytech/helm-charts)  | Parity & Polkadot Helm charts collection |
+| [Polkadot Ansible collection](https://github.com/paritytech/ansible-galaxy) | Polkadot Ansible Collection              |
 
-## Frontends
 
-| Project                                                                                          | Description                                                                                                                          |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [polkadot-js frontend](https://github.com/polkadot-js/apps)                                      | GitHub repo for [https://polkadot.js.org/apps/] - commonly used application for interacting with substrate and polkadot based chains |
-| [Staking Dashboard](https://github.com/paritytech/polkadot-staking-dashboard)                    | A sleek [staking dashboard](https://staking.polkadot.network/dashboard) using react and the polkadot-js library                      |
-| [contracts-ui](https://github.com/paritytech/contracts-ui)                                       | Web application for deploying Wasm smart contracts on Substrate chains that include the FRAME contracts pallet                       |
-| [Example polkadot-js-bundle](https://github.com/polkadot-js/common/blob/master/test-bundle.html) | Use polkadot JavaScript bundles to write custom frontends                                                                            |
+## Tooling
+
+For an up-to-date list of Polkadot related tooling, check the [Polkadot Wiki Tool Index](https://wiki.polkadot.network/docs/build-tools-index).
 
 ## Indexing Chain Data
 
@@ -39,7 +35,6 @@ This section is for listing some useful projects and tools that are relevant for
 | Project                                                                        | Description                                                                          |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | [Polkabot](https://gitlab.com/Polkabot/polkabot)                                         | Polkabot is a Matrix chatbot that keeps an eye on the Polkadot network. |
-| [Polkadot-Basic-Notification](https://github.com/paritytech/polkadot-basic-notification) | A basic, account-based, multi-transport notification service for the Polkadot ecosystem.                |
 | [polkadot-watcher-transaction](https://github.com/w3f/polkadot-watcher-transaction)      | The main use case of this application consits of a scanner that can be configured to start from a configured block number, and then it keeps monitoring the on-chain situation delivering alerts to a notifier.  |
 | [polkadot-watcher-validator](https://github.com/w3f/polkadot-watcher-validator)          | The watcher is a nodeJs application meant to be connected with a substrate based node through a web socket. It can then monitor the status of the node, leveraging on mechanisms such as the builtin heartbeat. |
 | [polkadot-k8s-payouts](https://github.com/w3f/polkadot-k8s-payouts)                      |  Tool that automatically claims your Kusama/Polkadot validator rewards. |

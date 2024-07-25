@@ -7,6 +7,7 @@
   - [RPC Deployment](./guides/rpc_index.md)
     - [Kubernetes](./guides/rpc_kubernetes.md)
   - [Collator Deployment](./guides/collator_deployment.md)
+  - [Parachain Readiness Checklist](./guides/readiness-checklist.md)
 - [Explanations](./explanations/index.md)
   - [Deployment Options](./deployments/index.md)
     - [Node Roles](./deployments/roles.md)
