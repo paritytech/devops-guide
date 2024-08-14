@@ -36,7 +36,9 @@ To deploy system parachain nodes, such as asset-hub and bridge-hub, you should u
 
 To deploy your network with the [node helm-chart](https://github.com/paritytech/helm-charts/tree/main/charts/node), you will need to have a node docker image published to a public registry.
 
-## Generate parachain private keys 
+## Generate parachain private keys
+
+In this section, we will use the [`subkey`](./subkey.md) utility.
 
 ### Generate static node keys (aka network keys)
 
@@ -47,7 +49,7 @@ This practice is particularly important for bootnodes, which have publicly liste
 To generate a static node key:
 
 ```
-parachain-template-node key generate-node-key --file node.key
+subkey generate-node-key --file node.key
 # example output
 12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
 cat node.key
@@ -64,12 +66,12 @@ For parachains using the collatorSelection pallet to manage their collator set, 
 In this example, we will use the same seed for both. Use the following command generate a secret seed for each collator:
 
 ```
-parachain-template-node key generate
+subkey generate
 ```
 
 You can derive public keys and account IDs from an existing seed by using:
 ```
-parachain-template-node  key inspect "<secret-seed>"
+subkey inspect "<secret-seed>"
 # example output
 Secret Key URI `//Alice` is account:
   Network ID:        substrate
