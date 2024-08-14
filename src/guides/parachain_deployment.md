@@ -110,7 +110,7 @@ If you want to select a specific built-in runtimle of your binary, add `--chain 
 
 ### Prepare your genesis patch config
 
-Save the following to `genesis-patch.json` (replace keys and configuration with your own):
+Save the following to `genesis.patch.json` (replace keys and configuration with your own):
 ```json
 {
   "balances": {
