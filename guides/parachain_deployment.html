@@ -175,12 +175,13 @@ In this guide, we will use the <code>parachain-template-node</code> that you can
 <h3 id="prepare-the-docker-image-for-use-with-kubernetes"><a class="header" href="#prepare-the-docker-image-for-use-with-kubernetes">Prepare the docker image for use with Kubernetes</a></h3>
 <p>To deploy your network with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>, you will need to have a node docker image published to a public registry.</p>
 <h2 id="generate-parachain-private-keys"><a class="header" href="#generate-parachain-private-keys">Generate parachain private keys</a></h2>
+<p>In this section, we will use the <a href="./subkey.html"><code>subkey</code></a> utility.</p>
 <h3 id="generate-static-node-keys-aka-network-keys"><a class="header" href="#generate-static-node-keys-aka-network-keys">Generate static node keys (aka network keys)</a></h3>
 <p>Node keys are used to identify nodes on the P2P network with a unique PeerID.
 To ensure this identifier persists across restarts, it is highly recommended to generate a static network key for all nodes.
 This practice is particularly important for bootnodes, which have publicly listed addresses that are used by other nodes to bootstrap their connections to the network.</p>
 <p>To generate a static node key:</p>
-<pre><code>parachain-template-node key generate-node-key --file node.key
+<pre><code>subkey generate-node-key --file node.key
 # example output
 12D3KooWExcVYu7Mvjd4kxPVLwN2ZPnZ5NyLZ5ft477wqzfP2q6E # PeerId (hash of public node key)
 cat node.key
@@ -193,10 +194,10 @@ d5e120e30dfb0eac39b1a6727d81c548e9c6b39ca97e565438a33d87726781a6% # private node
 <li>Aura keys (part of the collator “session keys”)</li>
 </ul>
 <p>In this example, we will use the same seed for both. Use the following command generate a secret seed for each collator:</p>
-<pre><code>parachain-template-node key generate
+<pre><code>subkey generate
 </code></pre>
 <p>You can derive public keys and account IDs from an existing seed by using:</p>
-<pre><code>parachain-template-node  key inspect &quot;&lt;secret-seed&gt;&quot;
+<pre><code>subkey inspect &quot;&lt;secret-seed&gt;&quot;
 # example output
 Secret Key URI `//Alice` is account:
   Network ID:        substrate
@@ -394,7 +395,7 @@ Assign it to your ParaID and Finality: <code>Final</code></li>
 <p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
 <h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
 <p>TODO</p>
-<footer id="last-change">Last change: 2024-07-25, commit: <a href="https://github.com/paritytech/devops-guide/commit/f8b16f4">f8b16f4</a></footer>
+<footer id="last-change">Last change: 2024-08-14, commit: <a href="https://github.com/paritytech/devops-guide/commit/66920d7">66920d7</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
