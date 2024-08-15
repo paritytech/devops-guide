@@ -236,7 +236,7 @@ You should now have everything ready to launch your network locally to validate 
 * Start your node (we use the `--tmp` flag to prevent the node database files from being persisted to disk):
 
 ```
-parachain-template-node  --chain chainspec.raw.json --tmp
+parachain-template-node  --chain chainspec.raw.json --tmp --node-key-file node.key
 ````
 * Connect to it with [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944) on `ws://127.0.0.1:9944`.
 * You can inspect the [chain state in Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate) to verify that everything is in order for the launch.
