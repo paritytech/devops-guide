@@ -336,7 +336,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 <li>Connect to it with <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944">Polkadot.js Apps</a> on <code>ws://127.0.0.1:9944</code>.</li>
 <li>You can inspect the <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate">chain state in Polkadot.js Apps</a> to verify that everything is in order for the launch.</li>
 </ul>
-<p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). You don’t have to wait until it is fully synced.</p>
+<p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.</p>
 <h2 id="deploy-your-nodes"><a class="header" href="#deploy-your-nodes">Deploy your nodes</a></h2>
 <p>You can use any method you choose to set up your nodes on your machines, we recommend either Ansible </p>
 <h3 id="deploy-your-nodes-with-ansible"><a class="header" href="#deploy-your-nodes-with-ansible">Deploy your nodes with Ansible</a></h3>
@@ -395,7 +395,7 @@ Assign it to your ParaID and Finality: <code>Final</code></li>
 <p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
 <h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
 <p>TODO</p>
-<footer id="last-change">Last change: 2024-08-14, commit: <a href="https://github.com/paritytech/devops-guide/commit/674251c">674251c</a></footer>
+<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/9ce2fd1">9ce2fd1</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

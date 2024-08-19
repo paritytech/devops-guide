@@ -206,7 +206,7 @@ helm install testnet-mgr parity/testnet-manager --values values.yaml
 <h3 id="how-does-it-work-"><a class="header" href="#how-does-it-work-">How does it work ?</a></h3>
 <p>The testnet-manager is deployed in the same Kubernetes namespaces as nodes deployed with the <a href="https://github.com/paritytech/helm-charts/tree/main/charts/node">node helm-chart</a>. As node pods deployed with the chart are tagged with the appropriate labels (e.g. chain name, para ID), the manager is able to query the Kubernetes API and list the running nodes for each network (relay-chain, parachains).</p>
 <p>By combining this list of nodes with the on-chain state retrieved from RPC endpoints (e.g. list of active validators accounts), the manager can automate node key setup (by interacting directly with each node RPC endpoint) and registration (by submitting sudo extrinsics). Behind the scenes, it uses a derivation formula for generating deterministic Validator/Collator accounts addresses: &quot;${VALIDATORS_ROOT_SEED}//${node-name}&quot;.</p>
-<footer id="last-change">Last change: 2024-08-14, commit: <a href="https://github.com/paritytech/devops-guide/commit/674251c">674251c</a></footer>
+<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/9ce2fd1">9ce2fd1</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
