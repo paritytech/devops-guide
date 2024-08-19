@@ -8,7 +8,7 @@ We are using Rococo as an example, but this approach would work similarly for an
 ### Hardware
 
 For this example network, you will need 3 machines.
-The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the  ["validator reference hardware" as detailed in the Polkadot Wiki](https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware).
+The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the ["validator reference hardware" as detailed in the Polkadot Wiki](https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware).
 
 Requirements:
 
@@ -223,7 +223,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 A unique [raw chainspec](https://docs.substrate.io/build/chain-spec/#raw-chain-specifications) can be created from the plain chainspec with this command:
 
 ```
-parachain-template-node build-spec --chain chainspec.plain.json --raw >  chainspec.raw.json
+parachain-template-node build-spec --chain chainspec.plain.json --raw > chainspec.raw.json
 ```
 
 ⚠️ Only use the raw chainspec to launch your chain, not the plain chainspec.
@@ -236,7 +236,7 @@ You should now have everything ready to launch your network locally to validate 
 * Start your node (we use the `--tmp` flag to prevent the node database files from being persisted to disk):
 
 ```
-parachain-template-node  --chain chainspec.raw.json --tmp
+parachain-template-node --chain chainspec.raw.json --tmp
 ````
 * Connect to it with [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944) on `ws://127.0.0.1:9944`.
 * You can inspect the [chain state in Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate) to verify that everything is in order for the launch.
@@ -245,7 +245,7 @@ Note: if you look at the node logs, it should be starting to sync the relay-chai
 
 ## Deploy your nodes
 
-You can use any method you choose to set up your nodes on your machines, we recommend either Ansible 
+You can use any method you choose to set up your nodes on your machines, we recommend either Ansible or Kubernetes.
 
 ### Deploy your nodes with Ansible
 
@@ -263,11 +263,11 @@ You can export the genesis runtime (WASM code) and state files from your chainsp
 
 * Export the genesis state:
 ```
-parachain-template-node  export-genesis-state --chain chainspec.raw.json > genesis_state_head
+parachain-template-node export-genesis-state --chain chainspec.raw.json > genesis_state_head
 ```
 * Export the genesis runtime:
 ```
-parachain-template-node  export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
+parachain-template-node export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
 ```
 * Register your parachain genesis configuration on the relay-chain by executing the `registrar.register` extrinsic on Rococo:
   - `id`: your parachain ID
