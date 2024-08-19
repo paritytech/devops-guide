@@ -156,7 +156,7 @@ We are using Rococo as an example, but this approach would work similarly for an
 <h2 id="preparations"><a class="header" href="#preparations">Preparations</a></h2>
 <h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
 <p>For this example network, you will need 3 machines.
-The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the  <a href="https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware">&quot;validator reference hardware&quot; as detailed in the Polkadot Wiki</a>.</p>
+The specifications of these machines will depend on your intended usage. For a testnet, medium-sized virtual machines with 2 to 4 cores will suffice. However, for mainnet nodes, it is recommended to follow the <a href="https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#reference-hardware">&quot;validator reference hardware&quot; as detailed in the Polkadot Wiki</a>.</p>
 <p>Requirements:</p>
 <ul>
 <li>The machines should have a public IP and allow network access on their P2P ports (defaults 30333 and 30334) as well as the RPC port for the RPC node (9944 for ws or 443 for wss).</li>
@@ -322,7 +322,7 @@ Then execute it, taking as input the runtime and genesis patch files:</p>
 <p>To initialize the genesis storage for your chain, you need convert your chainspec from plain to raw format.
 This process transforms the human-readable keys in the plain chainspec into actual storage keys and defines a unique genesis block.</p>
 <p>A unique <a href="https://docs.substrate.io/build/chain-spec/#raw-chain-specifications">raw chainspec</a> can be created from the plain chainspec with this command:</p>
-<pre><code>parachain-template-node build-spec --chain chainspec.plain.json --raw &gt;  chainspec.raw.json
+<pre><code>parachain-template-node build-spec --chain chainspec.plain.json --raw &gt; chainspec.raw.json
 </code></pre>
 <p>⚠️ Only use the raw chainspec to launch your chain, not the plain chainspec.</p>
 <h3 id="optional-dry-run-your-parachain-network-locally"><a class="header" href="#optional-dry-run-your-parachain-network-locally">(Optional) Dry-run your Parachain Network Locally</a></h3>
@@ -330,7 +330,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 <ul>
 <li>Start your node (we use the <code>--tmp</code> flag to prevent the node database files from being persisted to disk):</li>
 </ul>
-<pre><code>parachain-template-node  --chain chainspec.raw.json --tmp
+<pre><code>parachain-template-node --chain chainspec.raw.json --tmp
 </code></pre>
 <ul>
 <li>Connect to it with <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944">Polkadot.js Apps</a> on <code>ws://127.0.0.1:9944</code>.</li>
@@ -338,7 +338,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 </ul>
 <p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.</p>
 <h2 id="deploy-your-nodes"><a class="header" href="#deploy-your-nodes">Deploy your nodes</a></h2>
-<p>You can use any method you choose to set up your nodes on your machines, we recommend either Ansible </p>
+<p>You can use any method you choose to set up your nodes on your machines, we recommend either Ansible or Kubernetes.</p>
 <h3 id="deploy-your-nodes-with-ansible"><a class="header" href="#deploy-your-nodes-with-ansible">Deploy your nodes with Ansible</a></h3>
 <p>Clone the project at <a href="https://github.com/paritytech/parachain-deployment-quickstart/">paritytech/parachain-deployment-quickstart</a> and follow instructions in the <code>ansible</code> folder.</p>
 <h3 id="deploy-your-nodes-with-kubernetes"><a class="header" href="#deploy-your-nodes-with-kubernetes">Deploy your nodes with Kubernetes</a></h3>
@@ -349,12 +349,12 @@ This process transforms the human-readable keys in the plain chainspec into actu
 <ul>
 <li>Export the genesis state:</li>
 </ul>
-<pre><code>parachain-template-node  export-genesis-state --chain chainspec.raw.json &gt; genesis_state_head
+<pre><code>parachain-template-node export-genesis-state --chain chainspec.raw.json &gt; genesis_state_head
 </code></pre>
 <ul>
 <li>Export the genesis runtime:</li>
 </ul>
-<pre><code>parachain-template-node  export-genesis-wasm --chain chainspec.raw.json &gt; genesis_wasm_code
+<pre><code>parachain-template-node export-genesis-wasm --chain chainspec.raw.json &gt; genesis_wasm_code
 </code></pre>
 <ul>
 <li>Register your parachain genesis configuration on the relay-chain by executing the <code>registrar.register</code> extrinsic on Rococo:
@@ -395,7 +395,7 @@ Assign it to your ParaID and Finality: <code>Final</code></li>
 <p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
 <h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
 <p>TODO</p>
-<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/9ce2fd1">9ce2fd1</a></footer>
+<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/04f95a2">04f95a2</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
