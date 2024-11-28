@@ -31,14 +31,10 @@ image:
   tag: v1.14.0
 node:
   replicas: 1
-  chain: rococo
+  chain: westend
   role: full
   chainData:
-    chainPath: rococo_v2_2
-    # chainSnapshot:
-    #   enabled: true
-    #   method: http-filelist
-    #   url: https://snapshots.polkadot.io/rococo-paritydb-archive
+    chainPath: westend2
     volumeSize: 600Gi
     storageClass: ssd-csi
     database: paritydb
@@ -111,7 +107,7 @@ extraContainers:
     repository: parity/polkadot-parachain
     tag: 1.14.0
   node:
-    chain: bridge-hub-rococo
+    chain: bridge-hub-westend
     command: polkadot-parachain
     replicas: 1
     role: full
@@ -125,17 +121,13 @@ extraContainers:
         enabled: true
     isParachain: true
     collatorRelayChain:
-      chain: rococo
+      chain: westend
       chainData:
         database: paritydb
         pruning: 1000
         storageClass: ssd-csi
         volumeSize: 150Gi
-        # chainSnapshot:
-        #   enabled: true
-        #   method: http-filelist
-        #   url: https://snapshots.polkadot.io/rococo-paritydb-prune
-        chainPath: rococo_v2_2
+        chainPath: westend2
       chainKeystore:
         mountInMemory:
           enabled: true
