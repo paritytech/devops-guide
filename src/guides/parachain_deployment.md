@@ -86,7 +86,7 @@ Secret Key URI `//Alice` is account:
 
 Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.
 
-To get reserve a ParaId for your parachain on Paseo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io).
+To get reserve a ParaId for your parachain on Paseo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.ibp.network%2Fpaseo#/explorer).
 
 * Ensure you are connected to the Paseo network by selecting the appropriate RPC endpoint.
 * Go to the "Developer" tab and select "Extrinsics".
