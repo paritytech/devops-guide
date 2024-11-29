@@ -1,7 +1,7 @@
 # Guide: Deploying a Parachain Network
 
 This guide demonstrates the deployment of a parachain test network composed of 2 collators (nodes authoring blocks) and 1 RPC node.
-We are using Rococo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Rococo, Paseo) or a mainnet (Polkadot, Kusama).
+We are using Paseo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Paseo) or a mainnet (Polkadot, Kusama).
 
 ## Preparations
 
@@ -13,7 +13,7 @@ The specifications of these machines will depend on your intended usage. For a t
 Requirements:
 
 * The machines should have a public IP and allow network access on their P2P ports (defaults 30333 and 30334) as well as the RPC port for the RPC node (9944 for ws or 443 for wss).
-* The machine should have a big enough disk to host the relay-chain pruned database (>250 GB for Rococo)
+* The machine should have a big enough disk to host the relay-chain pruned database (>100 GB for Paseo)
 * You should have obtained SSH access to these machines.
 
 ### Parachain binary or docker image
@@ -82,13 +82,13 @@ Secret Key URI `//Alice` is account:
   SS58 Address:      5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
 ```
 
-## Reserve a ParaId on Rococo
+## Reserve a ParaId on Paseo
 
 Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.
 
-To get reserve a ParaId for your parachain on Rococo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io).
+To get reserve a ParaId for your parachain on Paseo, navigate to the [Polkadot.js Apps interface](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.ibp.network%2Fpaseo#/explorer).
 
-* Ensure you are connected to the Rococo network by selecting the appropriate RPC endpoint (`wss://rococo-rpc.polkadot.io`).
+* Ensure you are connected to the Paseo network by selecting the appropriate RPC endpoint.
 * Go to the "Developer" tab and select "Extrinsics".
 * Choose `registrar.reserve` from the dropdown menu and execute it with your account.
 * Check the included extrinsic result in the block to find your reserved `para_id` and note it down.
@@ -196,7 +196,7 @@ To work properly as a parachain chainspec, add the following fields to your `cha
     "tokenSymbol": "UNIT"
   },
   "para_id": 4435,
-  "relay_chain": "rococo",
+  "relay_chain": "paseo",
   ...
 ```
 
@@ -241,7 +241,7 @@ parachain-template-node --chain chainspec.raw.json --tmp
 * Connect to it with [Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944) on `ws://127.0.0.1:9944`.
 * You can inspect the [chain state in Polkadot.js Apps](https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate) to verify that everything is in order for the launch.
 
-Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.
+Note: if you look at the node logs, it should be starting to sync the relay-chain (Paseo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.
 
 ## Deploy your nodes
 
@@ -269,7 +269,7 @@ parachain-template-node export-genesis-state --chain chainspec.raw.json > genesi
 ```
 parachain-template-node export-genesis-wasm --chain chainspec.raw.json > genesis_wasm_code
 ```
-* Register your parachain genesis configuration on the relay-chain by executing the `registrar.register` extrinsic on Rococo:
+* Register your parachain genesis configuration on the relay-chain by executing the `registrar.register` extrinsic on Paseo:
   - `id`: your parachain ID
   - `genesisHead`: select the `genesis_state_head` file
   - `validationCode`: select the `genesis_wasm_code` file
