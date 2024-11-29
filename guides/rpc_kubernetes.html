@@ -167,14 +167,10 @@ helm -n NAMESPACE upgrade --install RELEASE_NAME -f FILE_NAME.yml parity/node
   tag: v1.14.0
 node:
   replicas: 1
-  chain: rococo
+  chain: westend
   role: full
   chainData:
-    chainPath: rococo_v2_2
-    # chainSnapshot:
-    #   enabled: true
-    #   method: http-filelist
-    #   url: https://snapshots.polkadot.io/rococo-paritydb-archive
+    chainPath: westend2
     volumeSize: 600Gi
     storageClass: ssd-csi
     database: paritydb
@@ -244,7 +240,7 @@ extraContainers:
     repository: parity/polkadot-parachain
     tag: 1.14.0
   node:
-    chain: bridge-hub-rococo
+    chain: bridge-hub-westend
     command: polkadot-parachain
     replicas: 1
     role: full
@@ -258,17 +254,13 @@ extraContainers:
         enabled: true
     isParachain: true
     collatorRelayChain:
-      chain: rococo
+      chain: westend
       chainData:
         database: paritydb
         pruning: 1000
         storageClass: ssd-csi
         volumeSize: 150Gi
-        # chainSnapshot:
-        #   enabled: true
-        #   method: http-filelist
-        #   url: https://snapshots.polkadot.io/rococo-paritydb-prune
-        chainPath: rococo_v2_2
+        chainPath: westend2
       chainKeystore:
         mountInMemory:
           enabled: true
@@ -309,7 +301,7 @@ ingress:
 <li>A backup is ideally used due to easily scale up new RPC nodes</li>
 <li>Enabling serviceMonitor to enable monitoring of the RPC nodes</li>
 </ul>
-<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/04f95a2">04f95a2</a></footer>
+<footer id="last-change">Last change: 2024-11-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/a566801">a566801</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">

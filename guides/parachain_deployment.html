@@ -152,7 +152,7 @@
                     <main>
                         <h1 id="guide-deploying-a-parachain-network"><a class="header" href="#guide-deploying-a-parachain-network">Guide: Deploying a Parachain Network</a></h1>
 <p>This guide demonstrates the deployment of a parachain test network composed of 2 collators (nodes authoring blocks) and 1 RPC node.
-We are using Rococo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Rococo, Paseo) or a mainnet (Polkadot, Kusama).</p>
+We are using Paseo as an example, but this approach would work similarly for any Relaychain, whether it is a testnet (Westend, Paseo) or a mainnet (Polkadot, Kusama).</p>
 <h2 id="preparations"><a class="header" href="#preparations">Preparations</a></h2>
 <h3 id="hardware"><a class="header" href="#hardware">Hardware</a></h3>
 <p>For this example network, you will need 3 machines.
@@ -160,7 +160,7 @@ The specifications of these machines will depend on your intended usage. For a t
 <p>Requirements:</p>
 <ul>
 <li>The machines should have a public IP and allow network access on their P2P ports (defaults 30333 and 30334) as well as the RPC port for the RPC node (9944 for ws or 443 for wss).</li>
-<li>The machine should have a big enough disk to host the relay-chain pruned database (&gt;250 GB for Rococo)</li>
+<li>The machine should have a big enough disk to host the relay-chain pruned database (&gt;100 GB for Paseo)</li>
 <li>You should have obtained SSH access to these machines.</li>
 </ul>
 <h3 id="parachain-binary-or-docker-image"><a class="header" href="#parachain-binary-or-docker-image">Parachain binary or docker image</a></h3>
@@ -207,11 +207,11 @@ Secret Key URI `//Alice` is account:
   Public key (SS58): 5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
   SS58 Address:      5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY
 </code></pre>
-<h2 id="reserve-a-paraid-on-rococo"><a class="header" href="#reserve-a-paraid-on-rococo">Reserve a ParaId on Rococo</a></h2>
+<h2 id="reserve-a-paraid-on-paseo"><a class="header" href="#reserve-a-paraid-on-paseo">Reserve a ParaId on Paseo</a></h2>
 <p>Note: although it is possible to use specific UIs for registering your parachain, this guide only documents how to do it by submitting extrinsics directly through the Polkadot.js Console.</p>
-<p>To get reserve a ParaId for your parachain on Rococo, navigate to the <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io">Polkadot.js Apps interface</a>.</p>
+<p>To get reserve a ParaId for your parachain on Paseo, navigate to the <a href="https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc.ibp.network%2Fpaseo#/explorer">Polkadot.js Apps interface</a>.</p>
 <ul>
-<li>Ensure you are connected to the Rococo network by selecting the appropriate RPC endpoint (<code>wss://rococo-rpc.polkadot.io</code>).</li>
+<li>Ensure you are connected to the Paseo network by selecting the appropriate RPC endpoint.</li>
 <li>Go to the &quot;Developer&quot; tab and select &quot;Extrinsics&quot;.</li>
 <li>Choose <code>registrar.reserve</code> from the dropdown menu and execute it with your account.</li>
 <li>Check the included extrinsic result in the block to find your reserved <code>para_id</code> and note it down.</li>
@@ -303,7 +303,7 @@ Then execute it, taking as input the runtime and genesis patch files:</p>
     &quot;tokenSymbol&quot;: &quot;UNIT&quot;
   },
   &quot;para_id&quot;: 4435,
-  &quot;relay_chain&quot;: &quot;rococo&quot;,
+  &quot;relay_chain&quot;: &quot;paseo&quot;,
   ...
 </code></pre>
 <p>You also need to set your <code>bootNodes</code> addresses, any node which has a public IP or DNS can be a bootnode:</p>
@@ -336,7 +336,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 <li>Connect to it with <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944">Polkadot.js Apps</a> on <code>ws://127.0.0.1:9944</code>.</li>
 <li>You can inspect the <a href="https://polkadot.js.org/apps/?rpc=ws%3A%2F%2F127.0.0.1%3A9944#/chainstate">chain state in Polkadot.js Apps</a> to verify that everything is in order for the launch.</li>
 </ul>
-<p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Rococo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.</p>
+<p>Note: if you look at the node logs, it should be starting to sync the relay-chain (Paseo in our case). For this dry-run step, you don’t have to wait until it is fully synced. However, after deployment, a node needs to be fully synced in order to collate parachain blocks.</p>
 <h2 id="deploy-your-nodes"><a class="header" href="#deploy-your-nodes">Deploy your nodes</a></h2>
 <p>You can use any method you choose to set up your nodes on your machines, we recommend either Ansible or Kubernetes.</p>
 <h3 id="deploy-your-nodes-with-ansible"><a class="header" href="#deploy-your-nodes-with-ansible">Deploy your nodes with Ansible</a></h3>
@@ -357,7 +357,7 @@ This process transforms the human-readable keys in the plain chainspec into actu
 <pre><code>parachain-template-node export-genesis-wasm --chain chainspec.raw.json &gt; genesis_wasm_code
 </code></pre>
 <ul>
-<li>Register your parachain genesis configuration on the relay-chain by executing the <code>registrar.register</code> extrinsic on Rococo:
+<li>Register your parachain genesis configuration on the relay-chain by executing the <code>registrar.register</code> extrinsic on Paseo:
 <ul>
 <li><code>id</code>: your parachain ID</li>
 <li><code>genesisHead</code>: select the <code>genesis_state_head</code> file</li>
@@ -395,7 +395,7 @@ Assign it to your ParaID and Finality: <code>Final</code></li>
 <p>Note: any account with enough funds can buy and assign coretime for a parachain.</p>
 <h3 id="renew-bulk-coretime"><a class="header" href="#renew-bulk-coretime">Renew Bulk Coretime</a></h3>
 <p>TODO</p>
-<footer id="last-change">Last change: 2024-08-19, commit: <a href="https://github.com/paritytech/devops-guide/commit/04f95a2">04f95a2</a></footer>
+<footer id="last-change">Last change: 2024-11-29, commit: <a href="https://github.com/paritytech/devops-guide/commit/a566801">a566801</a></footer>
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
